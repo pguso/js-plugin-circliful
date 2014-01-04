@@ -36,13 +36,25 @@ Data Options (Attributes)
 you can set the options easily as data attributes for Example: data-dimension="250"
 
 * dimension / is the height and width of the element / default is 200px on 200px
-* text / will be deisplayed inside of the cricle over the info element
-* info / will be deisplayed inside of the cricle bellow the text element (can be empty if you dont want to show info text)
+* text / will be deisplayed inside of the circle over the info element
+* info / will be deisplayed inside of the circle bellow the text element (can be empty if you dont want to show info text)
 * width / is the size of circle / default is 15px
 * fontsize / is the font size for the text element / default is 15px
 * percent / can be 1 to 100
 * fgcolor / is the foreground color of the circle / default is #556b2f
 * bgcolor / is the background color of the cicle / default is #eee
-* fill / is the background color of the whole cicle (can be empty if you dont want to set a background to the whole cicle)
+* fill / is the background color of the whole circle (can be empty if you dont want to set a background to the whole circle)
 
+
+Examples
+--------
+
+Circle
+![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/full-cicle.png)
+
+Filled Circle
+![filled](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/full-cicle-filled.png)
+
+Half Circle Filled
+![half](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/half-cicle.png)
 
