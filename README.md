@@ -49,12 +49,12 @@ you can set the options easily as data attributes for Example: data-dimension="2
 Examples
 --------
 
-Circle
+##### Circle
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/full-cicle.PNG)
 
-Filled Circle
+##### Filled Circle
 ![filled](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/full-cicle-filled.PNG)
 
-Half Circle Filled
+##### Half Circle Filled
 ![half](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/half-cicle.PNG)
 
