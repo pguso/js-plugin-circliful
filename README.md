@@ -44,6 +44,7 @@ you can set the options easily as data attributes for Example: data-dimension="2
 * fgcolor / is the foreground color of the circle / default is #556b2f
 * bgcolor / is the background color of the cicle / default is #eee
 * fill / is the background color of the whole circle (can be empty if you dont want to set a background to the whole circle)
+* type / full or half circle for example data-type="half" if not set the circle will be a full circle / default full circle
 
 
 Examples
