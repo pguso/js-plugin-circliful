@@ -11,23 +11,23 @@ How to use circliful
 
 Include circliful & jquery to your Site
 
-<link href="css/jquery.circlify.css" rel="stylesheet" type="text/css" />
-
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="js/jquery.circliful.min.js"></script>
+	<link href="css/jquery.circlify.css" rel="stylesheet" type="text/css" />
+	
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="js/jquery.circliful.min.js"></script>
 
 
 Add an element to your Site with a unique id an the data attributes that you need, for Example:
 
-<div id="myStat" data-dimension="250" data-text="35%" data-info="New Clients" data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#61a9dc" data-bgcolor="#eee" data-fill="#ddd"></div>
+	<div id="myStat" data-dimension="250" data-text="35%" data-info="New Clients" data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#61a9dc" data-bgcolor="#eee" data-fill="#ddd"></div>
 
 Add this code at the end of your site
 
-<script>
-$( document ).ready(function() {
-		$('#myStat').circliful();
-    });
-</script>
+	<script>
+	$( document ).ready(function() {
+			$('#myStat').circliful();
+	    });
+	</script>
 
 
 Data Options (Attributes)
