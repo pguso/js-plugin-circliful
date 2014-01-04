@@ -50,11 +50,11 @@ Examples
 --------
 
 Circle
-![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/full-cicle.png)
+![full](https://github.com/pguso/jquery-plugin-circliful/tree/master/preview/full-cicle.png)
 
 Filled Circle
-![filled](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/full-cicle-filled.png)
+![filled](https://github.com/pguso/jquery-plugin-circliful/tree/master/preview/full-cicle-filled.png)
 
 Half Circle Filled
-![half](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/half-cicle.png)
+![half](https://github.com/pguso/jquery-plugin-circliful/tree/master/preview/half-cicle.png)
 
