@@ -1,5 +1,5 @@
 {
-    "name": "Circliful Stats",
+    "name": "circliful",
     "title": "jQuery Circliful Plugin",
     "description": "jQuery plugin for showing circle statistics.",
     "keywords": [
@@ -7,7 +7,7 @@
         "animation",
         "statistic"
     ],
-    "version": "1.0.1",
+    "version": "0.1.3",
     "author": {
         "name": "Patric Gutersohn"
     },
