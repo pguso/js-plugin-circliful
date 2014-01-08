@@ -12,3 +12,9 @@
 .circle-info, .circle-info-half {
 	color: #999;
 }
+
+.circliful .fa {
+	margin: -10px 3px 0 3px;
+	position: relative;
+	bottom: 4px;
+}
