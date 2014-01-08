@@ -4,6 +4,7 @@ jquery-plugin-circliful
 - show Infos as Circle Statistics, no images used
 - based on html5 canvas and jquery
 - many options can be set as data attributes
+- fontawesome integration
 
 
 How to use circliful
@@ -16,10 +17,12 @@ Include circliful & jquery to your Site
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="js/jquery.circliful.min.js"></script>
 
+If you want to use the fontawesome icons you also need to include the css file into your site.
+
 
 Add an element to your Site with a unique id an the data attributes that you need, for Example:
 
-	<div id="myStat" data-dimension="250" data-text="35%" data-info="New Clients" data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#61a9dc" data-bgcolor="#eee" data-fill="#ddd"></div>
+	<div id="myStat" data-dimension="250" data-text="35%" data-info="New Clients" data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#61a9dc" data-bgcolor="#eee" data-fill="#ddd" data-total="200" data-part="35" data-icon="long-arrow-up" data-icon-size="28" data-icon-color="#fff"></div>
 
 Add this code at the end of your site
 
@@ -45,6 +48,12 @@ you can set the options easily as data attributes for Example: data-dimension="2
 * bgcolor / is the background color of the cicle / default is #eee
 * fill / is the background color of the whole circle (can be empty if you dont want to set a background to the whole circle)
 * type / full or half circle for example data-type="half" if not set the circle will be a full circle / default full circle
+* total / If you want to display the percentage of a value for example you have 750MB Ram and at the moment are 350MB in use. You need to set data-total="750" and data-part="350" and the circle will show the percentage value 36,85% 
+* part
+* border / Will change the styling of the circle. The line for showing the percentage value will be displayed inline or outline.
+* icon / Fontawesome icon class without the fa- before the class for example not fa-plus just plus
+* icon-size / Will set the font size of the icon.
+* icon-color / Will set the font color of the icon.
 
 
 Examples
