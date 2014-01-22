@@ -116,10 +116,7 @@
     
                 $(this).width(dimension + 'px');
 				
-				$(this).append('<canvas id="' + $(this).attr('id') + '_canvas" width="' + dimension + '" height="' + dimension + '"></canvas>');
-				
-				
-              var canvas = document.getElementById($(this).attr('id') + '_canvas');
+              var canvas = $('<canvas></canvas>').attr({ width: dimension, height: dimension }).appendTo($(this)).get(0);
               var context = canvas.getContext('2d');
               var x = canvas.width / 2;
               var y = canvas.height / 2;
