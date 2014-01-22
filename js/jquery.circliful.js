@@ -6,6 +6,7 @@
             // These are the defaults.
             foregroundColor: "#556b2f",
             backgroundColor: "#eee",
+            fillColor: false,
             width: 15,
             dimension: 200,
             size: 15, 
@@ -140,8 +141,9 @@
 				
 				if($(this).data('fill') != undefined) {
 					fill = $(this).data('fill');
+				} else {
+					fill = settings.fillColor;
 				}
-    
 			  //animate foreground circle
 			  function animate(current) {
 				context.clearRect(0, 0, canvas.width, canvas.height);
