@@ -54,6 +54,7 @@ you can set the options easily as data attributes for Example: data-dimension="2
 * icon / Fontawesome icon class without the fa- before the class for example not fa-plus just plus
 * icon-size / Will set the font size of the icon.
 * icon-color / Will set the font color of the icon.
+* animation-step / Will set the animation step, use 0 to disable animation, 0.5 to slow down, 2 to speed up, etc / default is 1
 
 
 Examples
