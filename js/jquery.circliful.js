@@ -26,7 +26,7 @@
 				var icon = '';
                 var animationstep = 0.0;
     
-                $(this).attr('class', 'circliful');
+                $(this).addClass('circliful');
     
                 if($(this).data('dimension') != undefined) {
                     dimension = $(this).data('dimension');
