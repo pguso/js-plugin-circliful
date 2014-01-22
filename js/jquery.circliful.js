@@ -127,29 +127,6 @@
 			  var type = '';
 			  var fill = false;
 			  
-			  /** helper **/
-				function writeMessage(canvas, message) {
-				var context = canvas.getContext('2d');
-				context.clearRect(0, 0, canvas.width, canvas.height);
-				context.font = '18pt Calibri';
-				context.fillStyle = 'black';
-				context.fillText(message, 10, 25);
-			  }
-			  function getMousePos(canvas, evt) {
-				var rect = canvas.getBoundingClientRect();
-				return {
-				  x: evt.clientX - rect.left,
-				  y: evt.clientY - rect.top
-				};
-			  }
-console.log($(canvas));
-			  canvas.addEventListener('mousemove', function(evt) {
-				var mousePos = getMousePos(canvas, evt);console.log(mousePos);
-				var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
-				writeMessage(canvas, message);
-			  }, false);
-			  /** helper end **/
-			  
 			  if($(this).data('type') != undefined) {
                     type = $(this).data('type');
 					
@@ -196,55 +173,7 @@ console.log($(canvas));
 					 });
 				}
 				
-				var pointNearEnd = getCubicBezierXYatT({
-					x: x,
-					y: y
-				}, {
-					x: x,
-					y: y
-				}, {
-					x: x,
-					y: y
-				}, {
-					x: x,
-					y: y
-				}, 0.99);
-				
-				var dx = x - curPerc;
-				var dy = y - endPercent;
-				var endingAngle = Math.atan2(dy, dx);
-				
-				//arrow
-				context.beginPath();
-				context.save();
-				//context.translate(curPerc, curPerc);
-				//context.rotate(endPercent);
-				context.moveTo(curPerc * 2, curPerc * 2);
-				context.lineTo(curPerc * 0.1, curPerc);
-				context.lineTo(curPerc * 0.3, curPerc * 0.3);
-				context.lineTo(curPerc * 2, curPerc * 2);
-				context.closePath();
-				context.fillStyle = fgcolor;
-				context.fill();
-				context.restore();
 			 }
-			 
-			 // helper functions
-			function getCubicBezierXYatT(startPt, controlPt1, controlPt2, endPt, T) {
-				var x = CubicN(T, startPt.x, controlPt1.x, controlPt2.x, endPt.x);
-				var y = CubicN(T, startPt.y, controlPt1.y, controlPt2.y, endPt.y);
-				return ({
-					x: x,
-					y: y
-				});
-			}
-
-			// cubic helper formula at T distance
-			function CubicN(T, a, b, c, d) {
-				var t2 = T * T;
-				var t3 = t2 * T;
-				return a + (-a * 3 + T * (3 * a - a * T)) * T + (3 * b + T * (-6 * b + b * 3 * T)) * T + (c * 3 - c * 3 * T) * t2 + d * t3;
-			}
 			 
 			 animate();
 
