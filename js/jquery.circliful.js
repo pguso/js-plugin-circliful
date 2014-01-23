@@ -6,10 +6,12 @@
             // These are the defaults.
             foregroundColor: "#556b2f",
             backgroundColor: "#eee",
+            fillColor: false,
             width: 15,
             dimension: 200,
             size: 15, 
-			percent: 50
+			percent: 50,
+            animationStep: 1.0
         }, options );
          return this.each(function() {
                 var dimension = '';
@@ -22,8 +24,9 @@
 				var fgcolor = '';
 				var bgcolor = '';
 				var icon = '';
+                var animationstep = 0.0;
     
-                $(this).attr('class', 'circliful');
+                $(this).addClass('circliful');
     
                 if($(this).data('dimension') != undefined) {
                     dimension = $(this).data('dimension');
@@ -61,7 +64,12 @@
                 } else {
                     bgcolor = settings.backgroundColor;
                 }
-    
+				
+                if($(this).data('animation-step') != undefined) {
+                    animationstep = parseFloat($(this).data('animation-step'));
+                } else {
+                    animationstep = settings.animationStep;
+                }
                 if($(this).data('text') != undefined) {
                     text = $(this).data('text');
 					
@@ -108,10 +116,7 @@
     
                 $(this).width(dimension + 'px');
 				
-				$(this).append('<canvas id="' + $(this).attr('id') + '_canvas" width="' + dimension + '" height="' + dimension + '"></canvas>');
-				
-				
-              var canvas = document.getElementById($(this).attr('id') + '_canvas');
+              var canvas = $('<canvas></canvas>').attr({ width: dimension, height: dimension }).appendTo($(this)).get(0);
               var context = canvas.getContext('2d');
               var x = canvas.width / 2;
               var y = canvas.height / 2;
@@ -121,7 +126,8 @@
               var startAngle = 2.3 * Math.PI;
               var endAngle = 0;
               var counterClockwise = false;
-			  var curPerc = 0;
+              var curPerc = animationstep === 0.0 ? endPercent : 0.0;
+              var curStep = Math.max(animationstep, 0.0);
 			  var circ = Math.PI * 2;
 			  var quart = Math.PI / 2;
 			  var type = '';
@@ -140,8 +146,9 @@
 				
 				if($(this).data('fill') != undefined) {
 					fill = $(this).data('fill');
+				} else {
+					fill = settings.fillColor;
 				}
-    
 			  //animate foreground circle
 			  function animate(current) {
 				context.clearRect(0, 0, canvas.width, canvas.height);
@@ -165,17 +172,17 @@
 				// line color
 				context.strokeStyle = fgcolor;
 				context.stroke();
-				curPerc++;
-				 
-				if (curPerc <= endPercent) {
+
+				if (curPerc < endPercent) {
+  				     curPerc += curStep;
 					 requestAnimationFrame(function () {
-						 animate(curPerc / 100);
+						 animate(Math.min(curPerc, endPercent) / 100);
 					 });
 				}
 				
 			 }
-			 
-			 animate();
+
+			 animate(curPerc / 100);
 
         });
  
