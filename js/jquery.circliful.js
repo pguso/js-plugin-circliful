@@ -13,11 +13,12 @@
             percent: 50,
             animationstep: 1.0,
             iconsize: '20px',
-            iconcolor: '#999'
+            iconcolor: '#999',
+            border: 'default'
         }, options);
 
         return this.each(function () {
-            var customSettings = ["fgcolor", "bgcolor", "fill", "width", "dimension", "fontsize", "animationstep", "endPercent", "icon", "iconcolor", "iconsize"];
+            var customSettings = ["fgcolor", "bgcolor", "fill", "width", "dimension", "fontsize", "animationstep", "endPercent", "icon", "iconcolor", "iconsize", "border"];
             var customSettingsObj = {};
             var icon = '';
             var endPercent = 0;
@@ -87,9 +88,10 @@
             $(this).width(customSettingsObj.dimension + 'px');
 
             var canvas = $('<canvas></canvas>').attr({
-                width: customSettingsObj.dimension,
-                height: customSettingsObj.dimension
-            }).appendTo($(this)).get(0);
+			                width: customSettingsObj.dimension,
+			                height: customSettingsObj.dimension
+			            }).appendTo($(this)).get(0);
+
             var context = canvas.getContext('2d');
             var x = canvas.width / 2;
             var y = canvas.height / 2;
@@ -164,7 +166,7 @@
 
                     if (attribute == 'fill' && obj.data('fill') != undefined) {
                         fill = true;
-                    }
+                    } 
                 });
             }
 
@@ -177,8 +179,9 @@
 
                 context.beginPath();
                 context.arc(x, y, radius, endAngle, startAngle, false);
-                context.lineWidth = customSettingsObj.width - 1;
 
+                context.lineWidth = customSettingsObj.width + 1;
+                
                 context.strokeStyle = customSettingsObj.bgcolor;
                 context.stroke();
 
@@ -189,7 +192,12 @@
 
                 context.beginPath();
                 context.arc(x, y, radius, -(quart), ((circ) * current) - quart, false);
-                context.lineWidth = customSettingsObj.width;
+
+                if (customSettingsObj.border == 'outline') {
+                	context.lineWidth = customSettingsObj.width + 13;
+                } else if(customSettingsObj.border == 'inline') {
+                	context.lineWidth = customSettingsObj.width - 13;
+                } 
 
                 context.strokeStyle = customSettingsObj.fgcolor;
                 context.stroke();
