@@ -1,6 +1,6 @@
 (function ($) {
 
-    $.fn.circliful = function (options) {
+    $.fn.circliful = function (options, callback) {
 
         var settings = $.extend({
             // These are the defaults.
@@ -14,7 +14,8 @@
             animationstep: 1.0,
             iconsize: '20px',
             iconcolor: '#999',
-            border: 'default'
+            border: 'default',
+            complete: null
         }, options);
 
         return this.each(function () {
@@ -106,15 +107,16 @@
             var circ = Math.PI * 2;
             var quart = Math.PI / 2;
             var type = '';
+            var fireCallback = true;
 
             if ($(this).data('type') != undefined) {
                 type = $(this).data('type');
 
                 if (type == 'half') {
-                    var startAngle = 2.0 * Math.PI;
-                    var endAngle = 3.13;
-                    var circ = Math.PI * 1.0;
-                    var quart = Math.PI / 0.996;
+                    startAngle = 2.0 * Math.PI;
+                    endAngle = 3.13;
+                    circ = Math.PI * 1.0;
+                    quart = Math.PI / 0.996;
                 }
             }
 
@@ -207,6 +209,14 @@
                     requestAnimationFrame(function () {
                         animate(Math.min(curPerc, endPercent) / 100);
                     }, obj);
+                }
+
+                if(curPerc == endPercent && fireCallback && typeof(options) != "undefined") {
+                	if($.isFunction( options.complete )) {
+		            	options.complete();
+
+		            	fireCallback = false;
+		            }
                 }
             }
 
