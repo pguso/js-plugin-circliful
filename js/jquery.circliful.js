@@ -151,7 +151,8 @@
                     .addClass('circle-info-half')
                     .css(
                     'line-height', (customSettingsObj.dimension * factor) + 'px'
-                );
+                	)
+                    .text( info );
             }
 
             /**
