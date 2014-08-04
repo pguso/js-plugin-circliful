@@ -4,6 +4,7 @@
 
         var settings = $.extend({
             // These are the defaults.
+            startdegree: 0,
             fgcolor: "#556b2f",
             bgcolor: "#eee",
             fill: false,
@@ -19,7 +20,7 @@
         }, options);
 
         return this.each(function () {
-            var customSettings = ["fgcolor", "bgcolor", "fill", "width", "dimension", "fontsize", "animationstep", "endPercent", "icon", "iconcolor", "iconsize", "border"];
+            var customSettings = ["fgcolor", "bgcolor", "fill", "width", "dimension", "fontsize", "animationstep", "endPercent", "icon", "iconcolor", "iconsize", "border", "startdegree"];
             var customSettingsObj = {};
             var icon = '';
             var endPercent = 0;
@@ -108,6 +109,7 @@
             var quart = Math.PI / 2;
             var type = '';
             var fireCallback = true;
+            var additionalAngelPI = (customSettingsObj.startdegree / 180) * Math.PI;
 
             if ($(this).data('type') != undefined) {
                 type = $(this).data('type');
@@ -194,7 +196,7 @@
                 }
 
                 context.beginPath();
-                context.arc(x, y, radius, -(quart), ((circ) * current) - quart, false);
+                context.arc(x, y, radius, -(quart) + additionalAngelPI, ((circ) * current) - quart + additionalAngelPI, false);
 
                 if (customSettingsObj.border == 'outline') {
                 	context.lineWidth = customSettingsObj.width + 13;
