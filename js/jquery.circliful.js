@@ -17,7 +17,7 @@
             iconcolor: '#999',
             border: 'default',
             complete: null,
-            bordersize: '2px'
+            bordersize: 10
         }, options);
 
         return this.each(function () {
@@ -93,9 +93,9 @@
             $(this).width(customSettingsObj.dimension + 'px');
 
             var canvas = $('<canvas></canvas>').attr({
-			                width: customSettingsObj.dimension,
-			                height: customSettingsObj.dimension
-			            }).appendTo($(this)).get(0);
+                width: customSettingsObj.dimension,
+                height: customSettingsObj.dimension
+            }).appendTo($(this)).get(0);
 
             var context = canvas.getContext('2d');
             var container = $(canvas).parent();
@@ -127,11 +127,11 @@
             }
 
             //Run function when browser resizes
-            $(window).resize( respondCanvas );
+            $(window).resize(respondCanvas);
 
-            function respondCanvas(){ console.log($(canvas).width()); console.log($(container).width())
-                $(canvas).attr('width', $(container).width() ); //max width
-                $(canvas).attr('height', $(container).height() ); //max height
+            function respondCanvas() {
+                $(canvas).attr('width', $(container).width()); //max width
+                $(canvas).attr('height', $(container).height()); //max height
 
                 //Call a function to redraw other content (texts, images etc)
             }
@@ -141,7 +141,7 @@
 
             /**
              * adds text to circle
-             * 
+             *
              * @param obj
              * @param cssClass
              * @param lineHeight
@@ -160,7 +160,7 @@
 
             /**
              * adds info text to circle
-             * 
+             *
              * @param obj
              * @param factor
              */
@@ -169,9 +169,9 @@
                     .appendTo(obj)
                     .addClass('circle-info-half')
                     .css(
-                    'line-height', (customSettingsObj.dimension * factor) + 'px'
-                	)
-                    .text( info );
+                        'line-height', (customSettingsObj.dimension * factor) + 'px'
+                    )
+                    .text(info);
             }
 
             /**
@@ -188,7 +188,7 @@
 
                     if (attribute == 'fill' && obj.data('fill') != undefined) {
                         fill = true;
-                    } 
+                    }
                 });
             }
 
@@ -203,7 +203,7 @@
                 context.arc(x, y, radius, endAngle, startAngle, false);
 
                 context.lineWidth = customSettingsObj.bordersize + 1;
-                
+
                 context.strokeStyle = customSettingsObj.bgcolor;
                 context.stroke();
 
@@ -216,10 +216,10 @@
                 context.arc(x, y, radius, -(quart) + additionalAngelPI, ((circ) * current) - quart + additionalAngelPI, false);
 
                 if (customSettingsObj.border == 'outline') {
-                	context.lineWidth = customSettingsObj.width + 13;
-                } else if(customSettingsObj.border == 'inline') {
-                	context.lineWidth = customSettingsObj.width - 13;
-                } 
+                    context.lineWidth = customSettingsObj.width + 13;
+                } else if (customSettingsObj.border == 'inline') {
+                    context.lineWidth = customSettingsObj.width - 13;
+                }
 
                 context.strokeStyle = customSettingsObj.fgcolor;
                 context.stroke();
@@ -231,12 +231,12 @@
                     }, obj);
                 }
 
-                if(curPerc == endPercent && fireCallback && typeof(options) != "undefined") {
-                	if($.isFunction( options.complete )) {
-		            	options.complete();
+                if (curPerc == endPercent && fireCallback && typeof(options) != "undefined") {
+                    if ($.isFunction(options.complete)) {
+                        options.complete();
 
-		            	fireCallback = false;
-		            }
+                        fireCallback = false;
+                    }
                 }
             }
 
