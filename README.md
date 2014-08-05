@@ -62,6 +62,9 @@ you can set the options easily as data attributes for Example: data-dimension="2
 Examples
 --------
 
+##### Small Border Width
+![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/small-border-width.png)
+
 ##### Circle
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/full-cicle.PNG)
 
