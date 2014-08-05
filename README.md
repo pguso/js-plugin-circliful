@@ -63,7 +63,7 @@ Examples
 --------
 
 ##### Small Border Width
-![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/small-border-width.PNG)
+![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/small-border-width.png)
 
 ##### Circle
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/full-cicle.PNG)
