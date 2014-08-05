@@ -15,11 +15,12 @@
             iconsize: '20px',
             iconcolor: '#999',
             border: 'default',
-            complete: null
+            complete: null,
+            bordersize: '2px'
         }, options);
 
         return this.each(function () {
-            var customSettings = ["fgcolor", "bgcolor", "fill", "width", "dimension", "fontsize", "animationstep", "endPercent", "icon", "iconcolor", "iconsize", "border"];
+            var customSettings = ["fgcolor", "bgcolor", "fill", "width", "dimension", "fontsize", "animationstep", "endPercent", "icon", "iconcolor", "iconsize", "border", "bordersize"];
             var customSettingsObj = {};
             var icon = '';
             var endPercent = 0;
@@ -94,6 +95,7 @@
 			            }).appendTo($(this)).get(0);
 
             var context = canvas.getContext('2d');
+            var container = $(canvas).parent();
             var x = canvas.width / 2;
             var y = canvas.height / 2;
             var degrees = customSettingsObj.percent * 360.0;
@@ -119,6 +121,19 @@
                     quart = Math.PI / 0.996;
                 }
             }
+
+            //Run function when browser resizes
+            $(window).resize( respondCanvas );
+
+            function respondCanvas(){ console.log($(canvas).width()); console.log($(container).width())
+                $(canvas).attr('width', $(container).width() ); //max width
+                $(canvas).attr('height', $(container).height() ); //max height
+
+                //Call a function to redraw other content (texts, images etc)
+            }
+
+            //Initial call 
+            respondCanvas();
 
             /**
              * adds text to circle
@@ -183,7 +198,7 @@
                 context.beginPath();
                 context.arc(x, y, radius, endAngle, startAngle, false);
 
-                context.lineWidth = customSettingsObj.width + 1;
+                context.lineWidth = customSettingsObj.bordersize + 1;
                 
                 context.strokeStyle = customSettingsObj.bgcolor;
                 context.stroke();
