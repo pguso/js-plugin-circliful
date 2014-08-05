@@ -121,7 +121,7 @@
                 if (type == 'half') {
                     startAngle = 2.0 * Math.PI;
                     endAngle = 3.13;
-                    circ = Math.PI * 1.0;
+                    circ = Math.PI;
                     quart = Math.PI / 0.996;
                 }
             }
@@ -131,7 +131,12 @@
 
             function respondCanvas() {
                 $(canvas).attr('width', $(container).width()); //max width
-                $(canvas).attr('height', $(container).height()); //max height
+
+                if(type == 'half') {
+                    $(canvas).attr('height', $(container).height() / 2); //max height
+                } else {
+                    $(canvas).attr('height', $(container).height()); //max height
+                }
 
                 //Call a function to redraw other content (texts, images etc)
             }
@@ -197,6 +202,7 @@
              * @param current
              */
             function animate(current) {
+
                 context.clearRect(0, 0, canvas.width, canvas.height);
 
                 context.beginPath();
