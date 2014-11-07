@@ -125,6 +125,17 @@
                     quart = Math.PI / 0.996;
                 }
             }
+            
+            if ($(this).data('type') != undefined) {
+                type = $(this).data('type');
+
+                if (type == 'angle') {
+                    startAngle = 2.25 * Math.PI;
+                    endAngle = 2.4;
+                    circ = 1.53 + Math.PI;
+                    quart = 0.73 + Math.PI / 0.996;
+                }
+            }
 
             //Run function when browser resizes
             $(window).resize(respondCanvas);
