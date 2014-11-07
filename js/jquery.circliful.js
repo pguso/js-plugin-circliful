@@ -137,24 +137,6 @@
                 }
             }
 
-            //Run function when browser resizes
-            $(window).resize(respondCanvas);
-
-            function respondCanvas() {
-                $(canvas).attr('width', $(container).width()); //max width
-
-                if(type == 'half') {
-                    $(canvas).attr('height', $(container).height() / 2); //max height
-                } else {
-                    $(canvas).attr('height', $(container).height()); //max height
-                }
-
-                //Call a function to redraw other content (texts, images etc)
-            }
-
-            //Initial call 
-            respondCanvas();
-
             /**
              * adds text to circle
              *
@@ -219,7 +201,7 @@
                 context.beginPath();
                 context.arc(x, y, radius, endAngle, startAngle, false);
 
-                context.lineWidth = customSettingsObj.bordersize + 1;
+                context.lineWidth = customSettingsObj.width + 1;
 
                 context.strokeStyle = customSettingsObj.bgcolor;
                 context.stroke();
