@@ -92,18 +92,31 @@
 
             $(this).width(customSettingsObj.dimension + 'px');
 
-            var canvas = $('<canvas></canvas>').attr({
-                width: customSettingsObj.dimension,
-                height: customSettingsObj.dimension
-            }).appendTo($(this)).get(0);
+            var size = customSettingsObj.dimension,
+                canvas = $('<canvas></canvas>').attr({
+                    width: size,
+                    height: size
+                }).appendTo($(this)).get(0);
 
             var context = canvas.getContext('2d');
+
+            var dpr = window.devicePixelRatio;
+            if ( dpr ) {
+                var $canvas = $(canvas);
+                $canvas.css('width', size);
+                $canvas.css('height', size);
+                $canvas.attr('width', size * dpr);
+                $canvas.attr('height', size * dpr);
+
+                context.scale(dpr, dpr);
+            }
+
             var container = $(canvas).parent();
-            var x = canvas.width / 2;
-            var y = canvas.height / 2;
+            var x = size / 2;
+            var y = size / 2;
             var degrees = customSettingsObj.percent * 360.0;
             var radians = degrees * (Math.PI / 180);
-            var radius = canvas.width / 2.5;
+            var radius = size / 2.5;
             var startAngle = 2.3 * Math.PI;
             var endAngle = 0;
             var counterClockwise = false;
