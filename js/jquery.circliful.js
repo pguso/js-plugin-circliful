@@ -65,7 +65,7 @@
 
                 percent = (($(this).data("part") / total) / 100).toFixed(3);
                 endPercent = ($(this).data("part") / total).toFixed(3)
-            } else {
+            } else {te
                 if ($(this).data("percent") != undefined) {
                     percent = $(this).data("percent") / 100;
                     endPercent = $(this).data("percent")
@@ -161,7 +161,7 @@
                 $("<span></span>")
                     .appendTo(obj)
                     .addClass(cssClass)
-                    .text(text)
+                    .html(text)
                     .prepend(icon)
                     .css({
                         'line-height': lineHeight + 'px',
