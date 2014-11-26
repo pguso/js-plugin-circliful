@@ -1,3 +1,5 @@
+"use strict"
+
 (function ($) {
 
     $.fn.circliful = function (options, callback) {
@@ -26,6 +28,7 @@
 
             var customSettingsObj = {};
             var icon = '';
+            var percent;
             var endPercent = 0;
             var obj = $(this);
             var fill = false;
@@ -64,13 +67,13 @@
                 var total = $(this).data("total") / 100;
 
                 percent = (($(this).data("part") / total) / 100).toFixed(3);
-                endPercent = ($(this).data("part") / total).toFixed(3)
+                endPercent = ($(this).data("part") / total).toFixed(3);
             } else {
                 if ($(this).data("percent") != undefined) {
                     percent = $(this).data("percent") / 100;
-                    endPercent = $(this).data("percent")
+                    endPercent = $(this).data("percent");
                 } else {
-                    percent = settings.percent / 100
+                    percent = settings.percent / 100;
                 }
             }
 
