@@ -161,7 +161,7 @@
                 $("<span></span>")
                     .appendTo(obj)
                     .addClass(cssClass)
-                    .text(text)
+                    .html(text)
                     .prepend(icon)
                     .css({
                         'line-height': lineHeight + 'px',
