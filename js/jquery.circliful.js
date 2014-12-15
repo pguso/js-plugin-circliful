@@ -231,9 +231,9 @@
                 context.arc(x, y, radius, -(quart) + additionalAngelPI, ((circ) * current) - quart + additionalAngelPI, false);
 
                 if (customSettingsObj.border == 'outline') {
-                    context.lineWidth = customSettingsObj.width + 13;
+                    context.lineWidth = customSettingsObj.width + customSettingsObj.bordersize;
                 } else if (customSettingsObj.border == 'inline') {
-                    context.lineWidth = customSettingsObj.width - 13;
+                    context.lineWidth = customSettingsObj.width - customSettingsObj.bordersize;
                 }
 
                 context.strokeStyle = customSettingsObj.fgcolor;
