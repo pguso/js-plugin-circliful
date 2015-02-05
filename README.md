@@ -12,7 +12,7 @@ How to use circliful
 
 Include circliful & jquery to your Site
 
-	<link href="css/jquery.circlify.css" rel="stylesheet" type="text/css" />
+	<link href="css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 	
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="js/jquery.circliful.min.js"></script>
