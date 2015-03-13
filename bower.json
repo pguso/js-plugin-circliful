@@ -8,5 +8,9 @@
   "license": "MIT",
   "dependencies": {
     "jquery": ">= 1.5.0"
-  }
+  },
+  "main": [
+    "js/jquery.circliful.min.js",
+    "css/jquery.circliful.css"
+  ]
 }
