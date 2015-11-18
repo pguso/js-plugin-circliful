@@ -222,7 +222,7 @@
                 context.strokeStyle = customSettingsObj.bgcolor;
                 context.stroke();
 
-                if (fill) {
+                if (customSettingsObj.fill) {
                     context.fillStyle = customSettingsObj.fill;
                     context.fill();
                 }
