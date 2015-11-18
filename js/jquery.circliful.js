@@ -217,7 +217,7 @@
                 context.beginPath();
                 context.arc(x, y, radius, endAngle, startAngle, false);
 
-                context.lineWidth = customSettingsObj.width + 1;
+                context.lineWidth = customSettingsObj.bordersize + 1;
 
                 context.strokeStyle = customSettingsObj.bgcolor;
                 context.stroke();
