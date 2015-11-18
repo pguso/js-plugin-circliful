@@ -182,6 +182,7 @@
                 $('<span></span>')
                     .appendTo(obj)
                     .addClass('circle-info-half')
+                    .text(info)
                     .css(
                         'line-height', (customSettingsObj.dimension * factor) + 'px'
                     )
