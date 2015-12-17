@@ -19,12 +19,13 @@
             iconcolor: '#999',
             border: 'default',
             complete: null,
-            bordersize: 10
+            bordersize: 10,
+            delay: 0
         }, options);
 
         return this.each(function () {
 
-            var customSettings = ["fgcolor", "bgcolor", "fill", "width", "dimension", "fontsize", "animationstep", "endPercent", "icon", "iconcolor", "iconsize", "border", "startdegree", "bordersize"];
+            var customSettings = ["fgcolor", "bgcolor", "fill", "width", "dimension", "fontsize", "animationstep", "endPercent", "icon", "iconcolor", "iconsize", "border", "startdegree", "bordersize", "delay"];
 
             var customSettingsObj = {};
             var icon = '';
@@ -130,6 +131,7 @@
             var type = '';
             var fireCallback = true;
             var additionalAngelPI = (customSettingsObj.startdegree / 180) * Math.PI;
+            var animationDelay = customSettingsObj.delay;
 
             if ($(this).data('type') != undefined) {
                 type = $(this).data('type');
@@ -141,7 +143,7 @@
                     quart = Math.PI / 0.996;
                 }
             }
-            
+
             if ($(this).data('type') != undefined) {
                 type = $(this).data('type');
 
@@ -183,8 +185,8 @@
                     .appendTo(obj)
                     .addClass('circle-info-half')
                     .css(
-                        'line-height', (customSettingsObj.dimension * factor) + 'px'
-                    )
+                    'line-height', (customSettingsObj.dimension * factor) + 'px'
+                )
                     .text(info);
             }
 
@@ -207,11 +209,9 @@
             }
 
             /**
-             * animate foreground circle
-             * @param current
+             * draw background circle
              */
-            function animate(current) {
-
+            function bgrCircle () {
                 context.clearRect(0, 0, canvas.width, canvas.height);
 
                 context.beginPath();
@@ -226,6 +226,15 @@
                     context.fillStyle = customSettingsObj.fill;
                     context.fill();
                 }
+
+            }
+
+            /**
+             * animate foreground circle
+             * @param current
+             */
+            function animate(current) {
+
 
                 context.beginPath();
                 context.arc(x, y, radius, -(quart) + additionalAngelPI, ((circ) * current) - quart + additionalAngelPI, false);
@@ -255,8 +264,13 @@
                 }
             }
 
-            animate(curPerc / 100);
+            bgrCircle ();
 
+            setTimeout(function () {
+                animate(curPerc / 100);
+            }, animationDelay);
+
+            console.log(animationDelay);
         });
     };
 }(jQuery));
