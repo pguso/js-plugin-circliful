@@ -269,8 +269,6 @@
             setTimeout(function () {
                 animate(curPerc / 100);
             }, animationDelay);
-
-            console.log(animationDelay);
         });
     };
 }(jQuery));
