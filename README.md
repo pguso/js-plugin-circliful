@@ -59,6 +59,7 @@ you can set the options easily as data attributes for Example: data-dimension="2
 | animationstep     | Will set the animation step, use 0 to disable animation, 0.5 to slow down, 2 to speed up, etc | interger | 1 |
 | startdegree     | is the degree to start animate fgcolor | interger | 0 |
 | bordersize     | set the width of the border | interger | 10 |
+| delay     | set animation delay | interger | 0 |
 
 
 
