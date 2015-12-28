@@ -30,7 +30,6 @@
             var customSettingsObj = {};
             var icon = '';
             var percent;
-            var endPercent = 0;
             var obj = $(this);
             var fill = false;
             var text, info;
@@ -38,6 +37,8 @@
             obj.addClass('circliful');
 
             checkDataAttributes(obj);
+
+            var endPercent = customSettingsObj.endPercent || 0.0;
 
             if (obj.data('text') != undefined) {
                 text = obj.data('text');
