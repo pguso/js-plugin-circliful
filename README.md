@@ -60,6 +60,7 @@ you can set the options easily as data attributes for Example: data-dimension="2
 | startdegree     | is the degree to start animate fgcolor | interger | 0 |
 | bordersize     | set the width of the border | interger | 10 |
 | delay     | set animation delay | interger | 0 |
+| linecap | Will set how the end point of the foreground circle is drawn. Can be `butt`, `round` or `square` | string | butt
 
 
 
