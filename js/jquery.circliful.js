@@ -236,8 +236,7 @@
              * @param current
              */
             function animate(current) {
-
-
+                bgrCircle();
                 context.beginPath();
                 context.arc(x, y, radius, -(quart) + additionalAngelPI, ((circ) * current) - quart + additionalAngelPI, false);
 
@@ -266,8 +265,6 @@
                     }
                 }
             }
-
-            bgrCircle ();
 
             setTimeout(function () {
                 animate(curPerc / 100);
