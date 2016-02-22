@@ -18,7 +18,7 @@ Include circliful & jquery to your Site
 	<script src="js/jquery.circliful.min.js"></script>
 
 
-Add an element to your Site with a unique id and an "container" arround it that controls the size of your circle statistic, here a example with bootstrap:
+Add an element to your Site with a unique id and an "container" around it that controls the size of your circle statistic, here a example with bootstrap:
 
 	<div class="row">
         <div class="col-lg-2">
@@ -50,12 +50,29 @@ Options
 | fillColor | fill color of circle      | RGB or string | none |
 | foregroundBorderWidth     | width of foreground circle border | int | 15 |
 | backgroundBorderWidth     | width of background circle border | int | 15 |
-| percent     | can be 1 to 100 | Pixel | integer | 75 |
+| fontColor | color of the percentage | RGB | #aaa |
+| percent     | can be 1 to 100 | integer | 75 |
 | animation     | if the circle should be animated initialy | int | 1 |
 | animationStep     | can be 1 to 100, how fast or slow the animation should be | int | 5 |
-| percent     | can be 1 to 100 | Pixel | integer | 75 |
+| icon     | font awesome icon, details bellow | string | none |
+| iconSize     | font size of the icon | integer | 30 |
+| iconColor     | color of the icon | RGB | #ccc |
+| iconPosition     | position of the icon (top, bottom, left, right or middle) | string | top |
+| textSize     | font size of the percentage text | integer | 22 |
+| textAdditionalCss     | additonal css for the percentage text | string | '' |
+
+Font Awesome Usage
+------------------
+Go to https://github.com/FortAwesome/Font-Awesome/blob/master/css/font-awesome.css and copy/paste the string after the slash for Example hdd icon:
+
+    .fa-hdd-o:before {
+        content: "\f0a0";
+    }
+
+copy/paste f0a0 into the parameter field { icon: 'f0a0' }
 
 Examples
 --------
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview.png)
+![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview2.png)
 

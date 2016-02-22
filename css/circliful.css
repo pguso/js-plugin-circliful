@@ -43,3 +43,7 @@ body {
     margin: 0 auto;
     overflow: visible;
 }
+
+svg .icon {
+    font-family: FontAwesome;
+}
