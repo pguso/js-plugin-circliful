@@ -24,7 +24,10 @@
             start: 0,
             showPercent: 1,
             textSize: 22,
-            textAdditionalCss: ''
+            textAdditionalCss: '',
+            targetPercent: 0,
+            targetTextSize: 17,
+            targetColor: '#2980B9'
         }, options);
 
         return this.each(function () {
@@ -47,13 +50,24 @@
                 textX = 117;
             } else if(settings.iconPosition == 'middle') {
                 iconY = 110;
-                elements = '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="200" y2="50" stroke-width="2"  /></g>';
+                elements = '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>';
+                elements += '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>';
                 textX = 175;
-                textY = 44;
+                textY = 35;
             } else if(settings.iconPosition == 'right') {
                 iconX = 120;
                 iconY = 110;
                 textX = 80;
+            }
+
+            if(settings.targetPercent > 0) {
+                textY = 95;
+                //additionalCss = 'stroke: black;stroke-width: 0.5px;';
+                elements = '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="75" y1="101" x2="125" y2="101" stroke-width="1"  /></g>';
+                elements += '<text text-anchor="middle" x="' + textX + '" y="120" style="font-size: ' + settings.targetTextSize + 'px;" fill="' + settings.targetColor + '">' + settings.targetPercent + '%</text>';
+                elements += '<circle cx="100" cy="100" r="69" fill="none" stroke="' + settings.backgroundColor + '" stroke-width="3" stroke-dasharray="450" transform="rotate(-90,100,100)" />';
+                elements += '<circle cx="100" cy="100" r="69" fill="none" stroke="' + settings.targetColor + '" stroke-width="3" stroke-dasharray="' + (360 / 100 * settings.targetPercent) + ', 20000" transform="rotate(-90,100,100)" />';
+
             }
 
             if (settings.icon != 'none') {
