@@ -76,3 +76,10 @@ Examples
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview.png)
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview2.png)
 
+Donation
+--------
+If you find this plugin usefull or/and use it commercially please donate as much as you like.
+
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D3F2MMNDHQ9KQ)
+
+
