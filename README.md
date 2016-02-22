@@ -50,10 +50,9 @@ Options
 | fillColor | fill color of circle      | RGB or string | none |
 | foregroundBorderWidth     | width of foreground circle border | int | 15 |
 | backgroundBorderWidth     | width of background circle border | int | 15 |
-| percent     | can be 1 to 100 | Pixel | integer | 75 |
+| percent     | can be 1 to 100 | integer | 75 |
 | animation     | if the circle should be animated initialy | int | 1 |
 | animationStep     | can be 1 to 100, how fast or slow the animation should be | int | 5 |
-| percent     | can be 1 to 100 | integer | 75 |
 
 Examples
 --------
