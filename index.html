@@ -1,47 +1,82 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Circliful</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SVG Circliful</title>
 
-<link href="css/jquery.circliful.css" rel="stylesheet" type="text/css" />
-<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/circliful.css">
 
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="js/jquery.circliful.min.js"></script>
-
-<style>
-body {
-    font-family: arial,verdana, sans-serif;
-    font-size: 12px;
-}
-
-
-</style>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-<div id="myStathalf" data-dimension="250" data-text="35%" data-info="New Clients" data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#7ea568" data-bgcolor="#eee" data-type="half" data-fill="#ddd"></div>
+<section class="container">
 
-<div id="myStat" data-dimension="250" data-text="35%" data-info="New Clients" data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#61a9dc" data-bgcolor="#eee" data-fill="#ddd"></div>
+    <h3>Circliful</h3>
 
-<div id="myStathalf2" data-dimension="250" data-text="35" data-info="New Clients" data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#7ea568" data-bgcolor="#eee" data-type="half" data-icon="fa-task"></div>
+    <div class="row">
+        <div class="col-lg-2">
+            <div id="test-circle"></div>
+        </div>
+        <div class="col-lg-2">
+            <div id="test-circle2"></div>
+        </div>
+        <div class="col-lg-2">
+            <div id="test-circle3"></div>
+        </div>
+        <div class="col-lg-2">
+            <div id="test-circle4"></div>
+        </div>
+    </div>
 
-<div id="myStat2" data-dimension="250" data-text="35%" data-info="New Clients" data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#61a9dc" data-bgcolor="#eee"></div>
 
-<div id="myStat3" data-startdegree="90" data-dimension="250" data-text="35%" data-info="New Clients" data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#61a9dc" data-bgcolor="#eee"></div>
+</section>
 
-<div id="myStat4" data-startdegree="180" data-dimension="250" data-text="35%" data-info="New Clients" data-width="30" data-fontsize="38" data-percent="35" data-fgcolor="#61a9dc" data-bgcolor="#eee"></div>
-
-<div id="myStathalf3" data-startdegree="45" data-dimension="250" data-text="50%" data-info="New Clients" data-width="30" data-fontsize="38" data-percent="50" data-fgcolor="#7ea568" data-bgcolor="#eee" data-type="half" data-fill="#ddd"></div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="js/circliful.js"></script>
 <script>
-$( document ).ready(function() {
-        $('#myStathalf').circliful();
-		$('#myStat').circliful();
-		$('#myStathalf2').circliful();
-		$('#myStat2').circliful();
-    $('#myStat3').circliful();
-    $('#myStat4').circliful();
-    $('#myStathalf3').circliful();
+    $( document ).ready(function() { // 6,32 5,38 2,34
+        $("#test-circle").circliful({
+            animation: 1,
+            animationStep: 1,
+            foregroundBorderWidth: 5,
+            backgroundBorderWidth: 15,
+            percent: 75
+        });
+
+        $("#test-circle2").circliful({
+            animation: 0,
+            animationStep: 6,
+            foregroundBorderWidth: 5,
+            backgroundColor: "none",
+            fillColor: '#eee',
+            percent: 50
+        });
+
+        $("#test-circle3").circliful({
+            animation: 1,
+            animationStep: 6,
+            foregroundBorderWidth: 5,
+            backgroundBorderWidth: 1,
+            percent: 88
+        });
+
+        $("#test-circle4").circliful({
+            animation: 1,
+            animationStep: 1,
+            target: 10,
+            start: 2,
+            showPercent: 1
+        });
     });
+
 </script>
 </body>
 </html>
