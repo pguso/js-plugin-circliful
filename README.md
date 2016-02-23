@@ -58,8 +58,14 @@ Options
 | iconSize     | font size of the icon | integer | 30 |
 | iconColor     | color of the icon | RGB | #ccc |
 | iconPosition     | position of the icon (top, bottom, left, right or middle) | string | top |
-| textSize     | font size of the percentage text | integer | 22 |
+| percentageTextSize     | font size of the percentage text | integer | 22 |
 | textAdditionalCss     | additonal css for the percentage text | string | '' |
+| targetPercent | draws a circle around the main circle | integer | 0 |
+| targetTextSize | font size of the target percentage | integer | 17 |
+| targetColor | fill color of the target circle | RGB | #2980B9 |
+| text | info text shown bellow the percentage in the circle | string | '' |
+| textStyle | css inline style you wanna add to your info text | string | '' |
+| textColor | font color of the info text | RGB | #666 |
 
 Font Awesome Usage
 ------------------
