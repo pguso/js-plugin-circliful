@@ -30,7 +30,9 @@
             targetColor: '#2980B9',
             text: null,
             textStyle: null,
-            textColor: '#666'
+            textColor: '#666',
+            multiPercentage: 0,
+            percentages: null
         }, options);
 
         return this.each(function () {
@@ -43,6 +45,7 @@
             var additionalCss;
             var elements;
             var icon;
+            var backgroundBorderWidth = settings.backgroundBorderWidth;
 
             if(settings.iconPosition == 'bottom') {
                 iconY = 124;
@@ -52,11 +55,23 @@
                 iconY = 110;
                 textX = 117;
             } else if(settings.iconPosition == 'middle') {
-                iconY = 110;
-                elements = '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>';
-                elements += '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>';
-                textX = 175;
-                textY = 35;
+                if(settings.multiPercentage == 1) {console.log(typeof settings.percentages == "object")
+                    if(typeof settings.percentages == "object") {
+                        backgroundBorderWidth = 30;
+                    } else {
+                        iconY = 110;
+                        elements = '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>';
+                        elements += '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>';
+                        textX = 228;
+                        textY = 47;
+                    }
+                } else {
+                    iconY = 110;
+                    elements = '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>';
+                    elements += '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>';
+                    textX = 175;
+                    textY = 35;
+                }
             } else if(settings.iconPosition == 'right') {
                 iconX = 120;
                 iconY = 110;
@@ -72,8 +87,10 @@
 
             }
 
-            if(settings.text != null) {
+            if(settings.text != null && settings.multiPercentage == 0) {
                 elements += '<text text-anchor="middle" x="100" y="125" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+            } else if(settings.text != null && settings.multiPercentage == 1) {
+                elements += '<text text-anchor="middle" x="228" y="65" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
             }
 
             if (settings.icon != 'none') {
@@ -85,7 +102,7 @@
                 .append(
                     $('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 194 186" class="circliful">' +
                         elements +
-                        '<circle cx="100" cy="100" r="57" class="border" fill="' + settings.fillColor + '" stroke="' + settings.backgroundColor + '" stroke-width="' + settings.backgroundBorderWidth + '" stroke-dasharray="360" transform="rotate(-90,100,100)" />' +
+                        '<circle cx="100" cy="100" r="57" class="border" fill="' + settings.fillColor + '" stroke="' + settings.backgroundColor + '" stroke-width="' + backgroundBorderWidth + '" stroke-dasharray="360" transform="rotate(-90,100,100)" />' +
                         '<circle class="circle" cx="100" cy="100" r="57" class="border" fill="none" stroke="' + settings.foregroundColor + '" stroke-width="' + settings.foregroundBorderWidth + '" stroke-dasharray="0,20000" transform="rotate(-90,100,100)" />' +
                         icon +
                         '<text class="timer" text-anchor="middle" x="' + textX + '" y="' + textY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '">0%</text>')
