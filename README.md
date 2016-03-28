@@ -48,6 +48,8 @@ Options
 | foregroundColor     | color of the foreground circle (no color add value 'none') | RGB or string | #3498DB  |
 | backgroundColor   | color of the background circle (no color add value 'none') |   RGB or string | #eee |
 | fillColor | fill color of circle      | RGB or string | none |
+| pointColor | fill color of point circle      | RGB or string | none |
+| pointSize | Size of point circle      | int | 28.5 |
 | foregroundBorderWidth     | width of foreground circle border | int | 15 |
 | backgroundBorderWidth     | width of background circle border | int | 15 |
 | fontColor | color of the percentage | RGB | #aaa |
@@ -82,6 +84,7 @@ Examples
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview.png)
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview2.png)
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview3.png)
+![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview4.png)
 
 Donation
 --------
