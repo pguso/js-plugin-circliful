@@ -49,7 +49,7 @@ Options
 | backgroundColor   | color of the background circle (no color add value 'none') |   RGB or string | #eee |
 | fillColor | fill color of circle      | RGB or string | none |
 | pointColor | fill color of point circle      | RGB or string | none |
-| pointSie | Size of point circle      | int | 28.5 |
+| pointSize | Size of point circle      | int | 28.5 |
 | foregroundBorderWidth     | width of foreground circle border | int | 15 |
 | backgroundBorderWidth     | width of background circle border | int | 15 |
 | fontColor | color of the percentage | RGB | #aaa |
