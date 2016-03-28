@@ -9,9 +9,11 @@
             //startDegree: 0,
             foregroundColor: "#3498DB",
             backgroundColor: "#ccc",
+            pointColor: "none",
             fillColor: 'none',
             foregroundBorderWidth: 15,
             backgroundBorderWidth: 15,
+            pointSize: 28.5,
             fontColor: '#aaa',
             percent: 75,
             animation: 1,
@@ -104,6 +106,7 @@
                         elements +
                         '<circle cx="100" cy="100" r="57" class="border" fill="' + settings.fillColor + '" stroke="' + settings.backgroundColor + '" stroke-width="' + backgroundBorderWidth + '" stroke-dasharray="360" transform="rotate(-90,100,100)" />' +
                         '<circle class="circle" cx="100" cy="100" r="57" class="border" fill="none" stroke="' + settings.foregroundColor + '" stroke-width="' + settings.foregroundBorderWidth + '" stroke-dasharray="0,20000" transform="rotate(-90,100,100)" />' +
+                        '<circle cx="100" cy="100" r="' + settings.pointSize + '" fill="' + settings.pointColor + '" />' +
                         icon +
                         '<text class="timer" text-anchor="middle" x="' + textX + '" y="' + textY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '">0%</text>')
                 );
