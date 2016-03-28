@@ -84,6 +84,7 @@ Examples
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview.png)
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview2.png)
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview3.png)
+![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview4.png)
 
 Donation
 --------
