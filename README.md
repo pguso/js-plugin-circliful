@@ -15,7 +15,16 @@ Include circliful & jquery to your Site
 	<link href="css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 	
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+
+For use full circle use:
+
 	<script src="js/jquery.circliful.min.js"></script>
+
+
+For use half circle use:
+
+	<script src="js/jquery.circliful.half.min.js"></script>
 
 
 Add an element to your Site with a unique id and an "container" around it that controls the size of your circle statistic, here a example with bootstrap:
@@ -30,7 +39,7 @@ Add this code at the end of your site
 
 	<script>
 	$( document ).ready(function() {
-			$("#your-circle").circliful({
+			$("#test-circle").circliful({
             animationStep: 5,
             foregroundBorderWidth: 5,
             backgroundBorderWidth: 15,
@@ -45,6 +54,7 @@ Options
 
 | Option        | Description           | Type           | Default  |
 | ------------- |:-------------:| -----:|-----:|
+| startPoint | start point for half circle, only for half circle | integer | 180 |
 | foregroundColor     | color of the foreground circle (no color add value 'none') | RGB or string | #3498DB  |
 | backgroundColor   | color of the background circle (no color add value 'none') |   RGB or string | #eee |
 | fillColor | fill color of circle      | RGB or string | none |
@@ -81,10 +91,11 @@ copy/paste f0a0 into the parameter field { icon: 'f0a0' }
 
 Examples
 --------
-![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview.png)
-![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview2.png)
-![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview3.png)
-![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview4.png)
+![full](https://raw.github.com/giovannimanzoni/jquery-plugin-circliful/master/preview/previewHalf.png)
+![full](https://raw.github.com/giovannimanzoni/jquery-plugin-circliful/master/preview/preview.png)
+![full](https://raw.github.com/giovannimanzoni/jquery-plugin-circliful/master/preview/preview2.png)
+![full](https://raw.github.com/giovannimanzoni/jquery-plugin-circliful/master/preview/preview3.png)
+![full](https://raw.github.com/giovannimanzoni/jquery-plugin-circliful/master/preview/preview4.png)
 
 Donation
 --------
