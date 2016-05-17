@@ -15,7 +15,16 @@ Include circliful & jquery to your Site
 	<link href="css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 	
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+
+For use full circle use:
+
 	<script src="js/jquery.circliful.min.js"></script>
+
+
+For use half circle use:
+
+	<script src="js/jquery.circliful.half.min.js"></script>
 
 
 Add an element to your Site with a unique id and an "container" around it that controls the size of your circle statistic, here a example with bootstrap:
