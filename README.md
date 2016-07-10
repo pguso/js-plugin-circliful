@@ -68,6 +68,7 @@ Options
 | text | info text shown bellow the percentage in the circle | string | '' |
 | textStyle | css inline style you wanna add to your info text | string | '' |
 | textColor | font color of the info text | RGB | #666 |
+| textBelow | aligns string of "text" property centered below the circle | boolean | false |
 
 Font Awesome Usage
 ------------------
@@ -85,6 +86,7 @@ Examples
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview2.png)
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview3.png)
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/preview4.png)
+![textbelow](https://cloud.githubusercontent.com/assets/8194302/16715870/ba5968ec-46c2-11e6-8d0b-4afe57da66a0.png)
 
 Donation
 --------
