@@ -34,6 +34,9 @@
         <div class="col-lg-2">
             <div id="test-circle4"></div>
         </div>
+        <div class="col-lg-2">
+            <div id="test-circle5"></div>
+        </div>
     </div>
 
 
@@ -97,6 +100,17 @@
             iconPosition: 'middle',
             multiPercentage: 1,
             text: 'No Kids'
+        });
+
+        $("#test-circle5").circliful({
+            animationStep: 5,
+            foregroundBorderWidth: 5,
+            backgroundBorderWidth: 15,
+            percent: 80,            
+            icon: 'f0a0',
+            iconPosition: 'middle',
+            text: 'Space Left',            
+            textBelow: true
         });
     });
 
