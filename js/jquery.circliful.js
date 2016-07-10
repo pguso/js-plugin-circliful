@@ -34,7 +34,8 @@
             textStyle: null,
             textColor: '#666',
             multiPercentage: 0,
-            percentages: null
+            percentages: null,
+            textBelow: false
         }, options);
 
         return this.each(function () {
@@ -89,11 +90,17 @@
 
             }
 
-            if(settings.text != null && settings.multiPercentage == 0) {
-                elements += '<text text-anchor="middle" x="100" y="125" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
-            } else if(settings.text != null && settings.multiPercentage == 1) {
-                elements += '<text text-anchor="middle" x="228" y="65" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
-            }
+            if (settings.text != null){
+                if (settings.textBelow){
+                    elements += '<text text-anchor="middle" x="100" y="190" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';    
+                }
+                else if (settings.multiPercentage == 0){
+                    elements += '<text text-anchor="middle" x="100" y="125" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';    
+                }
+                else if(settings.multiPercentage == 1) {
+                    elements += '<text text-anchor="middle" x="228" y="65" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+                }
+            }  
 
             if (settings.icon != 'none') {
                 icon = '<text text-anchor="middle" x="' + iconX + '" y="' + iconY + '" class="icon" style="font-size: ' + settings.iconSize + 'px" fill="' + settings.iconColor + '">&#x' + settings.icon + '</text>';
