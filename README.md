@@ -70,6 +70,30 @@ Options
 | textColor | font color of the info text | RGB | #666 |
 | textBelow | aligns string of "text" property centered below the circle | boolean | false |
 
+Use callback function
+------------------
+Get's fired when on complete.
+
+Example:
+
+    $("#circli").circliful({
+            animation: 1,
+            animationStep: 10,
+            foregroundBorderWidth: 5,
+            backgroundColor: "none",
+            fillColor: '#eee',
+            percent: 75,
+            iconColor: '#3498DB',
+            icon: 'f206',
+            iconSize: '40',
+            iconPosition: 'middle',
+            start:50,
+            showPercent:1,
+            target:0
+        }, function(){
+            alert('done !');
+        });
+
 Font Awesome Usage
 ------------------
 Go to https://github.com/FortAwesome/Font-Awesome/blob/master/css/font-awesome.css and copy/paste the string after the slash for Example hdd icon:
