@@ -72,7 +72,7 @@ Options
 
 Use callback function
 ------------------
-Get's fired when on complete.
+Get's fired on complete.
 
 Example:
 
