@@ -137,6 +137,7 @@
                     if ((angle) >= (360 / 100 * percent)) {
                         window.clearInterval(timer);
                         last = 1;
+                        callback();
                     } else {
                         angle += angleIncrement;
                         summary += oneStep;
