@@ -77,6 +77,19 @@ Options
 | noPercentageSign | to hide the persentage sign | boolean | false |
 | replacePercentageByText | replace the percentage shown in the circle by text | string | null |
 
+Half Circle
+------------------
+
+Example:
+
+    $("#test-circle5").circliful({
+	    animationStep: 5,
+	    foregroundBorderWidth: 5,
+	    backgroundBorderWidth: 15,
+	    percent: 80,
+	    halfCircle: 1,
+	});
+
 Use callback function
 ------------------
 Get's fired on complete.
