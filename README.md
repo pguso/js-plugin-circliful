@@ -10,12 +10,17 @@ jquery-plugin-circliful
 How to use circliful
 --------------------
 
-Include circliful & jquery to your Site
+Include circliful & jquery to your Site. 
 
 	<link href="css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 	
-	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="js/jquery.circliful.min.js"></script>
+	
+It's tested up to jQuery Versions:
+- 1.12.4
+- 2.2.4
+- 3.1.0
 
 
 Add an element to your Site with a unique id and an "container" around it that controls the size of your circle statistic, here a example with bootstrap:
