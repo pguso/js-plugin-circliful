@@ -70,6 +70,7 @@ Options
 | textColor | font color of the info text | RGB | #666 |
 | textBelow | aligns string of "text" property centered below the circle | boolean | false |
 | noPercentageSign | to hide the persentage sign | boolean | false |
+| replacePercentageByText | replace the percentage shown in the circle by text | string | null |
 
 Use callback function
 ------------------
