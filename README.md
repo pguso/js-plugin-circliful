@@ -76,6 +76,7 @@ Options
 | textBelow | aligns string of "text" property centered below the circle | boolean | false |
 | noPercentageSign | to hide the persentage sign | boolean | false |
 | replacePercentageByText | replace the percentage shown in the circle by text | string | null |
+| halfCircle | draw half circle see example bellow | boolean | false |
 
 Half Circle
 ------------------
