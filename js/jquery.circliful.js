@@ -162,7 +162,7 @@
                     }
 
                     if(settings.replacePercentageByText == null) {
-                        text = parseInt(angle / 360 * 100);
+                        text = parseInt(100 * angle / 360);
                     }
 
                     circle
