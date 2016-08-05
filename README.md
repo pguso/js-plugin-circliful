@@ -78,6 +78,7 @@ Options
 | noPercentageSign | to hide the persentage sign | boolean | false |
 | replacePercentageByText | replace the percentage shown in the circle by text | string | null |
 | halfCircle | draw half circle see example bellow | boolean | false |
+| animateInView | animate circle on scroll into view | boolean | false |
 
 Half Circle
 ------------------
