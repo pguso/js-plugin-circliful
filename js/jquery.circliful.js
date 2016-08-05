@@ -36,7 +36,8 @@
             multiPercentage: 0,
             percentages: null,
             textBelow: false,
-            noPercentageSign: false
+            noPercentageSign: false,
+            replacePercentageByText: null
         }, options);
 
         return this.each(function () {
@@ -116,7 +117,7 @@
                         '<circle class="circle" cx="100" cy="100" r="57" class="border" fill="none" stroke="' + settings.foregroundColor + '" stroke-width="' + settings.foregroundBorderWidth + '" stroke-dasharray="0,20000" transform="rotate(-90,100,100)" />' +
                         '<circle cx="100" cy="100" r="' + settings.pointSize + '" fill="' + settings.pointColor + '" />' +
                         icon +
-                        '<text class="timer" text-anchor="middle" x="' + textX + '" y="' + textY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '">0' + (settings.noPercentageSign ? '' : '%') + '</text>')
+                        '<text class="timer" text-anchor="middle" x="' + textX + '" y="' + textY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '">'+ (settings.replacePercentageByText == null ? 0 : settings.replacePercentageByText) + (settings.noPercentageSign ? '' : '%') + '</text>')
                 );
 
             var circle = circleContainer.find('.circle');
@@ -127,6 +128,11 @@
             var last = 0;
             var summary = 0;
             var oneStep = 0;
+            var text = percent;
+
+            if(settings.replacePercentageByText != null) {
+                text = settings.replacePercentageByText;
+            }
 
             if (settings.start > 0 && settings.target > 0) {
                 percent = settings.start / (settings.target / 100);
@@ -155,12 +161,16 @@
                         summary = settings.target;
                     }
 
+                    if(settings.replacePercentageByText == null) {
+                        text = parseInt(angle / 360 * 100);
+                    }
+
                     circle
                         .attr("stroke-dasharray", angle + ", 20000");
 
                     if (settings.showPercent == 1) {
                         myTimer
-                            .text(parseInt(angle / 360 * 100) + (settings.noPercentageSign ? '' : '%'));
+                            .text(text + (settings.noPercentageSign ? '' : '%'));
                     } else {
                         myTimer
                             .text(summary);
@@ -173,7 +183,7 @@
 
                 if (settings.showPercent == 1) {
                     myTimer
-                        .text(percent + (settings.noPercentageSign ? '' : '%'));
+                        .text(text + (settings.noPercentageSign ? '' : '%'));
                 } else {
                     myTimer
                         .text(settings.target);
@@ -181,5 +191,4 @@
             }
         });
     }
-
 }(jQuery));
