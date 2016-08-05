@@ -22,6 +22,7 @@ It's tested up to jQuery Versions:
 - 2.2.4
 - 3.1.0
 
+Test it directly on JS Fiddle https://jsfiddle.net/9dajqcr1/
 
 Add an element to your Site with a unique id and an "container" around it that controls the size of your circle statistic, here a example with bootstrap:
 
