@@ -86,7 +86,7 @@
             if(settings.targetPercent > 0) {
                 textY = 95;
                 elements = '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="75" y1="101" x2="125" y2="101" stroke-width="1"  /></g>';
-                elements += '<text text-anchor="middle" x="' + textX + '" y="120" style="font-size: ' + settings.targetTextSize + 'px;" fill="' + settings.targetColor + '">' + settings.targetPercent + (settings.noPercentageSign ? '' : '%') + '</text>';
+                elements += '<text text-anchor="middle" x="' + textX + '" y="120" style="font-size: ' + settings.targetTextSize + 'px;" fill="' + settings.targetColor + '">' + settings.targetPercent + (settings.noPercentageSign && settings.replacePercentageByText == null ? '' : '%') + '</text>';
                 elements += '<circle cx="100" cy="100" r="69" fill="none" stroke="' + settings.backgroundColor + '" stroke-width="3" stroke-dasharray="450" transform="rotate(-90,100,100)" />';
                 elements += '<circle cx="100" cy="100" r="69" fill="none" stroke="' + settings.targetColor + '" stroke-width="3" stroke-dasharray="' + (360 / 100 * settings.targetPercent) + ', 20000" transform="rotate(-90,100,100)" />';
 
@@ -117,7 +117,7 @@
                         '<circle class="circle" cx="100" cy="100" r="57" class="border" fill="none" stroke="' + settings.foregroundColor + '" stroke-width="' + settings.foregroundBorderWidth + '" stroke-dasharray="0,20000" transform="rotate(-90,100,100)" />' +
                         '<circle cx="100" cy="100" r="' + settings.pointSize + '" fill="' + settings.pointColor + '" />' +
                         icon +
-                        '<text class="timer" text-anchor="middle" x="' + textX + '" y="' + textY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '">'+ (settings.replacePercentageByText == null ? 0 : settings.replacePercentageByText) + (settings.noPercentageSign ? '' : '%') + '</text>')
+                        '<text class="timer" text-anchor="middle" x="' + textX + '" y="' + textY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '">'+ (settings.replacePercentageByText == null ? 0 : settings.replacePercentageByText) + (settings.noPercentageSign || settings.replacePercentageByText != null ? '' : '%') + '</text>')
                 );
 
             var circle = circleContainer.find('.circle');
@@ -170,7 +170,7 @@
 
                     if (settings.showPercent == 1) {
                         myTimer
-                            .text(text + (settings.noPercentageSign ? '' : '%'));
+                            .text(text + (settings.noPercentageSign || settings.replacePercentageByText != null ? '' : '%'));
                     } else {
                         myTimer
                             .text(summary);
