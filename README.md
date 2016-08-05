@@ -90,6 +90,8 @@ Example:
 	    halfCircle: 1,
 	});
 
+![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/half_circle.PNG)
+
 Use callback function
 ------------------
 Get's fired on complete.
