@@ -10,13 +10,19 @@ jquery-plugin-circliful
 How to use circliful
 --------------------
 
-Include circliful & jquery to your Site
+Include circliful & jquery to your Site. 
 
 	<link href="css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 	
-	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="js/jquery.circliful.min.js"></script>
+	
+It's tested up to jQuery Versions:
+- 1.12.4
+- 2.2.4
+- 3.1.0
 
+Test it directly on JS Fiddle https://jsfiddle.net/9dajqcr1/
 
 Add an element to your Site with a unique id and an "container" around it that controls the size of your circle statistic, here a example with bootstrap:
 
@@ -69,6 +75,49 @@ Options
 | textStyle | css inline style you wanna add to your info text | string | '' |
 | textColor | font color of the info text | RGB | #666 |
 | textBelow | aligns string of "text" property centered below the circle | boolean | false |
+| noPercentageSign | to hide the persentage sign | boolean | false |
+| replacePercentageByText | replace the percentage shown in the circle by text | string | null |
+| halfCircle | draw half circle see example bellow | boolean | false |
+| animateInView | animate circle on scroll into view | boolean | false |
+
+Half Circle
+------------------
+
+Example:
+
+    $("#test-circle5").circliful({
+	    animationStep: 5,
+	    foregroundBorderWidth: 5,
+	    backgroundBorderWidth: 15,
+	    percent: 80,
+	    halfCircle: 1,
+	});
+
+![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/half_circle.PNG)
+
+Use callback function
+------------------
+Get's fired on complete.
+
+Example:
+
+    $("#circli").circliful({
+            animation: 1,
+            animationStep: 10,
+            foregroundBorderWidth: 5,
+            backgroundColor: "none",
+            fillColor: '#eee',
+            percent: 75,
+            iconColor: '#3498DB',
+            icon: 'f206',
+            iconSize: '40',
+            iconPosition: 'middle',
+            start:50,
+            showPercent:1,
+            target:0
+        }, function(){
+            alert('done !');
+        });
 
 Font Awesome Usage
 ------------------
