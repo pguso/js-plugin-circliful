@@ -38,7 +38,9 @@
 			noPercentageSign: false,
 			replacePercentageByText: null,
 			halfCircle: false,
-			animateInView: false
+			animateInView: false,
+			decimals: 0,
+			alwaysDecimals: false
 		}, options);
 
 		return this.each(function () {
@@ -228,9 +230,13 @@
 
 					if (settings.replacePercentageByText == null) {
 						if (settings.halfCircle) {
-							text = parseInt((100 * angle / 360) * 2);
+							text = parseFloat((100 * angle / 360) * 2);
 						} else {
-							text = parseInt((100 * angle / 360));
+							text = parseFloat((100 * angle / 360));
+						}
+						text = text.toFixed(settings.decimals);
+						if (!settings.alwaysDecimals && (percent == 0 || (percent > 1 && last != 1))) {
+							text = parseInt(text);
 						}
 					}
 

@@ -60,25 +60,27 @@ Options
 | backgroundBorderWidth     | width of background circle border | int | 15 |
 | fontColor | color of the percentage | RGB | #aaa |
 | percent     | can be 1 to 100 | integer | 75 |
-| animation     | if the circle should be animated initialy | int | 1 |
+| animation     | if the circle should be animated initially | int | 1 |
 | animationStep     | can be 1 to 100, how fast or slow the animation should be | int | 5 |
 | icon     | font awesome icon, details bellow | string | none |
 | iconSize     | font size of the icon | integer | 30 |
 | iconColor     | color of the icon | RGB | #ccc |
 | iconPosition     | position of the icon (top, bottom, left, right or middle) | string | top |
 | percentageTextSize     | font size of the percentage text | integer | 22 |
-| textAdditionalCss     | additonal css for the percentage text | string | '' |
+| textAdditionalCss     | additional css for the percentage text | string | '' |
 | targetPercent | draws a circle around the main circle | integer | 0 |
 | targetTextSize | font size of the target percentage | integer | 17 |
 | targetColor | fill color of the target circle | RGB | #2980B9 |
 | text | info text shown bellow the percentage in the circle | string | '' |
-| textStyle | css inline style you wanna add to your info text | string | '' |
+| textStyle | css inline style you want to add to your info text | string | '' |
 | textColor | font color of the info text | RGB | #666 |
 | textBelow | aligns string of "text" property centered below the circle | boolean | false |
-| noPercentageSign | to hide the persentage sign | boolean | false |
+| noPercentageSign | to hide the percentage sign | boolean | false |
 | replacePercentageByText | replace the percentage shown in the circle by text | string | null |
 | halfCircle | draw half circle see example bellow | boolean | false |
 | animateInView | animate circle on scroll into view | boolean | false |
+| decimals | number of decimal places to show | integer | 0 |
+| alwaysDecimals | shows decimals while animating instead of only at the end or if less than 1 | boolean | false |
 
 Half Circle
 ------------------
