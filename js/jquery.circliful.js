@@ -86,7 +86,7 @@
 						iconY = 110;
 						elements = '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>';
 						elements += '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>';
-						textX = 175;
+						textX = 170; // To center the percentage exactly in the center.
 						textY = 35;
 					}
 				} else if (settings.iconPosition == 'right') {
