@@ -146,7 +146,7 @@
 							'<circle class="circle" cx="100" cy="100" r="57" class="border" fill="none" stroke="' + settings.foregroundColor + '" stroke-width="' + settings.foregroundBorderWidth + '" stroke-dasharray="0,20000" ' + rotate + ' />' +
 							'<circle cx="100" cy="100" r="' + settings.pointSize + '" fill="' + settings.pointColor + '" clip-path="url(#cut-off-bottom)" transform="rotate(-90,100,100)" />' +
 							icon +
-							'<text class="timer" text-anchor="middle" x="' + textX + '" y="' + textY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '">' + (settings.replacePercentageByText == null ? 0 : settings.replacePercentageByText) + (settings.noPercentageSign || settings.replacePercentageByText != null ? '' : '%') + '</text>')
+							'<text class="timer" text-anchor="middle" x="' + textX + '" y="' + textY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '"><tspan class="number">' + (settings.replacePercentageByText == null ? 0 : settings.replacePercentageByText) + '</tspan><tspan class="percent">' + (settings.noPercentageSign || settings.replacePercentageByText != null ? '' : '%') + '</tspan></text>')
 					);
 			} else {
 				circleContainer
@@ -158,7 +158,7 @@
 							'<circle class="circle" cx="100" cy="100" r="57" class="border" fill="none" stroke="' + settings.foregroundColor + '" stroke-width="' + settings.foregroundBorderWidth + '" stroke-dasharray="0,20000" transform="rotate(-90,100,100)" />' +
 							'<circle cx="100" cy="100" r="' + settings.pointSize + '" fill="' + settings.pointColor + '" />' +
 							icon +
-							'<text class="timer" text-anchor="middle" x="' + textX + '" y="' + textY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '">' + (settings.replacePercentageByText == null ? 0 : settings.replacePercentageByText) + (settings.noPercentageSign || settings.replacePercentageByText != null ? '' : '%') + '</text>')
+							'<text class="timer" text-anchor="middle" x="' + textX + '" y="' + textY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '"><tspan class="number">' + (settings.replacePercentageByText == null ? 0 : settings.replacePercentageByText) + '</tspan><tspan class="percent">' + (settings.noPercentageSign || settings.replacePercentageByText != null ? '' : '%') + '</tspan></text>')
 					);
 			}
 
@@ -200,10 +200,15 @@
 
 				if (settings.showPercent == 1) {
 					myTimer
-						.text(text + (settings.noPercentageSign ? '' : '%'));
+						.find('.number')
+						.text(text);
 				} else {
 					myTimer
+						.find('.number')
 						.text(settings.target);
+					myTimer
+						.find('.percent')
+						.text('');
 				}
 			}
 
@@ -245,10 +250,15 @@
 
 					if (settings.showPercent == 1) {
 						myTimer
-							.text(text + (settings.noPercentageSign || settings.replacePercentageByText != null ? '' : '%'));
+							.find('.number')
+							.text(text);
 					} else {
 						myTimer
+							.find('.number')
 							.text(summary);
+						myTimer
+							.find('.percent')
+							.text('');
 					}
 				}.bind(circle), interval);
 			}
