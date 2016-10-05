@@ -1,0 +1,7 @@
+{
+    "name": "pguso/jquery-plugin-circliful",
+    "description": "jQuery circle statistic plugin",
+    "require": {
+        "jQuery": "^1.6"
+    }
+}
