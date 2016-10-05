@@ -45,6 +45,9 @@
 
 		return this.each(function () {
 			var circleContainer = $(this);
+
+			mergeDataAttributes(settings, circleContainer.data());
+
 			var percent = settings.percent;
 			var iconY = 83;
 			var iconX = 100;
@@ -54,7 +57,7 @@
 			var elements;
 			var icon;
 			var backgroundBorderWidth = settings.backgroundBorderWidth;
-
+			
 			if (settings.halfCircle) {
 				if (settings.iconPosition == 'left') {
 					iconX = 80;
@@ -285,6 +288,14 @@
 					circle.addClass('start');
 					setTimeout(animate, 250)
 				}
+			}
+
+			function mergeDataAttributes(settings, dataAttributes) {
+				$.each(settings, function(key, value) {
+					if(key.toLowerCase() in dataAttributes) {
+						settings[key] = dataAttributes[key.toLowerCase()];
+					}
+				});
 			}
 		});
 	}
