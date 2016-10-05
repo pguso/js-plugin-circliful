@@ -82,6 +82,13 @@ Options
 | decimals | number of decimal places to show | integer | 0 |
 | alwaysDecimals | shows decimals while animating instead of only at the end or if less than 1 | boolean | false |
 
+Data Attributes
+------------------
+
+All Options can also be set as data attributes, for example:
+
+    <div id="test-circle" data-animation="1" data-animationStep="5" data-percent="58"></div>
+
 Half Circle
 ------------------
 
