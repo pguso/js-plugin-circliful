@@ -26,7 +26,7 @@ Test it directly on JS Fiddle https://jsfiddle.net/9dajqcr1/
 
 Add an element to your Site with a unique id and an "container" around it that controls the size of your circle statistic, here a example with bootstrap:
 
-	<div class="row">
+    <div class="row">
         <div class="col-lg-2">
             <div id="test-circle"></div>
         </div>
@@ -35,14 +35,14 @@ Add an element to your Site with a unique id and an "container" around it that c
 Add this code at the end of your site
 
 	<script>
-	$( document ).ready(function() {
-			$("#your-circle").circliful({
-            animationStep: 5,
-            foregroundBorderWidth: 5,
-            backgroundBorderWidth: 15,
-            percent: 75
-        });
-	    });
+	    $( document ).ready(function() {
+		$("#your-circle").circliful({
+                    animationStep: 5,
+                    foregroundBorderWidth: 5,
+                    backgroundBorderWidth: 15,
+                    percent: 75
+               });
+	   });
 	</script>
 
 
