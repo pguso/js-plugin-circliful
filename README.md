@@ -10,13 +10,13 @@ jquery-plugin-circliful
 How to use circliful
 --------------------
 
-Include circliful & jquery to your Site. 
+Include circliful & jquery to your Site.
 
 	<link href="css/jquery.circliful.css" rel="stylesheet" type="text/css" />
-	
+
 	<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="js/jquery.circliful.min.js"></script>
-	
+
 It's tested up to jQuery Versions:
 - 1.12.4
 - 2.2.4
@@ -81,6 +81,8 @@ Options
 | animateInView | animate circle on scroll into view | boolean | false |
 | decimals | number of decimal places to show | integer | 0 |
 | alwaysDecimals | shows decimals while animating instead of only at the end or if less than 1 | boolean | false |
+| title | title of the circle | string | Circle Chart |
+|description | description of the circle | string | '' |
 
 Data Attributes
 ------------------
@@ -151,5 +153,3 @@ Donation
 If you find this plugin usefull or/and use it commercially please donate as much as you like.
 
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D3F2MMNDHQ9KQ)
-
-
