@@ -59,6 +59,8 @@ Options
 | foregroundBorderWidth     | width of foreground circle border | int | 15 |
 | backgroundBorderWidth     | width of background circle border | int | 15 |
 | fontColor | color of the percentage | RGB | #aaa |
+| percentageY | vertical position of the percentage text | integer | 100 |
+| percentageX | horizontal position of the percentage text | integer | 100 |
 | percent     | can be 1 to 100 | integer | 75 |
 | animation     | if the circle should be animated initially | int | 1 |
 | animationStep     | can be 1 to 100, how fast or slow the animation should be | int | 5 |
@@ -74,6 +76,8 @@ Options
 | text | info text shown bellow the percentage in the circle | string | '' |
 | textStyle | css inline style you want to add to your info text | string | '' |
 | textColor | font color of the info text | RGB | #666 |
+| textY | vertical position of your info text | integer | null |
+| textX | horizontal position of your info text | integer | null |
 | textBelow | aligns string of "text" property centered below the circle | boolean | false |
 | noPercentageSign | to hide the percentage sign | boolean | false |
 | replacePercentageByText | replace the percentage shown in the circle by text | string | null |

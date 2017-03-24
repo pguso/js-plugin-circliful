@@ -25,6 +25,8 @@
 			start: 0,
 			showPercent: 1,
 			percentageTextSize: 22,
+			percentageX: 100,
+			percentageY: 100,
 			textAdditionalCss: '',
 			targetPercent: 0,
 			targetTextSize: 17,
@@ -32,6 +34,8 @@
 			text: null,
 			textStyle: null,
 			textColor: '#666',
+			textY: null,
+			textX: null,
 			multiPercentage: 0,
 			percentages: null,
 			textBelow: false,
@@ -53,8 +57,8 @@
 			var percent = settings.percent;
 			var iconY = 83;
 			var iconX = 100;
-			var textY = 100;
-			var textX = 100;
+			var percentageY = settings.percentageY;
+			var percentageX = settings.percentageX;
 			var additionalCss;
 			var elements;
 			var icon;
@@ -64,20 +68,20 @@
 				if (settings.iconPosition == 'left') {
 					iconX = 80;
 					iconY = 100;
-					textX = 117;
-					textY = 100;
+					percentageX = 117;
+					percentageY = 100;
 				} else if (settings.halfCircle) {
 					iconY = 80;
-					textY = 100;
+					percentageY = 100;
 				}
 			} else {
 				if (settings.iconPosition == 'bottom') {
 					iconY = 124;
-					textY = 95;
+					percentageY = 95;
 				} else if (settings.iconPosition == 'left') {
 					iconX = 80;
 					iconY = 110;
-					textX = 117;
+					percentageX = 117;
 				} else if (settings.iconPosition == 'middle') {
 					if (settings.multiPercentage == 1) {
 						if (typeof settings.percentages == "object") {
@@ -86,27 +90,27 @@
 							iconY = 110;
 							elements = '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>';
 							elements += '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>';
-							textX = 228;
-							textY = 47;
+							percentageX = 228;
+							percentageY = 47;
 						}
 					} else {
 						iconY = 110;
 						elements = '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>';
 						elements += '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>';
-						textX = 170; // To center the percentage exactly in the center.
-						textY = 35;
+						percentageX = 170; // To center the percentage exactly in the center.
+						percentageY = 35;
 					}
 				} else if (settings.iconPosition == 'right') {
 					iconX = 120;
 					iconY = 110;
-					textX = 80;
+					percentageX = 80;
 				}
 			}
 
 			if (settings.targetPercent > 0) {
-				textY = 95;
+				percentageY = 95;
 				elements = '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="75" y1="101" x2="125" y2="101" stroke-width="1"  /></g>';
-				elements += '<text text-anchor="middle" x="' + textX + '" y="120" style="font-size: ' + settings.targetTextSize + 'px;" fill="' + settings.targetColor + '">' + settings.targetPercent + (settings.noPercentageSign && settings.replacePercentageByText == null ? '' : '%') + '</text>';
+				elements += '<text text-anchor="middle" x="' + percentageX + '" y="120" style="font-size: ' + settings.targetTextSize + 'px;" fill="' + settings.targetColor + '">' + settings.targetPercent + (settings.noPercentageSign && settings.replacePercentageByText == null ? '' : '%') + '</text>';
 				elements += '<circle cx="100" cy="100" r="69" fill="none" stroke="' + settings.backgroundColor + '" stroke-width="3" stroke-dasharray="450" transform="rotate(-90,100,100)" />';
 				elements += '<circle cx="100" cy="100" r="69" fill="none" stroke="' + settings.targetColor + '" stroke-width="3" stroke-dasharray="' + (360 / 100 * settings.targetPercent) + ', 20000" transform="rotate(-90,100,100)" />';
 			}
@@ -114,23 +118,23 @@
 			if (settings.text != null) {
 				if (settings.halfCircle) {
 					if (settings.textBelow) {
-						elements += '<text text-anchor="middle" x="100" y="120" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+						elements += '<text text-anchor="middle" x="' + (settings.textX != null ? settings.textX : '100') + '" y="' + (settings.textY != null ? settings.textY : '120') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
 					}
 					else if (settings.multiPercentage == 0) {
-						elements += '<text text-anchor="middle" x="100" y="115" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+						elements += '<text text-anchor="middle" x="' + (settings.textX != null ? settings.textX : '100' ) + '" y="' + (settings.textY != null ? settings.textY : '115') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
 					}
 					else if (settings.multiPercentage == 1) {
-						elements += '<text text-anchor="middle" x="228" y="65" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+						elements += '<text text-anchor="middle" x="' + (settings.textX != null ? settings.textX : '228' ) + '" y="' + (settings.textY != null ? settings.textY : '65') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
 					}
 				} else {
 					if (settings.textBelow) {
-						elements += '<text text-anchor="middle" x="100" y="190" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+						elements += '<text text-anchor="middle" x="' + (settings.textX != null ? settings.textX : '100' ) + '" y="' + (settings.textY != null ? settings.textY : '190') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
 					}
 					else if (settings.multiPercentage == 0) {
-						elements += '<text text-anchor="middle" x="100" y="115" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+						elements += '<text text-anchor="middle" x="' + (settings.textX != null ? settings.textX : '100' ) + '" y="' + (settings.textY != null ? settings.textY : '115') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
 					}
 					else if (settings.multiPercentage == 1) {
-						elements += '<text text-anchor="middle" x="228" y="65" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+						elements += '<text text-anchor="middle" x="' + (settings.textX != null ? settings.textX : '228' ) + '" y="' + (settings.textY != null ? settings.textY : '65') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
 					}
 				}
 			}
@@ -144,28 +148,26 @@
 				circleContainer
 					.addClass('svg-container')
 					.append(
-						$('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 194 186" class="circliful" role="img" aria-labelledby="title  desc">' +
-							'<title id="title">' + settings.title + '</title><desc id="desc">' + settings.description + '</desc>' +
+						$('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 194 186" class="circliful">' +
 							elements +
 							'<clipPath id="cut-off-bottom"> <rect x="100" y="0" width="100" height="200" /> </clipPath>' +
 							'<circle cx="100" cy="100" r="57" class="border" fill="' + settings.fillColor + '" stroke="' + settings.backgroundColor + '" stroke-width="' + backgroundBorderWidth + '" stroke-dasharray="360" clip-path="url(#cut-off-bottom)" transform="rotate(-90,100,100)" />' +
 							'<circle class="circle" cx="100" cy="100" r="57" class="border" fill="none" stroke="' + settings.foregroundColor + '" stroke-width="' + settings.foregroundBorderWidth + '" stroke-dasharray="0,20000" ' + rotate + ' />' +
 							'<circle cx="100" cy="100" r="' + settings.pointSize + '" fill="' + settings.pointColor + '" clip-path="url(#cut-off-bottom)" transform="rotate(-90,100,100)" />' +
 							icon +
-							'<text class="timer" text-anchor="middle" x="' + textX + '" y="' + textY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '"><tspan class="number">' + (settings.replacePercentageByText == null ? 0 : settings.replacePercentageByText) + '</tspan><tspan class="percent">' + (settings.noPercentageSign || settings.replacePercentageByText != null ? '' : '%') + '</tspan></text>')
+							'<text class="timer" text-anchor="middle" x="' + percentageX + '" y="' + percentageY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '"><tspan class="number">' + (settings.replacePercentageByText == null ? 0 : settings.replacePercentageByText) + '</tspan><tspan class="percent">' + (settings.noPercentageSign || settings.replacePercentageByText != null ? '' : '%') + '</tspan></text>')
 					);
 			} else {
 				circleContainer
 					.addClass('svg-container')
 					.append(
-						$('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 194 186" class="circliful" role="img" aria-labelledby="title  desc">' +
-							'<title id="title">' + settings.title + '</title><desc id="desc">' + settings.description + '</desc>' +
+						$('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 194 186" class="circliful">' +
 							elements +
 							'<circle cx="100" cy="100" r="57" class="border" fill="' + settings.fillColor + '" stroke="' + settings.backgroundColor + '" stroke-width="' + backgroundBorderWidth + '" stroke-dasharray="360" transform="rotate(-90,100,100)" />' +
 							'<circle class="circle" cx="100" cy="100" r="57" class="border" fill="none" stroke="' + settings.foregroundColor + '" stroke-width="' + settings.foregroundBorderWidth + '" stroke-dasharray="0,20000" transform="rotate(-90,100,100)" />' +
 							'<circle cx="100" cy="100" r="' + settings.pointSize + '" fill="' + settings.pointColor + '" />' +
 							icon +
-							'<text class="timer" text-anchor="middle" x="' + textX + '" y="' + textY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '"><tspan class="number">' + (settings.replacePercentageByText == null ? 0 : settings.replacePercentageByText) + '</tspan><tspan class="percent">' + (settings.noPercentageSign || settings.replacePercentageByText != null ? '' : '%') + '</tspan></text>')
+							'<text class="timer" text-anchor="middle" x="' + percentageX + '" y="' + percentageY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '"><tspan class="number">' + (settings.replacePercentageByText == null ? 0 : settings.replacePercentageByText) + '</tspan><tspan class="percent">' + (settings.noPercentageSign || settings.replacePercentageByText != null ? '' : '%') + '</tspan></text>')
 					);
 			}
 
