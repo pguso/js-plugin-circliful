@@ -26,7 +26,7 @@
 			showPercent: 1,
 			percentageTextSize: 22,
 			percentageX: 100,
-			percentageY: 100,
+			percentageY: 113,
 			textAdditionalCss: '',
 			targetPercent: 0,
 			targetTextSize: 17,
@@ -104,10 +104,12 @@
 					iconX = 120;
 					iconY = 110;
 					percentageX = 80;
+				} else if (settings.iconPosition == 'top' && settings.icon != 'none') {
+					percentageY = 120;
 				}
 			}
 
-			if (settings.targetPercent > 0) {
+			if (settings.targetPercent > 0 && settings.halfCircle != true) {
 				percentageY = 95;
 				elements = '<g stroke="' + (settings.backgroundColor != 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="75" y1="101" x2="125" y2="101" stroke-width="1"  /></g>';
 				elements += '<text text-anchor="middle" x="' + percentageX + '" y="120" style="font-size: ' + settings.targetTextSize + 'px;" fill="' + settings.targetColor + '">' + settings.targetPercent + (settings.noPercentageSign && settings.replacePercentageByText == null ? '' : '%') + '</text>';
