@@ -120,7 +120,7 @@
 			if (settings.text != null) {
 				if (settings.halfCircle) {
 					if (settings.textBelow) {
-						elements += '<text text-anchor="middle" x="' + (settings.textX != null ? settings.textX : '100') + '" y="' + (settings.textY != null ? settings.textY : '120') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+						elements += '<text text-anchor="middle" x="' + (settings.textX != null ? settings.textX : '100') + '" y="' + (settings.textY != null ? settings.textY : '64%') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
 					}
 					else if (settings.multiPercentage == 0) {
 						elements += '<text text-anchor="middle" x="' + (settings.textX != null ? settings.textX : '100' ) + '" y="' + (settings.textY != null ? settings.textY : '115') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
@@ -130,7 +130,7 @@
 					}
 				} else {
 					if (settings.textBelow) {
-						elements += '<text text-anchor="middle" x="' + (settings.textX != null ? settings.textX : '100' ) + '" y="' + (settings.textY != null ? settings.textY : '190') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+						elements += '<text text-anchor="middle" x="' + (settings.textX != null ? settings.textX : '100' ) + '" y="' + (settings.textY != null ? settings.textY : '99%') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
 					}
 					else if (settings.multiPercentage == 0) {
 						elements += '<text text-anchor="middle" x="' + (settings.textX != null ? settings.textX : '100' ) + '" y="' + (settings.textY != null ? settings.textY : '115') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
