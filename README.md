@@ -64,6 +64,7 @@ Options
 | percent     | can be 1 to 100 | integer | 75 |
 | animation     | if the circle should be animated initially | int | 1 |
 | animationStep     | can be 1 to 100, how fast or slow the animation should be | int | 5 |
+| progressColor    | change color of foreground circle as percents changed（{ 50: '#FF6C00', 60: '#FF6C00'}） | {integer:RGB} | null |
 | icon     | font awesome icon, details bellow | string | none |
 | iconSize     | font size of the icon | integer | 30 |
 | iconColor     | color of the icon | RGB | #ccc |
