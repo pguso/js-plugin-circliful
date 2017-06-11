@@ -46,7 +46,8 @@
 			decimals: 0,
 			alwaysDecimals: false,
 			title: 'Circle Chart',
-			description: ''
+			description: '',
+			progressColor: null
 		}, options);
 
 		return this.each(function () {
@@ -63,6 +64,7 @@
 			var elements;
 			var icon;
 			var backgroundBorderWidth = settings.backgroundBorderWidth;
+			var progressColor = settings.progressColor
 
 			if (settings.halfCircle) {
 				if (settings.iconPosition == 'left') {
@@ -270,6 +272,17 @@
 						myTimer
 							.find('.percent')
 							.text('');
+					}
+
+					if (progressColor != null) {
+						$.each(progressColor, function(key, value){
+							if ( angle >= key * 3.6) {
+								circle.css({
+									stroke: value,
+									transition: 'stroke 0.1s linear'
+								});
+							}
+						});
 					}
 				}.bind(circle), interval);
 			}
