@@ -237,9 +237,14 @@
 						angle += angleIncrement;
 						summary += oneStep;
 					}
-
-					if (angle / 3.6 >= percent && last == 1) {
-						angle = 3.6 * percent;
+					if (settings.halfCircle) {
+						if (angle *  2 / 3.6 >= percent && last == 1) {
+							angle = (3.6 * percent) / 2
+						}
+					}	else {
+						if (angle / 3.6 >= percent && last == 1) {
+							angle = 3.6 * percent;
+						}
 					}
 
 					if (summary > settings.target && last == 1) {
