@@ -280,10 +280,13 @@
 					}
 
 					if (progressColor != null) {
-						$.each(progressColor, function(key, value){
+						$.each(progressColor, function(key, color){
+							if (settings.halfCircle) {
+								key /=  2
+							}
 							if ( angle >= key * 3.6) {
 								circle.css({
-									stroke: value,
+									stroke: color,
 									transition: 'stroke 0.1s linear'
 								});
 							}
