@@ -31,8 +31,23 @@
     width: 100%;
     margin: 0 auto;
     overflow: visible;
+    position: relative;
 }
 
 svg .icon {
     font-family: FontAwesome;
+}
+
+.legend-line {
+    white-space: nowrap;
+}
+
+.color-box {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    display: inline-block;
+    float: left;
+    padding-top: 3px;
+    margin: 2px 5px 0 0;
 }
