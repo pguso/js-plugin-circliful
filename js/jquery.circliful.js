@@ -227,16 +227,16 @@
                         if (index > 0) {
                             circleRadius = circleRadius + 62.5;
                             currentCalculateFill = (circleRadius / 100 * percent);
-
-                            animateCircle(currentCircle, currentCalculateFill);
                         }
+
+                        animateCircle(currentCircle, currentCalculateFill, circleRadius, percent);
                     }
                 } else {
-                    animateCircle(currentCircle, currentCalculateFill);
+                    animateCircle(currentCircle, currentCalculateFill, 360, percent);
                 }
             }
 
-            function animateCircle(currentCircle, currentCalculateFill) {
+            function animateCircle(currentCircle, currentCalculateFill, circleRadius, percent) {
                 var timer = window.setInterval(function () {
                     if ((angle) >= currentCalculateFill) {
                         window.clearInterval(timer);
@@ -249,12 +249,12 @@
                         summary += oneStep;
                     }
                     if (settings.halfCircle) {
-                        if (angle * 2 / 3.6 >= percent && last === 1) {
-                            angle = (3.6 * percent) / 2
+                        if (angle * 2 / (circleRadius / 100) >= percent && last === 1) {
+                            angle = ((circleRadius / 100) * percent) / 2
                         }
                     } else {
-                        if (angle / 3.6 >= percent && last === 1) {
-                            angle = 3.6 * percent;
+                        if (angle / (circleRadius / 100) >= percent && last === 1) {
+                            angle = (circleRadius / 100) * percent;
                         }
                     }
 
@@ -264,9 +264,9 @@
 
                     if (settings.replacePercentageByText === null) {
                         if (settings.halfCircle) {
-                            text = parseFloat((100 * angle / 360) * 2);
+                            text = parseFloat((100 * angle / circleRadius) * 2);
                         } else {
-                            text = parseFloat((100 * angle / 360));
+                            text = parseFloat((100 * angle / circleRadius));
                         }
                         text = text.toFixed(settings.decimals);
                         if (!settings.alwaysDecimals && (percent === 0 || (percent > 1 && last !== 1))) {
@@ -305,7 +305,7 @@
                             if (settings.halfCircle) {
                                 key /= 2
                             }
-                            if (angle >= key * 3.6) {
+                            if (angle >= key * (circleRadius / 100)) {
                                 currentCircle.css({
                                     stroke: color,
                                     transition: 'stroke 0.1s linear'
