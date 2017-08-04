@@ -136,6 +136,7 @@ Example:
 			{'percent': 70, 'color': '#FFCA35', 'title': 'Slytherin' }
             ],
             multiPercentageLegend: 1,
+	    replacePercentageByText: '',
             backgroundColor: '#eee',
             icon: 'f0d0',
             iconPosition: 'middle',
