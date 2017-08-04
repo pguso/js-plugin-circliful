@@ -400,7 +400,7 @@
              */
             function showLegend() {
                 var height = circleContainer.height();
-                var width = circleContainer.width();console.log(width)
+                var width = circleContainer.width();
                 var percentages = settings.percentages;
                 var index;
                 var lines = '';
@@ -410,7 +410,7 @@
                     var percent = percentages[index].percent;
                     
                     lines += '<div><span class="color-box" style="background: ' + color + '"></span>' + title + ', ' + percent + '%</div>';
-                }console.log(lines)
+                }
 
                 circleContainer.append(
                   $('<div/>')
