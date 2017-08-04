@@ -180,7 +180,7 @@
                         checkAnimation();
                     });
                 } else {
-                    animate(); //TODO: implement multi circle bars
+                    animate();
                 }
             } else {
                 if (settings.multiPercentage !== 1) {
@@ -200,7 +200,7 @@
                             .text('');
                     }
                 } else {
-                    if (settings.replacePercentageByText !== '') {
+                    if (settings.replacePercentageByText !== null) {
                         myTimer
                             .find('.number')
                             .text(settings.replacePercentageByText);
@@ -215,7 +215,7 @@
                 var currentCircle = circle;
                 var currentCalculateFill = calculateFill;
 
-                if(settings.multiPercentage === 1) {
+                if (settings.multiPercentage === 1) {
                     var index, percent;
                     var percentages = settings.percentages;
                     var circleRadius = 360;
@@ -277,14 +277,24 @@
                     currentCircle
                         .attr("stroke-dasharray", angle + ", 20000");
 
-                    if (settings.showPercent === 1) {
-                        myTimer
-                            .find('.number')
-                            .text(text);
+                    if (settings.multiPercentage !== 1) {
+                        if (settings.showPercent === 1) {
+                            myTimer
+                                .find('.number')
+                                .text(text);
+                        } else {
+
+                            myTimer
+                                .find('.number')
+                                .text(summary);
+                            myTimer
+                                .find('.percent')
+                                .text('');
+                        }
                     } else {
                         myTimer
                             .find('.number')
-                            .text(summary);
+                            .text('');
                         myTimer
                             .find('.percent')
                             .text('');
@@ -374,7 +384,7 @@
                                 '</text>')
                         );
 
-                    if(settings.multiPercentageLegend === 1) {
+                    if (settings.multiPercentageLegend === 1) {
                         showLegend();
                     }
                 } else {
@@ -408,15 +418,15 @@
                     var title = percentages[index].title;
                     var color = percentages[index].color;
                     var percent = percentages[index].percent;
-                    
+
                     lines += '<div><span class="color-box" style="background: ' + color + '"></span>' + title + ', ' + percent + '%</div>';
                 }
 
                 circleContainer.append(
-                  $('<div/>')
-                      .append(lines)
-                      .attr('style', 'position:absolute;top:' + height / 3 + 'px;left:' + (width + 20) + 'px')
-                      .attr('class', 'legend-line')
+                    $('<div/>')
+                        .append(lines)
+                        .attr('style', 'position:absolute;top:' + height / 3 + 'px;left:' + (width + 20) + 'px')
+                        .attr('class', 'legend-line')
                 );
             }
         });
