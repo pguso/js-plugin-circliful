@@ -124,7 +124,6 @@ Example:
             animationStep: 5,
             foregroundBorderWidth: 7,
             backgroundBorderWidth: 7,
-            percent: 99,
             textSize: 28,
             textStyle: 'font-size: 12px;',
             textColor: '#666',
