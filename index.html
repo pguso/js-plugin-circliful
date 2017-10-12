@@ -39,6 +39,11 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-lg-2">
+            <div id="test-circle6"></div>
+        </div>
+    </div>
 
 </section>
 
@@ -56,10 +61,7 @@
             textSize: 28,
             textStyle: 'font-size: 12px;',
             textColor: '#666',
-            multiPercentage: 1,
-            percentages: [10, 20, 30]
         });
-
         $("#test-circle2").circliful({
             animation: 0,
             animationStep: 6,
@@ -72,7 +74,6 @@
             iconSize: '40',
             iconPosition: 'middle'
         });
-
         $("#test-circle3").circliful({
             animation: 1,
             animationStep: 6,
@@ -84,7 +85,6 @@
             iconSize: '40',
             iconPosition: 'middle'
         });
-
         $("#test-circle4").circliful({
             animation: 1,
             animationStep: 1,
@@ -98,22 +98,41 @@
             icon: 'f0a0',
             iconSize: '40',
             iconPosition: 'middle',
-            multiPercentage: 1,
             text: 'No Kids'
         });
-
         $("#test-circle5").circliful({
             animationStep: 5,
             foregroundBorderWidth: 5,
             backgroundBorderWidth: 15,
-            percent: 80,            
+            percent: 80,
             icon: 'f0a0',
             iconPosition: 'middle',
-            text: 'Space Left',            
+            text: 'Space Left',
             textBelow: true
         });
+        $("#test-circle6").circliful({
+            animation: 1,
+            animationStep: 5,
+            foregroundBorderWidth: 7,
+            backgroundBorderWidth: 7,
+            textSize: 28,
+            textStyle: 'font-size: 12px;',
+            textColor: '#666',
+            multiPercentage: 1,
+            percentages: [
+                {'percent': 10, 'color': '#3180B8', 'title': 'Gryffindor' },
+                {'percent': 30, 'color': '#4ADBEA', 'title': 'Ravenclaw' },
+                {'percent': 50, 'color': '#49EBA8', 'title': 'Hufflepuff' },
+                {'percent': 70, 'color': '#FFCA35', 'title': 'Slytherin' }
+            ],
+            multiPercentageLegend: 1,
+            replacePercentageByText: '',
+            backgroundColor: '#eee',
+            icon: 'f0d0',
+            iconPosition: 'middle',
+            iconColor: '#273B4E'
+        });
     });
-
 </script>
 </body>
 </html>

@@ -80,6 +80,9 @@ Options
 | textY | vertical position of your info text | integer | null |
 | textX | horizontal position of your info text | integer | null |
 | textBelow | aligns string of "text" property centered below the circle | boolean | false |
+| multiPercentage | turns multiple bars on if set to 1 | integer | 1 |
+| percentages | array of percent, color and title for each circle | array | [] |
+| multiPercentageLegend | show a legend with title, color and percentage on the right | integer | 0 |
 | noPercentageSign | to hide the percentage sign | boolean | false |
 | replacePercentageByText | replace the percentage shown in the circle by text | string | null |
 | halfCircle | draw half circle see example bellow | boolean | false |
@@ -110,6 +113,38 @@ Example:
 	});
 
 ![full](https://raw.github.com/pguso/jquery-plugin-circliful/master/preview/half_circle.PNG)
+
+Multiple Bars
+------------------
+
+Example:
+
+    $("#test-circle").circliful({
+            animation: 1,
+            animationStep: 5,
+            foregroundBorderWidth: 7,
+            backgroundBorderWidth: 7,
+            textSize: 28,
+            textStyle: 'font-size: 12px;',
+            textColor: '#666',
+            multiPercentage: 1,
+            percentages: [
+            	{'percent': 10, 'color': '#3180B8', 'title': 'Gryffindor' },
+			{'percent': 30, 'color': '#4ADBEA', 'title': 'Ravenclaw' },
+			{'percent': 50, 'color': '#49EBA8', 'title': 'Hufflepuff' },
+			{'percent': 70, 'color': '#FFCA35', 'title': 'Slytherin' }
+            ],
+            multiPercentageLegend: 1,
+	    replacePercentageByText: '',
+            backgroundColor: '#eee',
+            icon: 'f0d0',
+            iconPosition: 'middle',
+            iconColor: '#273B4E'
+        });
+	
+<img width="450" src="https://github.com/pguso/jquery-plugin-circliful/raw/master/preview/preview5.png">
+
+In action: https://jsfiddle.net/0c8qaqaj/
 
 Use callback function
 ------------------
