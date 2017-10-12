@@ -216,7 +216,7 @@
                 var currentCalculateFill = calculateFill;
 
                 if (settings.multiPercentage === 1) {
-                    var index, percent;
+                    var index;
                     var percentages = settings.percentages;
                     var circleRadius = 360;
                     for (index = 0; index < percentages.length; ++index) {
