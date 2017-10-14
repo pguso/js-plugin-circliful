@@ -69,6 +69,7 @@ Options
 | iconSize     | font size of the icon | integer | 30 |
 | iconColor     | color of the icon | RGB | #ccc |
 | iconPosition     | position of the icon (top, bottom, left, right or middle) | string | top |
+| iconDecoration     | decoration of icon percetage | boolean | true |
 | percentageTextSize     | font size of the percentage text | integer | 22 |
 | textAdditionalCss     | additional css for the percentage text | string | '' |
 | targetPercent | draws a circle around the main circle | integer | 0 |
