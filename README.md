@@ -144,7 +144,7 @@ Example:
 	
 <img width="450" src="https://github.com/pguso/jquery-plugin-circliful/raw/master/preview/preview5.png">
 
-In action: https://jsfiddle.net/0c8qaqaj/
+In action: https://jsfiddle.net/0c8qaqaj/41/
 
 Use callback function
 ------------------
