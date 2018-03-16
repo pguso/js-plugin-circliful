@@ -148,7 +148,7 @@ In action: https://jsfiddle.net/0c8qaqaj/41/
 
 Use callback function
 ------------------
-Get's fired on complete.
+Gets fired on complete.
 
 Example:
 
