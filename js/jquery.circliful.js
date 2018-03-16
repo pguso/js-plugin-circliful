@@ -21,6 +21,7 @@
             iconSize: '30',
             iconColor: '#ccc',
             iconPosition: 'top',
+            iconDecoration: true,
             target: 0,
             start: 0,
             showPercent: 1,
@@ -87,8 +88,10 @@
                     percentageX = 117;
                 } else if (settings.iconPosition === 'middle') {
                     if (settings.multiPercentage !== 1) {
-                        elements = '<g stroke="' + (settings.backgroundColor !== 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>';
-                        elements += '<g stroke="' + (settings.backgroundColor !== 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>';
+                        if (settings.iconDecoration) {
+                          elements = '<g stroke="' + (settings.backgroundColor !== 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>';
+                          elements += '<g stroke="' + (settings.backgroundColor !== 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>';
+                        }
                         percentageX = 170; // To center the percentage exactly in the center.
                         percentageY = 35;
                     }
@@ -216,7 +219,7 @@
                 var currentCalculateFill = calculateFill;
 
                 if (settings.multiPercentage === 1) {
-                    var index, percent;
+                    var index;
                     var percentages = settings.percentages;
                     var circleRadius = 360;
                     for (index = 0; index < percentages.length; ++index) {

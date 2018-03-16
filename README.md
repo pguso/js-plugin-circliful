@@ -48,9 +48,10 @@ Add this code at the end of your site
 
 Options
 -------------------------
+### Circle
 
 | Option        | Description           | Type           | Default  |
-| ------------- |:-------------:| -----:|-----:|
+| :-------------: |:-------------|:-----:|:-----:|
 | foregroundColor     | color of the foreground circle (no color add value 'none') | RGB or string | #3498DB  |
 | backgroundColor   | color of the background circle (no color add value 'none') |   RGB or string | #eee |
 | fillColor | fill color of circle      | RGB or string | none |
@@ -58,17 +59,19 @@ Options
 | pointSize | Size of point circle      | int | 28.5 |
 | foregroundBorderWidth     | width of foreground circle border | int | 15 |
 | backgroundBorderWidth     | width of background circle border | int | 15 |
+| animation     | if the circle should be animated initially | int | 1 |
+| animationStep     | can be 1 to 100, how fast or slow the animation should be | int | 5 |
+| progresColor    | change color of foreground circle as percents changed（{ 50: '#FF6C00', 60: '#FF6C00'}） | object  | null |
+| halfCircle | draw half circle see example bellow | boolean | false |
+| animateInView | animate circle on scroll into view | boolean | false |
+
+### Percentage Text
+| Option        | Description           | Type           | Default  |
+| :-------------: |:-------------|:-----:|:-----:|
 | fontColor | color of the percentage | RGB | #aaa |
 | percentageY | vertical position of the percentage text | integer | 100 |
 | percentageX | horizontal position of the percentage text | integer | 100 |
 | percent     | can be 1 to 100 | integer | 75 |
-| animation     | if the circle should be animated initially | int | 1 |
-| animationStep     | can be 1 to 100, how fast or slow the animation should be | int | 5 |
-| progressColor    | change color of foreground circle as percents changed（{ 50: '#FF6C00', 60: '#FF6C00'}） | {integer:RGB} | null |
-| icon     | font awesome icon, details bellow | string | none |
-| iconSize     | font size of the icon | integer | 30 |
-| iconColor     | color of the icon | RGB | #ccc |
-| iconPosition     | position of the icon (top, bottom, left, right or middle) | string | top |
 | percentageTextSize     | font size of the percentage text | integer | 22 |
 | textAdditionalCss     | additional css for the percentage text | string | '' |
 | targetPercent | draws a circle around the main circle | integer | 0 |
@@ -85,12 +88,19 @@ Options
 | multiPercentageLegend | show a legend with title, color and percentage on the right | integer | 0 |
 | noPercentageSign | to hide the percentage sign | boolean | false |
 | replacePercentageByText | replace the percentage shown in the circle by text | string | null |
-| halfCircle | draw half circle see example bellow | boolean | false |
-| animateInView | animate circle on scroll into view | boolean | false |
 | decimals | number of decimal places to show | integer | 0 |
 | alwaysDecimals | shows decimals while animating instead of only at the end or if less than 1 | boolean | false |
 | title | title of the circle | string | Circle Chart |
 |description | description of the circle | string | '' |
+
+### Icon
+| Option        | Description           | Type           | Default  |
+| :-------------: |:-------------|:-----:|:-----:|
+| icon     | font awesome icon, details bellow | string | none |
+| iconSize     | font size of the icon | integer | 30 |
+| iconColor     | color of the icon | RGB | #ccc |
+| iconPosition     | position of the icon (top, bottom, left, right or middle) | string | top |
+| iconDecoration     | decoration of icon percetage | boolean | true |
 
 Data Attributes
 ------------------

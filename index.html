@@ -37,6 +37,9 @@
         <div class="col-lg-2">
             <div id="test-circle5"></div>
         </div>
+        <div class="col-lg-2">
+            <div id="test-circle7"></div>
+        </div>
     </div>
 
     <div class="row">
@@ -131,6 +134,15 @@
             icon: 'f0d0',
             iconPosition: 'middle',
             iconColor: '#273B4E'
+        });
+        $("#test-circle7").circliful({
+            animation: 1,
+            animationStep: 5,
+            percent: 80,
+            textSize: 28,
+            textStyle: 'font-size: 12px;',
+            textColor: '#666',
+            progressColor: {20: '#CC9487', 40: '#FA6C00', 60: '#FF6C99'}
         });
     });
 </script>
