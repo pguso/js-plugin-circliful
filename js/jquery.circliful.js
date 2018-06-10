@@ -271,7 +271,7 @@
                         } else {
                             text = parseFloat((100 * angle / circleRadius));
                         }
-                        text = text.toFixed(settings.decimals);
+                        text = Math.floor(text);
                         if (!settings.alwaysDecimals && (percent === 0 || (percent > 1 && last !== 1))) {
                             text = parseInt(text);
                         }
