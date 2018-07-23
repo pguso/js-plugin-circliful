@@ -41,7 +41,6 @@
             <div id="test-circle7"></div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-lg-2">
             <div id="test-circle6"></div>
@@ -58,6 +57,7 @@
         $("#test-circle").circliful({
             animation: 1,
             animationStep: 5,
+            animateInView: true,
             foregroundBorderWidth: 15,
             backgroundBorderWidth: 15,
             percent: 38,
@@ -66,8 +66,9 @@
             textColor: '#666',
         });
         $("#test-circle2").circliful({
-            animation: 0,
+            animation: 1,
             animationStep: 6,
+            animateInView: true,
             foregroundBorderWidth: 5,
             backgroundColor: "none",
             fillColor: '#eee',
