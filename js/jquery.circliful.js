@@ -37,14 +37,14 @@
             textColor: '#666',
             textY: null,
             textX: null,
-            multiPercentage: 0,
+            multiPercentage: 0, //Todo: Deprecate setting. This should be detected when perctentages-length is >1 All initialized objects must subsequently use the percentages-array(!)
             percentages: [],
             multiPercentageLegend: 0,
             textBelow: false,
             noPercentageSign: false,
             replacePercentageByText: null,
             halfCircle: false,
-            animateInView: false,
+            animateInView: false,//Todo: Deprecate setting. This should be done by default if animate=1
             decimals: 0,
             alwaysDecimals: false,
             title: 'Circle Chart',
@@ -133,8 +133,10 @@
 
             if (settings.icon !== 'none') {
                 icon = '<text text-anchor="middle" x="' + iconX + '" y="' + iconY + '" class="icon" style="font-size: ' + settings.iconSize + 'px" fill="' + settings.iconColor + '">&#x' + settings.icon + '</text>';
+            } else {
+                icon = '';
             }
-
+            
             if (settings.halfCircle) {
                 var rotate = 'transform="rotate(-180,100,100)"';
                 circleContainer
@@ -179,8 +181,10 @@
 
             if (settings.animation === 1) {
                 if (settings.animateInView) {
+                    checkAnimation(); //This will initially check after drawing for each element with
+                    //animateInVIew set to true. 
                     $(window).scroll(function () {
-                        checkAnimation();
+                        checkAnimation(); //This will recheck viewport positioning, when the page gets scrolled
                     });
                 } else {
                     animate();
@@ -321,8 +325,7 @@
 
             function isElementInViewport() {
                 // Get the scroll position of the page.
-                var scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') !== -1) ? 'body' : 'html');
-                var viewportTop = $(scrollElem).scrollTop();
+                var viewportTop = $(window).scrollTop();
                 var viewportBottom = viewportTop + $(window).height();
 
                 // Get the position of the element on the page.
