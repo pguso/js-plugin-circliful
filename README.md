@@ -61,7 +61,7 @@ Options
 | backgroundBorderWidth     | width of background circle border | int | 15 |
 | animation     | if the circle should be animated initially | int | 1 |
 | animationStep     | can be 1 to 100, how fast or slow the animation should be | int | 5 |
-| progresColor    | change color of foreground circle as percents changed（{ 50: '#FF6C00', 60: '#FF6C00'}） | object  | null |
+| progressColor    | change color of foreground circle as percents changed（{ 50: '#FF6C00', 60: '#FF6C00'}） | object  | null |
 | halfCircle | draw half circle see example bellow | boolean | false |
 | animateInView | animate circle on scroll into view | boolean | false |
 
