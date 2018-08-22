@@ -239,7 +239,7 @@
                         animateCircle(currentCircle, currentCalculateFill, circleRadius, percent);
                     }
                 } else {
-                    animateCircle(currentCircle, currentCalculateFill, 360, percent);
+                    animateCircle(currentCircle, currentCalculateFill, 360, settings.percent);
                 }
             }
 
