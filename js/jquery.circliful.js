@@ -88,8 +88,8 @@
                 } else if (settings.iconPosition === 'middle') {
                     if (settings.percentages.length === 0) {
                         if (settings.iconDecoration) {
-                          elements = '<g stroke="' + (settings.backgroundColor !== 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>';
-                          elements += '<g stroke="' + (settings.backgroundColor !== 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>';
+                            elements = '<g stroke="' + (settings.backgroundColor !== 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>';
+                            elements += '<g stroke="' + (settings.backgroundColor !== 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>';
                         }
                         percentageX = 170; // To center the percentage exactly in the center.
                         percentageY = 35;
@@ -118,14 +118,14 @@
                         elements += '<text text-anchor="middle" x="' + (settings.textX !== null ? settings.textX : '100') + '" y="' + (settings.textY !== null ? settings.textY : '64%') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
                     }
                     else {
-                        elements += '<text text-anchor="middle" x="' + (settings.textX !== null ? settings.textX : '100' ) + '" y="' + (settings.textY !== null ? settings.textY : '115') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+                        elements += '<text text-anchor="middle" x="' + (settings.textX !== null ? settings.textX : '100') + '" y="' + (settings.textY !== null ? settings.textY : '115') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
                     }
                 } else {
                     if (settings.textBelow) {
-                        elements += '<text text-anchor="middle" x="' + (settings.textX !== null ? settings.textX : '100' ) + '" y="' + (settings.textY !== null ? settings.textY : '99%') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+                        elements += '<text text-anchor="middle" x="' + (settings.textX !== null ? settings.textX : '100') + '" y="' + (settings.textY !== null ? settings.textY : '99%') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
                     }
                     else {
-                        elements += '<text text-anchor="middle" x="' + (settings.textX !== null ? settings.textX : '100' ) + '" y="' + (settings.textY !== null ? settings.textY : '115') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
+                        elements += '<text text-anchor="middle" x="' + (settings.textX !== null ? settings.textX : '100') + '" y="' + (settings.textY !== null ? settings.textY : '115') + '" style="' + settings.textStyle + '" fill="' + settings.textColor + '">' + settings.text + '</text>';
                     }
                 }
             }
@@ -274,9 +274,18 @@
                         } else {
                             text = parseFloat((100 * angle / circleRadius));
                         }
-                        text = Math.floor(text);
+
                         if (!settings.alwaysDecimals && (percent === 0 || (percent > 1 && last !== 1))) {
-                            text = parseInt(text);
+                            text = Math.floor(text);
+                            if (text > settings.percent) {
+                                text = settings.percent.toFixed(settings.decimals);
+                            }
+                        } else {
+                            if (last !== 1) {
+                                text = Math.floor(text);
+                            } else {
+                                text = settings.percent.toFixed(settings.decimals);
+                            }
                         }
                     }
 
