@@ -178,7 +178,7 @@
                 oneStep = settings.target / 100;
             }
 
-            if (settings.animation === 1) {
+            if (settings.animation === 1 || settings.animateInView) {
                 if (settings.animateInView) {
                     checkAnimation(); //This will initially check after drawing for each element with
                     //animateInVIew set to true. 
@@ -323,15 +323,12 @@
             }
 
             function isElementInViewport() {
-                // Get the scroll position of the page.
+                var elementTop = circle.offset().top;
+                var elementBottom = elementTop + circle.outerHeight();
                 var viewportTop = $(window).scrollTop();
                 var viewportBottom = viewportTop + $(window).height();
 
-                // Get the position of the element on the page.
-                var elemTop = Math.round(circle.offset().top);
-                var elemBottom = elemTop + circle.height();
-
-                return ((elemTop < viewportBottom) && (elemBottom > viewportTop));
+                return elementBottom > viewportTop && elementTop < viewportBottom;
             }
 
             function checkAnimation() {
