@@ -14,6 +14,7 @@
             backgroundBorderWidth: 15,
             pointSize: 28.5,
             fontColor: '#aaa',
+            beforePercent: '',
             percent: 75,
             animation: 1,
             animationStep: 5,
@@ -400,6 +401,15 @@
                         showLegend();
                     }
                 } else {
+                    var beforePercent = '';
+                    if (settings.beforePercent !== '') {
+                        if (settings.beforePercent.charAt(0) === 'f') {
+                            beforePercent = '<tspan class="icon before-percent">' + '&#x' + settings.beforePercent + ' </tspan>';
+                        } else {
+                            beforePercent = '<tspan class="before-percent">' + settings.beforePercent + ' </tspan>';
+                        }
+                    }
+
                     circleContainer
                         .addClass('svg-container')
                         .append(
@@ -410,6 +420,7 @@
                                 '<circle cx="100" cy="100" r="' + settings.pointSize + '" fill="' + settings.pointColor + '" />' +
                                 icon +
                                 '<text class="timer" text-anchor="middle" x="' + percentageX + '" y="' + percentageY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '">' +
+                                beforePercent +
                                 '<tspan class="number">' + (settings.replacePercentageByText === null ? 0 : settings.replacePercentageByText) + '</tspan>' +
                                 '<tspan class="percent">' + (settings.noPercentageSign || settings.replacePercentageByText !== null ? '' : '%') + '</tspan>' +
                                 '</text>')

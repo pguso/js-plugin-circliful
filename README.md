@@ -92,6 +92,7 @@ Options
 | alwaysDecimals | shows decimals while animating instead of only at the end or if less than 1 | boolean | false |
 | title | title of the circle | string | Circle Chart |
 |description | description of the circle | string | '' |
+|beforePercent | sign or icon before percentage | string | '' |
 
 ### Icon
 | Option        | Description           | Type           | Default  |
@@ -189,6 +190,25 @@ Go to https://github.com/FortAwesome/Font-Awesome/blob/master/css/font-awesome.c
     }
 
 copy/paste f0a0 into the parameter field { icon: 'f0a0' }
+
+Sign or icon before percentage
+------------------
+
+Example with sign:
+
+    $("#test-circle1").circliful({
+	    animationStep: 5,
+	    percent: 80,
+	    beforePercent: '+'
+	});
+
+Example with icon:
+
+    $("#test-circle1").circliful({
+	    animationStep: 5,
+	    percent: 80,
+	    beforePercent: 'f0a0'
+	});
 
 Examples
 --------
