@@ -37,14 +37,13 @@
             textColor: '#666',
             textY: null,
             textX: null,
-            multiPercentage: 0, //Todo: Deprecate setting. This should be detected when perctentages-length is >1 All initialized objects must subsequently use the percentages-array(!)
             percentages: [],
             multiPercentageLegend: 0,
             textBelow: false,
             noPercentageSign: false,
             replacePercentageByText: null,
             halfCircle: false,
-            animateInView: false,//Todo: Deprecate setting. This should be done by default if animate=1
+            animateInView: false,
             decimals: 0,
             alwaysDecimals: false,
             title: 'Circle Chart',
@@ -62,7 +61,7 @@
             var iconX = 100;
             var percentageY = settings.percentageY;
             var percentageX = settings.percentageX;
-            var additionalCss;
+            var additionalCss = '';
             var elements;
             var icon;
             var backgroundBorderWidth = settings.backgroundBorderWidth;
@@ -87,7 +86,7 @@
                     iconY = 110;
                     percentageX = 117;
                 } else if (settings.iconPosition === 'middle') {
-                    if (settings.multiPercentage !== 1) {
+                    if (settings.percentages.length === 0) {
                         if (settings.iconDecoration) {
                           elements = '<g stroke="' + (settings.backgroundColor !== 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>';
                           elements += '<g stroke="' + (settings.backgroundColor !== 'none' ? settings.backgroundColor : '#ccc') + '" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>';
@@ -136,7 +135,7 @@
             } else {
                 icon = '';
             }
-            
+
             if (settings.halfCircle) {
                 var rotate = 'transform="rotate(-180,100,100)"';
                 circleContainer
@@ -146,7 +145,7 @@
                             (typeof elements !== 'undefined' ? elements : '') +
                             '<clipPath id="cut-off-bottom"> <rect x="100" y="0" width="100" height="200" /> </clipPath>' +
                             '<circle cx="100" cy="100" r="57" class="border" fill="' + settings.fillColor + '" stroke="' + settings.backgroundColor + '" stroke-width="' + backgroundBorderWidth + '" stroke-dasharray="360" clip-path="url(#cut-off-bottom)" transform="rotate(-90,100,100)" />' +
-                            '<circle class="circle" cx="100" cy="100" r="57" class="border" fill="none" stroke="' + settings.foregroundColor + '" stroke-width="' + settings.foregroundBorderWidth + '" stroke-dasharray="0,20000" ' + rotate + ' />' +
+                            '<circle class="circle" cx="100" cy="100" r="57" fill="none" stroke="' + settings.foregroundColor + '" stroke-width="' + settings.foregroundBorderWidth + '" stroke-dasharray="0,20000" ' + rotate + ' />' +
                             '<circle cx="100" cy="100" r="' + settings.pointSize + '" fill="' + settings.pointColor + '" clip-path="url(#cut-off-bottom)" transform="rotate(-90,100,100)" />' +
                             icon +
                             '<text class="timer" text-anchor="middle" x="' + percentageX + '" y="' + percentageY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '"><tspan class="number">' + (settings.replacePercentageByText === null ? 0 : settings.replacePercentageByText) + '</tspan><tspan class="percent">' + (settings.noPercentageSign || settings.replacePercentageByText !== null ? '' : '%') + '</tspan></text>')
@@ -190,7 +189,7 @@
                     animate();
                 }
             } else {
-                if (settings.multiPercentage !== 1) {
+                if (settings.percentages.length === 0) {
                     circle
                         .attr("stroke-dasharray", calculateFill + ", 20000");
 
@@ -222,7 +221,7 @@
                 var currentCircle = circle;
                 var currentCalculateFill = calculateFill;
 
-                if (settings.multiPercentage === 1) {
+                if (settings.percentages.length > 0) {
                     var index;
                     var percentages = settings.percentages;
                     var circleRadius = 360;
@@ -284,7 +283,7 @@
                     currentCircle
                         .attr("stroke-dasharray", angle + ", 20000");
 
-                    if (settings.multiPercentage !== 1) {
+                    if (settings.percentages.length === 0) {
                         if (settings.showPercent === 1) {
                             myTimer
                                 .find('.number')
@@ -358,12 +357,13 @@
              * Draws the initial circles before animate gets called
              */
             function drawCircles() {
-                if (settings.multiPercentage === 1) {
-                    var index, calculateFillMulti, percent, color, circles;
+                if (settings.percentages.length > 0) {
+                    var index, calculateFillMulti, percent, color;
                     var percentages = settings.percentages;
                     var radius = 47;
                     var circleRadius = 360;
                     var rotate = -90;
+                    var circles = '';
                     for (index = 0; index < percentages.length; ++index) {
                         percent = percentages[index].percent;
                         color = percentages[index].color;
@@ -390,7 +390,7 @@
                                 '</text>')
                         );
 
-                    if (settings.multiPercentageLegend === 1) {
+                    if (settings.percentages.length > 0) {
                         showLegend();
                     }
                 } else {
@@ -400,7 +400,7 @@
                             $('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 194 186" class="circliful">' +
                                 (typeof elements !== 'undefined' ? elements : '') +
                                 '<circle cx="100" cy="100" r="57" class="border" fill="' + settings.fillColor + '" stroke="' + settings.backgroundColor + '" stroke-width="' + backgroundBorderWidth + '" stroke-dasharray="360" transform="rotate(-90,100,100)" />' +
-                                '<circle class="circle" cx="100" cy="100" r="57" class="border" fill="none" stroke="' + settings.foregroundColor + '" stroke-width="' + settings.foregroundBorderWidth + '" stroke-dasharray="0,20000" transform="rotate(-90,100,100)" />' +
+                                '<circle class="circle" cx="100" cy="100" r="57" fill="none" stroke="' + settings.foregroundColor + '" stroke-width="' + settings.foregroundBorderWidth + '" stroke-dasharray="0,20000" transform="rotate(-90,100,100)" />' +
                                 '<circle cx="100" cy="100" r="' + settings.pointSize + '" fill="' + settings.pointColor + '" />' +
                                 icon +
                                 '<text class="timer" text-anchor="middle" x="' + percentageX + '" y="' + percentageY + '" style="font-size: ' + settings.percentageTextSize + 'px; ' + additionalCss + ';' + settings.textAdditionalCss + '" fill="' + settings.fontColor + '">' +
