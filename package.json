@@ -1,0 +1,26 @@
+{
+  "name": "js-plugin-circliful",
+  "version": "0.0.1",
+  "description": "circle statistic plugin without dependencies",
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pguso/js-plugin-circliful"
+  },
+  "keywords": [
+    "circliful",
+    "vanilla",
+    "svg",
+    "circle",
+    "statistic"
+  ],
+  "author": {
+    "name": "Patric Gutersohn"
+  },
+  "bugs": {
+    "url": "https://github.com/pguso/js-plugin-circliful/issues"
+  },
+  "_id": "js-plugin-circliful@0.0.1",
+  "readmeFilename": "README.md",
+  "license": "MIT"
+}
