@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{htmlWebpackPlugin.options.title}}</title>
+    <meta name="description" content="{{htmlWebpackPlugin.options.description}}">
+</head>
+<body>
+<div style="width: 40%; height: 40%; min-height: 300px" id="circle1"></div>
+<div style="width: 20%; height: 20%; min-height: 300px" id="circle2"></div>
+<div style="width: 20%; height: 20%; min-height: 300px" id="circle3"></div>
+<div style="width: 20%; height: 20%; min-height: 300px" id="circle4"></div>
+<script type="text/javascript" src="{{htmlWebpackPlugin.files.chunks.main.entry}}"></script>
+<script>
+    (function() {
+        circliful.initCircle({
+            percent: 1,
+            id: 'circle1',
+            foregroundBorderWidth: 5,
+            backgroundBorderWidth: 15,
+            type: 'SimpleCircle',
+            onStart: () => {
+                console.log('custom start event1');
+            },
+            onAnimationEnd: () => {
+                console.log('custom animation end event1');
+            }
+        });
+
+        circliful.initCircle({
+            percent: 99,
+            id: 'circle2',
+            foregroundBorderWidth: 5,
+            backgroundBorderWidth: 15,
+            type: 'SimpleCircle',
+            onStart: () => {
+                console.log('custom start event2');
+            }
+        });
+
+        circliful.initCircle({
+            percent: 5,
+            id: 'circle3',
+            foregroundBorderWidth: 5,
+            backgroundBorderWidth: 15,
+            type: 'HalfCircle'
+        });
+
+        circliful.initCircle({
+            percent: 99,
+            id: 'circle4',
+            foregroundBorderWidth: 5,
+            backgroundBorderWidth: 15,
+            type: 'HalfCircle'
+        });
+    })();
+
+</script>
+</body>
+</html>
