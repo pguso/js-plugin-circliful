@@ -1,16 +1,16 @@
 import Events from "./events";
-import {Attributes} from "./interfaces/attributes";
-import {CalculationParams} from "./interfaces/calculation-params";
+import {IAttributes} from "./interfaces/iattributes";
+import {ICalculationParams} from "./interfaces/icalculation-params";
 
 class SvgTagsHelper {
     /**
      * @description
      * @param element SVGElement
-     * @param attributes AvailableOptions
+     * @param attributes IAvailableOptions
      * @returns void
      */
-    static setAttributes(element: Element, attributes: Attributes): void {
-        for (let [key, value] of Object.entries(attributes)) {
+    public static setAttributes(element: Element, attributes: IAttributes): void {
+        for (const [key, value] of Object.entries(attributes)) {
             element.setAttribute(key, value);
         }
     }
@@ -21,8 +21,8 @@ class SvgTagsHelper {
      * @param attributes
      * @returns void
      */
-    static setAttributeNamespace(element: Element, attributes: Attributes): void {
-        for (let [key, value] of Object.entries(attributes)) {
+    public static setAttributeNamespace(element: Element, attributes: IAttributes): void {
+        for (const [key, value] of Object.entries(attributes)) {
             element.setAttributeNS(null, key, value);
         }
     }
@@ -35,12 +35,17 @@ class SvgTagsHelper {
      * @param angleInDegrees
      * @returns object
      */
-    static polarToCartesian(centerX: number, centerY: number, radius: number, angleInDegrees: number): CalculationParams {
+    public static polarToCartesian(
+        centerX: number,
+        centerY: number,
+        radius: number,
+        angleInDegrees: number,
+    ): ICalculationParams {
         const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
 
         return {
             x: centerX + (radius * Math.cos(angleInRadians)),
-            y: centerY + (radius * Math.sin(angleInRadians))
+            y: centerY + (radius * Math.sin(angleInRadians)),
         };
     }
 
@@ -53,14 +58,14 @@ class SvgTagsHelper {
      * @param endAngle
      * @returns string
      */
-    static describeArc(x: number, y: number, radius: number, startAngle: number, endAngle: number): string {
+    public static describeArc(x: number, y: number, radius: number, startAngle: number, endAngle: number): string {
         const start = SvgTagsHelper.polarToCartesian(x, y, radius, endAngle);
         const end = SvgTagsHelper.polarToCartesian(x, y, radius, startAngle);
         const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
 
         return [
             "M", start.x, start.y,
-            "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y
+            "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y,
         ].join(" ");
     }
 
@@ -69,7 +74,7 @@ class SvgTagsHelper {
      * @param params
      * @param callback
      */
-    static animateArc(params: {arc: Element, arcParams: CalculationParams}, callback: () => {}): void {
+    public static animateArc(params: {arc: Element, arcParams: ICalculationParams}, callback: () => {}): void {
         const {arc, arcParams} = params;
         let count = 1;
         const startAngle = arcParams.startAngle ? arcParams.startAngle : 0;
@@ -79,12 +84,13 @@ class SvgTagsHelper {
             SvgTagsHelper.setAttributes(arc, {
                 d: SvgTagsHelper.describeArc(arcParams.x, arcParams.y, arcParams.radius, startAngle, endAngle),
             });
-            //TODO: change text
+            // TODO: change text
             count++;
 
-            if(count > percent) {
+            if (count > percent) {
                 clearInterval(interval);
-                typeof callback === 'function' ? Events.onAnimationEnd(callback) : ''
+                // tslint:disable-next-line:no-unused-expression
+                typeof callback === "function" ? Events.onAnimationEnd(callback) : "";
             }
         }, 15, arc, arcParams.percent);
     }

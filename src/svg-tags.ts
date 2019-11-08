@@ -1,8 +1,8 @@
+import {IAttributes} from "./interfaces/iattributes";
 import SvgTagsHelper from "./svg-tags-helper";
-import {Attributes} from './interfaces/attributes';
 
 class SvgTags {
-    static namespaceURI = 'http://www.w3.org/2000/svg';
+    public static namespaceURI = "http://www.w3.org/2000/svg";
 
     /**
      * @description
@@ -10,8 +10,8 @@ class SvgTags {
      * @param attributes
      * @returns SVGElement
      */
-    static addSvg(parentId: string, attributes: Attributes): Element {
-        const svg = document.createElementNS(SvgTags.namespaceURI, 'svg');
+    public static addSvg(parentId: string, attributes: IAttributes): Element {
+        const svg = document.createElementNS(SvgTags.namespaceURI, "svg");
 
         SvgTagsHelper.setAttributes(svg as SVGElement, attributes);
 
@@ -24,8 +24,8 @@ class SvgTags {
      * @param attributes
      * @returns SVGCircleElement
      */
-    static addCircle(parentId: string, attributes: Attributes): Element {
-        const circle = document.createElementNS(SvgTags.namespaceURI, 'circle');
+    public static addCircle(parentId: string, attributes: IAttributes): Element {
+        const circle = document.createElementNS(SvgTags.namespaceURI, "circle");
         SvgTagsHelper.setAttributes(circle as SVGElement, attributes);
 
         return circle;
@@ -37,8 +37,8 @@ class SvgTags {
      * @param attributes
      * @returns SVGPathElement
      */
-    static addArc(parentId: string, attributes: Attributes): Element {
-        const arc = document.createElementNS(SvgTags.namespaceURI, 'path');
+    public static addArc(parentId: string, attributes: IAttributes): Element {
+        const arc = document.createElementNS(SvgTags.namespaceURI, "path");
         SvgTagsHelper.setAttributes(arc as SVGElement, attributes);
 
         return arc;
@@ -50,9 +50,9 @@ class SvgTags {
      * @param attributes
      * @returns SVGTextElement
      */
-    static addText(parentId: string, attributes: Attributes): Element {
-        const text = document.createElementNS(SvgTags.namespaceURI, 'text');
-        text.setAttributeNS(null, 'text-anchor', 'middle');
+    public static addText(parentId: string, attributes: IAttributes): Element {
+        const text = document.createElementNS(SvgTags.namespaceURI, "text");
+        text.setAttributeNS(null, "text-anchor", "middle");
         SvgTagsHelper.setAttributes(text as SVGElement, attributes);
 
         return text;

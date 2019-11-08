@@ -1,7 +1,7 @@
-//TODO: define some events
-//TODO: possibility to add own events?
+// TODO: define some events
+// TODO: possibility to add own events?
 
-import {EventEmitter} from 'events';
+import {EventEmitter} from "events";
 
 class Events {
     /**
@@ -9,12 +9,12 @@ class Events {
      * @param callback
      * @returns void
      */
-    static onAnimationEnd(callback: () => {}) {
+    public static onAnimationEnd(callback: () => {}) {
         const eventEmitter = new EventEmitter();
-        eventEmitter.on('event', () => {
+        eventEmitter.on("event", () => {
             callback();
         });
-        eventEmitter.emit('event');
+        eventEmitter.emit("event");
     }
 }
 

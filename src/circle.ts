@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-import {AvailableOptions} from './interfaces/available-options';
+import {IAvailableOptions} from "./interfaces/iavailable-options";
 import Options from "./options";
 
 class Circle {
@@ -8,8 +8,8 @@ class Circle {
      * @description Initializes a new circle
      * @param options
      */
-    static initCircle(options: AvailableOptions) {
-        Circle.getClassInstance(options).then(circle => {
+    public static initCircle(options: IAvailableOptions) {
+        Circle.getClassInstance(options).then((circle) => {
             circle.drawCircle();
             circle.append();
         });
@@ -20,9 +20,9 @@ class Circle {
      * @param options
      * @returns {Promise<SimpleCircle.default | HalfCircle.default>}
      */
-    static getClassInstance(options: AvailableOptions) {
+    public static getClassInstance(options: IAvailableOptions) {
         const fileName = Circle.camelCaseToDash(options.type);
-        return import(/* webpackMode: "eager" */ `./circle-type/${fileName}`).then(CircleClass => {
+        return import(/* webpackMode: "eager" */ `./circle-type/${fileName}`).then((CircleClass) => {
             const optionsManager = new Options();
             const mergedOptions = optionsManager.mergeOptions(options);
             const size = Circle.getParentSize(options.id);
@@ -36,8 +36,8 @@ class Circle {
      * @param className
      * @returns {string}
      */
-    static camelCaseToDash(className: string) {
-        return className.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+    public static camelCaseToDash(className: string) {
+        return className.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
     }
 
     /**
@@ -45,7 +45,7 @@ class Circle {
      * @param id
      * @returns {{width: number, maxSize: number, height: number}}
      */
-    static getParentSize(id: string) {
+    public static getParentSize(id: string) {
         const box = document.getElementById(id);
         const width = box.clientWidth;
         const height = box.clientHeight;
@@ -53,7 +53,7 @@ class Circle {
         return {
             maxSize: width > height ? height : width,
             height,
-            width
+            width,
         };
     }
 }

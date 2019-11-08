@@ -1,11 +1,11 @@
 import Circle from "./circle";
-import {AvailableOptions} from './interfaces/available-options';
+import {IAvailableOptions} from "./interfaces/iavailable-options";
 
 /**
  * @description
  * @param options
  * @returns void
  */
-export function initCircle(options: AvailableOptions) {
+export function initCircle(options: IAvailableOptions) {
     return Circle.initCircle(options);
 }

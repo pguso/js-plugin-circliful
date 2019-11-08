@@ -1,41 +1,41 @@
+import {IAvailableOptions} from "../interfaces/iavailable-options";
+import {IBaseCircle} from "../interfaces/ibase-circle";
+import {ISize} from "../interfaces/isize";
+import {ITag} from "../interfaces/itag";
 import SvgTags from "../svg-tags";
-import {BaseCircle} from "../interfaces/base-circle";
 import SvgTagsHelper from "../svg-tags-helper";
-import {AvailableOptions} from '../interfaces/available-options';
-import {Size} from "../interfaces/size";
-import {Tag} from "../interfaces/tag";
 
-class HalfCircle implements BaseCircle {
-    options: AvailableOptions;
-    size: Size;
-    tags: Tag[] = [];
+class HalfCircle implements IBaseCircle {
+    public options: IAvailableOptions;
+    public size: ISize;
+    public tags: ITag[] = [];
 
-    constructor(options: AvailableOptions, size: Size) {
+    constructor(options: IAvailableOptions, size: ISize) {
         this.options = options;
         this.size = size;
     }
 
-    drawCircle = () => {
+    public drawCircle = () => {
         this.drawContainer();
         this.drawBackgroundCircle();
         this.drawForegroundCircle();
         this.drawText();
     }
 
-    drawContainer = () => {
+    public drawContainer = () => {
         const container = SvgTags.addSvg(this.options.id, {
             width: this.size.width,
             height: this.size.height,
-            id: `svg-${this.options.id}`
+            id: `svg-${this.options.id}`,
         });
 
         this.tags.push({
             element: container,
-            parentId: this.options.id
+            parentId: this.options.id,
         });
     }
 
-    drawBackgroundCircle = () => {
+    public drawBackgroundCircle = () => {
         const maxSize = this.size.maxSize;
         const startAngle = 270;
         const endAngle = 90;
@@ -45,20 +45,20 @@ class HalfCircle implements BaseCircle {
         const radius = maxSize / 2.2;
 
         const arc = SvgTags.addArc(this.options.id, {
-            id: `arc-${this.options.id}`,
-            fill: 'none',
-            d: SvgTagsHelper.describeArc(x, y, radius, startAngle, endAngle),
-            stroke: this.options.backgroundColor,
-            'stroke-width': strokeWidth
+            "id": `arc-${this.options.id}`,
+            "fill": "none",
+            "d": SvgTagsHelper.describeArc(x, y, radius, startAngle, endAngle),
+            "stroke": this.options.backgroundColor,
+            "stroke-width": strokeWidth,
         });
 
         this.tags.push({
             element: arc,
-            parentId: `svg-${this.options.id}`
+            parentId: `svg-${this.options.id}`,
         });
     }
 
-    drawForegroundCircle = () => {
+    public drawForegroundCircle = () => {
         const endAngleGrade = 90;
         const maxSize = this.size.maxSize;
         const startAngle = 270;
@@ -69,11 +69,11 @@ class HalfCircle implements BaseCircle {
         const radius = maxSize / 2.2;
 
         const arc = SvgTags.addArc(this.options.id, {
-            id: `arc-${this.options.id}`,
-            fill: 'green',
-            d: SvgTagsHelper.describeArc(x, y, radius, startAngle, endAngle),
-            stroke: this.options.foregroundColor,
-            'stroke-width': strokeWidth
+            "id": `arc-${this.options.id}`,
+            "fill": "green",
+            "d": SvgTagsHelper.describeArc(x, y, radius, startAngle, endAngle),
+            "stroke": this.options.foregroundColor,
+            "stroke-width": strokeWidth,
         });
 
         SvgTagsHelper.animateArc({
@@ -84,17 +84,17 @@ class HalfCircle implements BaseCircle {
                 y,
                 radius,
                 startAngle,
-                endAngleGrade
-            }
+                endAngleGrade,
+            },
         }, this.options.onAnimationEnd);
 
         this.tags.push({
             element: arc,
-            parentId: `svg-${this.options.id}`
+            parentId: `svg-${this.options.id}`,
         });
     }
 
-    drawText = () => {
+    public drawText = () => {
         const maxSize = this.size.maxSize;
         const x = maxSize / 2;
         const y = maxSize / 2;
@@ -102,18 +102,18 @@ class HalfCircle implements BaseCircle {
         const text = SvgTags.addText(this.options.id, {
             id: `text-${this.options.id}`,
             x: String(x),
-            y: String(y)
+            y: String(y),
         });
         text.textContent = `${this.options.percent}%...`;
 
         this.tags.push({
             element: text,
-            parentId: `svg-${this.options.id}`
+            parentId: `svg-${this.options.id}`,
         });
     }
 
-    append = () => {
-        this.tags.forEach(tag => {
+    public append = () => {
+        this.tags.forEach((tag) => {
             const parent = document.getElementById(tag.parentId);
             parent.appendChild(tag.element as Node);
         });

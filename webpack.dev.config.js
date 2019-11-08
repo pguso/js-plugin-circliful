@@ -48,6 +48,18 @@ module.exports = {
                 test: /\.ts$/,
                 exclude: '/node_modules',
                 use: 'ts-loader',
+            },
+            {
+                test: /\.ts$/,
+                enforce: 'pre',
+                use: [
+                    {
+                        loader: 'tslint-loader',
+                        options: {
+                            configFile: 'tslint.json',
+                        }
+                    }
+                ]
             }
         ]
     },
