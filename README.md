@@ -1,29 +1,27 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+New implementation of circliful, without any dependencies.
 
-### What is this repository for? ###
+### Run dev environment ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Install devDependencies
+~~~~
+npm install
+~~~~
 
-### How do I get set up? ###
+Run webpack dev server
+~~~~
+npm run dev
+~~~~
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+In the console you should see something like: "Project is running at http://localhost:9090/" call the url in the browser.
 
-### Contribution guidelines ###
+### Project structure ###
 
-* Writing tests
-* Code review
-* Other guidelines
+* dist (in production mode the will be the js minified version)
+* src (all code for the library)
+    * circle-type (some default circles, you can add there your own)
+    * interfaces
+* templates (at the moment there is only one, it will be used to generate in dev env the index.html)
+* tests (unit and dom tests, coming soon...)
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
