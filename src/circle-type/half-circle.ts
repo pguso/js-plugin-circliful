@@ -24,9 +24,8 @@ class HalfCircle implements IBaseCircle {
 
     public drawContainer = () => {
         const container = SvgTags.addSvg(this.options.id, {
-            width: this.size.width,
-            height: this.size.height,
             id: `svg-${this.options.id}`,
+            viewBox: `0 0 ${this.size.width} ${this.size.height}`,
         });
 
         this.tags.push({
@@ -59,10 +58,8 @@ class HalfCircle implements IBaseCircle {
     }
 
     public drawForegroundCircle = () => {
-        const endAngleGrade = 90;
         const maxSize = this.size.maxSize;
-        const startAngle = 270;
-        const endAngle = endAngleGrade / 100 * this.options.percent;
+        const endAngle = 180 / 100 * this.options.percent;
         const strokeWidth = this.options.foregroundBorderWidth;
         const x = maxSize / 2;
         const y = maxSize / 2;
@@ -70,10 +67,11 @@ class HalfCircle implements IBaseCircle {
 
         const arc = SvgTags.addArc(this.options.id, {
             "id": `arc-${this.options.id}`,
-            "fill": "green",
-            "d": SvgTagsHelper.describeArc(x, y, radius, startAngle, endAngle),
+            "fill": "none",
+            "d": SvgTagsHelper.describeArc(x, y, radius, 0, endAngle),
             "stroke": this.options.foregroundColor,
             "stroke-width": strokeWidth,
+            "transform": `rotate(-90, ${x}, ${y})`,
         });
 
         SvgTagsHelper.animateArc({
@@ -83,8 +81,7 @@ class HalfCircle implements IBaseCircle {
                 x,
                 y,
                 radius,
-                startAngle,
-                endAngleGrade,
+                endAngleGrade: 180
             },
         }, this.options.onAnimationEnd);
 

@@ -28,7 +28,7 @@ class SvgTagsHelper {
     }
 
     /**
-     * @description
+     * @description For easier handling polar coordinates are used and converted to cartesian coordinates
      * @param centerX
      * @param centerY
      * @param radius
@@ -50,7 +50,7 @@ class SvgTagsHelper {
     }
 
     /**
-     * @description
+     * @description Returns the string for the data attribute in the path tag
      * @param x
      * @param y
      * @param radius
@@ -79,6 +79,7 @@ class SvgTagsHelper {
         let count = 1;
         const startAngle = arcParams.startAngle ? arcParams.startAngle : 0;
         const endAngleGrade = arcParams.endAngleGrade ? arcParams.endAngleGrade : 360;
+        const ms = arcParams.ms ? arcParams.ms : 15;
         const interval = setInterval((arc, percent) => {
             const endAngle = endAngleGrade / 100 * count;
             SvgTagsHelper.setAttributes(arc, {
@@ -92,7 +93,7 @@ class SvgTagsHelper {
                 // tslint:disable-next-line:no-unused-expression
                 typeof callback === "function" ? Events.onAnimationEnd(callback) : "";
             }
-        }, 15, arc, arcParams.percent);
+        }, ms, arc, arcParams.percent);
     }
 }
 

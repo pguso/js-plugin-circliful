@@ -6,4 +6,5 @@ export interface ICalculationParams {
     d?: string;
     radius?: number;
     percent?: number;
+    ms?: number;
 }

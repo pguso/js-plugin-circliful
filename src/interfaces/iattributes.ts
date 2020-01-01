@@ -11,4 +11,6 @@ export interface IAttributes {
     d?: string;
     x?: string;
     y?: string;
+    viewBox?: string;
+    transform?: string;
 }

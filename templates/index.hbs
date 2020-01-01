@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{htmlWebpackPlugin.options.title}}</title>
@@ -14,7 +14,7 @@
 <script>
     (function() {
         circliful.initCircle({
-            percent: 1,
+            percent: 75,
             id: 'circle1',
             foregroundBorderWidth: 5,
             backgroundBorderWidth: 15,
@@ -28,7 +28,7 @@
         });
 
         circliful.initCircle({
-            percent: 99,
+            percent: 50,
             id: 'circle2',
             foregroundBorderWidth: 5,
             backgroundBorderWidth: 15,
@@ -38,6 +38,21 @@
             }
         });
 
+        circliful.initCircle({
+            percent: 50,
+            id: 'circle3',
+            foregroundBorderWidth: 5,
+            backgroundBorderWidth: 15,
+            type: 'HalfCircle'
+        });
+
+        circliful.initCircle({
+            percent: 99,
+            id: 'circle4',
+            foregroundBorderWidth: 5,
+            backgroundBorderWidth: 15,
+            type: 'HalfCircle'
+        });
     })();
 
 </script>
