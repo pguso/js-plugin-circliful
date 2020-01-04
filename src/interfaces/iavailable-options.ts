@@ -2,14 +2,9 @@ export interface IAvailableOptions {
     height?: number;
     width?: number;
     id?: string;
-    foregroundColor?: string;
-    backgroundColor?: string;
+    point?: boolean;
     pointColor?: string;
-    fillColor?: string;
-    foregroundBorderWidth?: number;
-    backgroundBorderWidth?: number;
     pointSize?: number;
-    fontColor?: string;
     beforePercent?: number;
     percent: number;
     animation?: number;
@@ -29,8 +24,6 @@ export interface IAvailableOptions {
     targetTextSize?: number;
     targetColor?: string;
     text?: string;
-    textStyle?: string;
-    textColor?: string;
     percentages?: number[];
     multiPercentageLegend?: number;
     textBelow?: boolean;

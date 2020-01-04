@@ -10,7 +10,9 @@
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.config.js",
     "build": "webpack --config webpack.dev.config.js",
-    "lint": "tslint -c tslint.json -p tsconfig.json --fix"
+    "lint": "tslint -c tslint.json -p tsconfig.json --fix",
+    "sass": "gulp sass",
+    "sass:watch": "gulp sass:watch"
   },
   "keywords": [
     "circliful",
@@ -39,7 +41,12 @@
     "css-loader": "^3.2.0",
     "es6-promise-promise": "^1.0.0",
     "file-loader": "^4.2.0",
-    "handlebars": "^4.4.5",
+    "font-awesome": "^4.7.0",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-scss": "^1.4.0",
+    "handlebars": "^4.5.3",
     "handlebars-loader": "^1.7.1",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",

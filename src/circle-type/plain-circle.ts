@@ -42,16 +42,16 @@ class PlainCircle extends BaseCircle {
      */
     public drawPlainCircle = () => {
         const endAngle = 360 / 100 * this.options.percent;
-        const strokeWidth = this.options.foregroundBorderWidth;
 
         const arc = SvgTags.addArc(this.options.id, {
-            "id": `arc-${this.options.id}`,
-            "fill": "none",
-            "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
-            "stroke": this.options.foregroundColor,
-            "stroke-width": strokeWidth,
+            id: `arc-${this.options.id}`,
+            class: "foreground-circle",
+            d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
         });
-        this.animate(arc);
+
+        if (this.options.animation) {
+            this.animate(arc);
+        }
 
         this.tags.push({
             element: arc,
@@ -72,6 +72,7 @@ class PlainCircle extends BaseCircle {
                 y: this.coordinates.y,
                 radius: this.radius,
             },
+            animationStep: this.options.animationStep,
         }, this.options.onAnimationEnd);
     }
 }

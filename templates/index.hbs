@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{{htmlWebpackPlugin.options.title}}</title>
     <meta name="description" content="{{htmlWebpackPlugin.options.description}}">
+    <link href="../dist/style.css" rel="stylesheet">
 </head>
 <body>
 <div style="width: 40%; height: 40%; min-height: 300px" id="circle1" data-percent="55"></div>
@@ -16,9 +17,8 @@
     (function() {
         circliful.initCircle({
             id: 'circle1',
-            foregroundBorderWidth: 5,
-            backgroundBorderWidth: 15,
             type: 'SimpleCircle',
+            animationStep: 5,
             onStart: () => {
                 console.log('custom start event1');
             },
@@ -30,9 +30,8 @@
         circliful.initCircle({
             percent: 50,
             id: 'circle2',
-            foregroundBorderWidth: 5,
-            backgroundBorderWidth: 15,
             type: 'SimpleCircle',
+            icon: 'f179',
             onStart: () => {
                 console.log('custom start event2');
             }
@@ -41,24 +40,21 @@
         circliful.initCircle({
             percent: 50,
             id: 'circle3',
-            foregroundBorderWidth: 5,
-            backgroundBorderWidth: 15,
             type: 'HalfCircle'
         });
 
         circliful.initCircle({
             percent: 99,
             id: 'circle4',
-            foregroundBorderWidth: 5,
-            backgroundBorderWidth: 15,
-            type: 'HalfCircle'
+            type: 'HalfCircle',
+            animationStep: 40
         });
 
         circliful.initCircle({
             percent: 75,
             id: 'circle5',
-            foregroundBorderWidth: 5,
-            type: 'PlainCircle'
+            type: 'PlainCircle',
+            animation: 0,
         });
     })();
 

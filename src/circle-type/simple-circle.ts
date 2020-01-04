@@ -35,6 +35,11 @@ class SimpleCircle extends BaseCircle {
         this.drawContainer();
         this.drawBackgroundCircle();
         this.drawForegroundCircle();
+
+        if (this.options.point) {
+            this.drawPoint();
+        }
+
         this.drawText();
         this.append();
     }
@@ -44,13 +49,31 @@ class SimpleCircle extends BaseCircle {
      */
     public drawBackgroundCircle = () => {
         const circle = SvgTags.addCircle(this.options.id, {
-            "id": `circle-${this.options.id}`,
-            "cx": String(this.coordinates.x),
-            "cy": String(this.coordinates.y),
-            "r": String(this.radius),
-            "fill": this.options.fillColor,
-            "stroke-width": this.options.backgroundBorderWidth,
-            "stroke": this.options.backgroundColor,
+            id: `circle-${this.options.id}`,
+            class: "background-circle",
+            cx: String(this.coordinates.x),
+            cy: String(this.coordinates.y),
+            r: String(this.radius),
+        });
+
+        this.tags.push({
+            element: circle,
+            parentId: `svg-${this.options.id}`,
+        });
+    }
+
+    /**
+     * @description Draws a point into the circle, behind the text
+     */
+    public drawPoint = () => {
+        const pointSize = this.radius / 100 * this.options.pointSize ;
+
+        const circle = SvgTags.addCircle(this.options.id, {
+            id: `point-${this.options.id}`,
+            class: "point-circle",
+            cx: String(this.coordinates.x),
+            cy: String(this.coordinates.y),
+            r: String(pointSize),
         });
 
         this.tags.push({
@@ -64,16 +87,16 @@ class SimpleCircle extends BaseCircle {
      */
     public drawForegroundCircle = () => {
         const endAngle = 360 / 100 * this.options.percent;
-        const strokeWidth = this.options.foregroundBorderWidth;
 
         const arc = SvgTags.addArc(this.options.id, {
-            "id": `arc-${this.options.id}`,
-            "fill": "none",
-            "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
-            "stroke": this.options.foregroundColor,
-            "stroke-width": strokeWidth,
+            id: `arc-${this.options.id}`,
+            class: "foreground-circle",
+            d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
         });
-        this.animate(arc);
+
+        if (this.options.animation) {
+            this.animate(arc);
+        }
 
         this.tags.push({
             element: arc,
@@ -94,6 +117,7 @@ class SimpleCircle extends BaseCircle {
                 y: this.coordinates.y,
                 radius: this.radius,
             },
+            animationStep: this.options.animationStep,
         }, this.options.onAnimationEnd);
     }
 
@@ -101,12 +125,21 @@ class SimpleCircle extends BaseCircle {
      * @description
      */
     public drawText = () => {
+        const icon = this.options.icon;
         const text = SvgTags.addText(this.options.id, {
             id: `text-${this.options.id}`,
             x: String(this.coordinates.x),
             y: String(this.coordinates.y),
+            class: "circle-text",
         });
-        text.textContent = `${this.options.percent}%`;
+
+        if (icon) {
+            text.classList.add("icon");
+            text.classList.add("fa");
+            text.innerHTML = `&#x${icon}; ${this.options.percent}%`;
+        } else {
+            text.textContent = `${this.options.percent}%`;
+        }
 
         this.tags.push({
             element: text,

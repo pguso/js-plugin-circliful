@@ -45,14 +45,11 @@ class HalfCircle extends BaseCircle {
     public drawBackgroundCircle = () => {
         const startAngle = 270;
         const endAngle = 90;
-        const strokeWidth = this.options.backgroundBorderWidth;
 
         const arc = SvgTags.addArc(this.options.id, {
-            "id": `arc-${this.options.id}`,
-            "fill": "none",
-            "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, startAngle, endAngle),
-            "stroke": this.options.backgroundColor,
-            "stroke-width": strokeWidth,
+            id: `arc-${this.options.id}`,
+            d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, startAngle, endAngle),
+            class: "background-circle",
         });
 
         this.tags.push({
@@ -66,17 +63,17 @@ class HalfCircle extends BaseCircle {
      */
     public drawForegroundCircle = () => {
         const endAngle = 180 / 100 * this.options.percent;
-        const strokeWidth = this.options.foregroundBorderWidth;
 
         const arc = SvgTags.addArc(this.options.id, {
-            "id": `arc-${this.options.id}`,
-            "fill": "none",
-            "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
-            "stroke": this.options.foregroundColor,
-            "stroke-width": strokeWidth,
-            "transform": `rotate(-90, ${this.coordinates.x}, ${this.coordinates.y})`,
+            id: `arc-${this.options.id}`,
+            class: "foreground-circle",
+            d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
+            transform: `rotate(-90, ${this.coordinates.x}, ${this.coordinates.y})`,
         });
-        this.animate(arc);
+
+        if (this.options.animation) {
+            this.animate(arc);
+        }
 
         this.tags.push({
             element: arc,
@@ -98,6 +95,7 @@ class HalfCircle extends BaseCircle {
                 radius: this.radius,
                 endAngleGrade: 180,
             },
+            animationStep: this.options.animationStep,
         }, this.options.onAnimationEnd);
     }
 
@@ -109,6 +107,7 @@ class HalfCircle extends BaseCircle {
             id: `text-${this.options.id}`,
             x: String(this.coordinates.x),
             y: String(this.coordinates.y),
+            class: "circle-text",
         });
         text.textContent = `${this.options.percent}%...`;
 
