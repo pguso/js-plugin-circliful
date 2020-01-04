@@ -1,8 +1,9 @@
 import Circle from "./circle";
 import {IAvailableOptions} from "./interfaces/iavailable-options";
+import "./style/basic.scss";
 
 /**
- * @description
+ * @description Gets called from html script tag
  * @param options
  * @returns void
  */

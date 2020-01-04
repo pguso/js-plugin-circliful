@@ -2,6 +2,7 @@ export interface IAttributes {
     width?: number;
     height?: number;
     id?: string;
+    class?: string;
     cx?: string;
     cy?: string;
     r?: string;

@@ -5,13 +5,17 @@ class SvgTags {
     public static namespaceURI = "http://www.w3.org/2000/svg";
 
     /**
-     * @description
+     * @description Adds a svg tag with attributes
      * @param parentId
      * @param attributes
      * @returns SVGElement
      */
     public static addSvg(parentId: string, attributes: IAttributes): Element {
         const svg = document.createElementNS(SvgTags.namespaceURI, "svg");
+        attributes = {
+            ...attributes,
+            class: "circle-container",
+        };
 
         SvgTagsHelper.setAttributes(svg as SVGElement, attributes);
 
@@ -19,7 +23,7 @@ class SvgTags {
     }
 
     /**
-     * @description
+     * @description Adds a circle tag with attributes
      * @param parentId
      * @param attributes
      * @returns SVGCircleElement
@@ -32,7 +36,7 @@ class SvgTags {
     }
 
     /**
-     * @description
+     * @description Adds a path tag with attributes
      * @param parentId
      * @param attributes
      * @returns SVGPathElement
@@ -45,7 +49,7 @@ class SvgTags {
     }
 
     /**
-     * @description
+     * @description Adds a text tag with attributes
      * @param parentId
      * @param attributes
      * @returns SVGTextElement

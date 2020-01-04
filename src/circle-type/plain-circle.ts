@@ -5,9 +5,9 @@ import SvgTags from "../svg-tags";
 import SvgTagsHelper from "../svg-tags-helper";
 
 /**
- * Every circle gets dynamically called by the given type in the options object example: { type: 'SimpleCircle' }
+ * Every circle gets dynamically called by the given type in the options object example: { type: 'PlainCircle' }
  */
-class SimpleCircle extends BaseCircle {
+class PlainCircle extends BaseCircle {
     private coordinates = {
         x: 0,
         y: 0,
@@ -33,36 +33,14 @@ class SimpleCircle extends BaseCircle {
      */
     public drawCircle = () => {
         this.drawContainer();
-        this.drawBackgroundCircle();
-        this.drawForegroundCircle();
-        this.drawText();
+        this.drawPlainCircle();
         this.append();
     }
 
     /**
-     * @description
+     * @description Draws the circle by given percentage with optional animation
      */
-    public drawBackgroundCircle = () => {
-        const circle = SvgTags.addCircle(this.options.id, {
-            "id": `circle-${this.options.id}`,
-            "cx": String(this.coordinates.x),
-            "cy": String(this.coordinates.y),
-            "r": String(this.radius),
-            "fill": this.options.fillColor,
-            "stroke-width": this.options.backgroundBorderWidth,
-            "stroke": this.options.backgroundColor,
-        });
-
-        this.tags.push({
-            element: circle,
-            parentId: `svg-${this.options.id}`,
-        });
-    }
-
-    /**
-     * @description
-     */
-    public drawForegroundCircle = () => {
+    public drawPlainCircle = () => {
         const endAngle = 360 / 100 * this.options.percent;
         const strokeWidth = this.options.foregroundBorderWidth;
 
@@ -96,23 +74,6 @@ class SimpleCircle extends BaseCircle {
             },
         }, this.options.onAnimationEnd);
     }
-
-    /**
-     * @description
-     */
-    public drawText = () => {
-        const text = SvgTags.addText(this.options.id, {
-            id: `text-${this.options.id}`,
-            x: String(this.coordinates.x),
-            y: String(this.coordinates.y),
-        });
-        text.textContent = `${this.options.percent}%`;
-
-        this.tags.push({
-            element: text,
-            parentId: `svg-${this.options.id}`,
-        });
-    }
 }
 
-export default SimpleCircle;
+export default PlainCircle;

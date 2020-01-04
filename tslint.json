@@ -2,6 +2,11 @@
   "extends": [
     "tslint:latest"
   ],
+  "linterOptions": {
+    "exclude": [
+      "webpack*"
+    ]
+  },
   "rules": {
     "no-any": true,
     "no-non-null-assertion": true,

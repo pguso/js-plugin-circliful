@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.config.js",
-    "build": "webpack --config webpack.dev.config.js"
+    "build": "webpack --config webpack.dev.config.js",
+    "lint": "tslint -c tslint.json -p tsconfig.json --fix"
   },
   "keywords": [
     "circliful",

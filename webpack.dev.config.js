@@ -1,86 +1,86 @@
 const {ProvidePlugin} = require("webpack");
 
-const path = require('path');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const libraryName = 'circliful';
+const path = require("path");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const libraryName = "circliful";
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: "./src/index.ts",
     output: {
-        library: libraryName,
         filename: `${libraryName}.js`,
-        path: path.resolve(__dirname, "./dist")
+        library: libraryName,
+        path: path.resolve(__dirname, "./dist"),
     },
-    target: 'web',
-    devtool: 'inline-source-map',
+    target: "web",
+    devtool: "inline-source-map",
     mode: "development",
     devServer: {
-        port: 9090
+        port: 9090,
     },
     module: {
         rules: [
             {
                 test: /\.(png|jpg)$/,
                 use: [
-                    'file-loader'
-                ]
+                    "file-loader",
+                ],
             },
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader', 'css-loader'
-                ]
+                    "style-loader", "css-loader",
+                ],
             },
             {
                 test: /\.scss$/,
                 use: [
-                    'style-loader', 'css-loader', 'sass-loader'
-                ]
+                    "style-loader", "css-loader", "sass-loader",
+                ],
             },
             {
                 test: /\.hbs$/,
                 use: [
-                    'handlebars-loader'
-                ]
+                    "handlebars-loader",
+                ],
             },
             {
                 test: /\.ts$/,
-                exclude: '/node_modules',
-                use: 'ts-loader',
+                exclude: "/node_modules",
+                use: "ts-loader",
             },
             {
                 test: /\.ts$/,
-                enforce: 'pre',
+                enforce: "pre",
                 use: [
                     {
-                        loader: 'tslint-loader',
+                        loader: "tslint-loader",
                         options: {
-                            configFile: 'tslint.json',
-                        }
-                    }
-                ]
-            }
-        ]
+                            configFile: "tslint.json",
+                        },
+                    },
+                ],
+            },
+        ],
     },
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js' ],
+        extensions: [ ".tsx", ".ts", ".js" ],
     },
     plugins: [
         new ProvidePlugin({
-            Promise: 'es6-promise-promise'
+            Promise: "es6-promise-promise",
         }),
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: [
-                '**/*'
+                "**/*",
                 //path.join(process.cwd(), 'build/**/*') //clean other folders also
-            ]
+            ],
         }),
         new HtmlWebpackPlugin({
             title: "Hello world",
             template: "templates/index.hbs",
-            description: 'Circliful showcase',
-            inject: false
-        })
-    ]
+            description: "Circliful showcase",
+            inject: false,
+        }),
+    ],
 };

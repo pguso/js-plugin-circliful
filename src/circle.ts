@@ -11,7 +11,6 @@ class Circle {
     public static initCircle(options: IAvailableOptions) {
         Circle.getClassInstance(options).then((circle) => {
             circle.drawCircle();
-            circle.append();
         });
     }
 
