@@ -11,10 +11,10 @@ class Options {
         animation: 1,
         animationStep: 1,
         noPercentageSign: false,
-        halfCircle: false,
         animateInView: false,
         strokeLinecap: "butt",
         type: "SimpleCircle",
+        textBelow: false,
     };
 
     /**

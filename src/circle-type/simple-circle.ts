@@ -10,14 +10,15 @@ import SvgTags from "../svg-tags";
  * Every circle gets dynamically called by the given type in the options object example: { type: 'SimpleCircle' }
  */
 class SimpleCircle extends BaseCircle {
-    private coordinates = {
+    protected coordinates = {
         x: 0,
         y: 0,
     };
-    private radius: number;
-    private additionalCssClasses: IAvailableOptions["additionalCssClasses"] = {};
+    protected radius: number;
+    protected additionalCssClasses: IAvailableOptions["additionalCssClasses"] = {};
 
     /**
+     * TODO remove duplicates between this and PlainCircle class
      * @inheritDoc
      */
     constructor(options: IAvailableOptions, size: ISize) {
@@ -60,6 +61,11 @@ class SimpleCircle extends BaseCircle {
         }
 
         this.drawText();
+
+        if (this.options.textBelow && this.options.text) {
+            this.drawInfoText();
+        }
+
         this.append();
     }
 
@@ -145,7 +151,7 @@ class SimpleCircle extends BaseCircle {
      * @description Animates circle counter clock wise
      * @param arc
      */
-    private animate(arc: Element) {
+    protected animate(arc: Element) {
         SvgTagsHelper.animateArc({
             arc,
             arcParams: {
@@ -170,7 +176,7 @@ class SimpleCircle extends BaseCircle {
         const text = SvgTags.addText({
             id: `text-${this.options.id}`,
             x: String(this.coordinates.x),
-            y: String(this.coordinates.y),
+            y: String(this.coordinates.y - 25),
             class: `circle-icon fa ${customCssClass}`,
         });
 
@@ -197,7 +203,35 @@ class SimpleCircle extends BaseCircle {
             class: `circle-text ${customCssClass}`,
         });
 
-        text.textContent = `${this.options.percent}%`;
+        const percentageSign = this.options.noPercentageSign ? "" : "%";
+        let content = `${this.options.percent}${percentageSign}`;
+        if (!this.options.textBelow && this.options.text) {
+            content = this.options.text;
+        }
+        text.textContent = content;
+
+        this.tags.push({
+            element: text,
+            parentId: `svg-${this.options.id}`,
+        });
+    }
+
+    /**
+     * @description Draws info text below percentage
+     */
+    public drawInfoText() {
+        const customCssClass = ObjectHelper.extractPropertyFromObject(
+            this.additionalCssClasses,
+            "infoText",
+        );
+        const text = SvgTags.addText({
+            id: `text-${this.options.id}`,
+            x: String(this.coordinates.x),
+            y: String(this.coordinates.y + 20),
+            class: `circle-info-text ${customCssClass}`,
+        });
+
+        text.textContent = this.options.text;
 
         this.tags.push({
             element: text,

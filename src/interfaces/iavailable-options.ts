@@ -8,7 +8,8 @@ export interface IAvailableOptions {
         text?: string,
         icon?: string,
         point?: string,
-    }; // TODO for foreground, background, icon, text, etc....
+        infoText?: string,
+    };
     point?: boolean;
     pointSize?: number;
     percent: number;
@@ -19,11 +20,7 @@ export interface IAvailableOptions {
     text?: string;
     textBelow?: boolean;
     noPercentageSign?: boolean;
-    replacePercentageByText?: string;
-    halfCircle?: boolean;
-    animateInView?: boolean;
-    title?: string;
-    description?: string;
+    animateInView?: boolean; //
     strokeLinecap?: string;
     update?: () => {};
     onAnimationEnd?: () => {};

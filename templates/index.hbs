@@ -33,13 +33,9 @@
             id: 'circle2',
             type: 'SimpleCircle',
             icon: 'f179',
-            additionalCssClasses: {
-                    svgContainer: 'my-svgContainer',
-                    backgroundCircle: 'my-backgroundCircle',
-                    foregroundCircle: 'my-foregroundCircle',
-                    text: 'my-text',
-                    icon: 'my-icon',
-                },
+            text: 'TP Wins',
+            textBelow: true,
+            noPercentageSign: true
         });
 
         circliful.initCircle({
@@ -52,7 +48,7 @@
             percent: 99,
             id: 'circle4',
             type: 'HalfCircle',
-            animationStep: 40
+            noPercentageSign: true
         });
 
         circliful.initCircle({

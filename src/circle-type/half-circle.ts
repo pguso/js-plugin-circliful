@@ -1,37 +1,23 @@
-import {BaseCircle} from "../base-classes/base-circle";
 import ObjectHelper from "../helpers/object-helper";
 import SvgTagsHelper from "../helpers/svg-tags-helper";
 import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
 import SvgTags from "../svg-tags";
+import SimpleCircle from "./simple-circle";
 
 /**
  * Every circle gets dynamically called by the given type in the options object example: { type: 'HalfCircle' }
  */
-class HalfCircle extends BaseCircle {
-    private coordinates = {
-        x: 0,
-        y: 0,
-    };
-    private radius: number;
-    private additionalCssClasses: IAvailableOptions["additionalCssClasses"] = {};
-
+class HalfCircle extends SimpleCircle {
     /**
-     * @inheritDoc
+     * @description Extended for cutting svg container height to half
+     * @param options
+     * @param size
      */
     constructor(options: IAvailableOptions, size: ISize) {
         super(options, size);
 
-        const maxSize = this.size.maxSize;
-        this.coordinates = {
-            x: maxSize / 2,
-            y: maxSize / 2,
-        };
-        this.radius = maxSize / 2.2;
-
-        if (this.options.additionalCssClasses) {
-            this.additionalCssClasses = this.options.additionalCssClasses;
-        }
+        this.heightDivider = 2;
     }
 
     /**
@@ -49,7 +35,7 @@ class HalfCircle extends BaseCircle {
     }
 
     /**
-     * @description Draws the background cricle
+     * @description Draws the background circle
      */
     public drawBackgroundCircle = () => {
         const startAngle = 270;
@@ -100,7 +86,7 @@ class HalfCircle extends BaseCircle {
      * @description Animates circle counter clock wise
      * @param arc
      */
-    private animate(arc: Element) {
+    protected animate(arc: Element) {
         SvgTagsHelper.animateArc({
             arc,
             arcParams: {
@@ -112,28 +98,6 @@ class HalfCircle extends BaseCircle {
             },
             animationStep: this.options.animationStep,
         }, this.options.onAnimationEnd);
-    }
-
-    /**
-     * @description Draws the text shown inside of the circle
-     */
-    public drawText = () => {
-        const customCssClass = ObjectHelper.extractPropertyFromObject(
-            this.additionalCssClasses,
-            "text",
-        );
-        const text = SvgTags.addText({
-            id: `text-${this.options.id}`,
-            x: String(this.coordinates.x),
-            y: String(this.coordinates.y),
-            class: `circle-text ${customCssClass}`,
-        });
-        text.textContent = `${this.options.percent}%...`;
-
-        this.tags.push({
-            element: text,
-            parentId: `svg-${this.options.id}`,
-        });
     }
 }
 

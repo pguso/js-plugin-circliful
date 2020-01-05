@@ -32,6 +32,12 @@ class PlainCircle extends BaseCircle {
         if (this.options.additionalCssClasses) {
             this.additionalCssClasses = this.options.additionalCssClasses;
         }
+
+        // TODO: for all circles seperatly possible
+        window.onscroll = () => {
+            const svgParentId = `${this.tags[0].parentId}`;
+            this.checkAnimation(svgParentId);
+        };
     }
 
     /**
@@ -72,7 +78,7 @@ class PlainCircle extends BaseCircle {
      * @description Animates circle counter clock wise
      * @param arc
      */
-    private animate(arc: Element) {
+    protected animate(arc: Element) {
         SvgTagsHelper.animateArc({
             arc,
             arcParams: {

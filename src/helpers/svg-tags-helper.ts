@@ -83,6 +83,7 @@ class SvgTagsHelper {
         const startAngle = arcParams.startAngle ? arcParams.startAngle : 0;
         const endAngleGrade = arcParams.endAngleGrade ? arcParams.endAngleGrade : 360;
         const ms = this.getMilliseconds(arcParams.ms, arcParams.endAngleGrade);
+
         const interval = setInterval((arc, percent) => {
             const endAngle = endAngleGrade / 100 * count;
             SvgTagsHelper.setAttributes(arc, {
