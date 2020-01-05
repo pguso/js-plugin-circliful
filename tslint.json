@@ -61,5 +61,6 @@
     "ignore-blank-lines"
   ],
   "file-name-casing": [true, "kebab-case"],
-  "quotemark": [true, "single", "avoid-escape", "avoid-template"]
+  "quotemark": [true, "single", "avoid-escape", "avoid-template"],
+  "semicolon": [true, "always", "ignore-bound-class-methods"]
 }

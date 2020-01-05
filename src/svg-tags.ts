@@ -1,5 +1,7 @@
+import ObjectHelper from "./helpers/object-helper";
+import SvgTagsHelper from "./helpers/svg-tags-helper";
 import {IAttributes} from "./interfaces/iattributes";
-import SvgTagsHelper from "./svg-tags-helper";
+import {IDictionary} from "./interfaces/idictionary";
 
 class SvgTags {
     public static namespaceURI = "http://www.w3.org/2000/svg";
@@ -11,10 +13,10 @@ class SvgTags {
      */
     public static addSvg(attributes: IAttributes): Element {
         const svg = document.createElementNS(SvgTags.namespaceURI, "svg");
-        attributes = {
-            ...attributes,
-            class: "circle-container",
-        };
+        attributes.class = "circle-container" + ObjectHelper.extractPropertyFromObject(
+            attributes as IDictionary,
+            "class",
+        );
 
         SvgTagsHelper.setAttributes(svg as SVGElement, attributes);
 
@@ -72,14 +74,14 @@ class SvgTags {
 
         const firstStop = document.createElementNS(SvgTags.namespaceURI, "stop");
         const firstStopAttributes = {
-            offset: "0",
+            "offset": "0",
             "stop-color": attributes.gradientStart,
         };
         SvgTagsHelper.setAttributes(firstStop as SVGElement, firstStopAttributes);
 
         const secondStop = document.createElementNS(SvgTags.namespaceURI, "stop");
         const secondStopAttributes = {
-            offset: "1",
+            "offset": "1",
             "stop-color": attributes.gradientEnd,
         };
         SvgTagsHelper.setAttributes(secondStop as SVGElement, secondStopAttributes);

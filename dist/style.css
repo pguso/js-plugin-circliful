@@ -19,11 +19,6 @@
   font-size: 20px;
   transform: translate(0, 20px); }
 
-.icon.fa {
-  font-size: 30px;
-  color: #ccc;
-  fill: red; }
-
 .circle-container {
   overflow: visible; }
 
@@ -36,6 +31,11 @@
 
 .point-circle {
   fill: aliceblue; }
+
+.circle-icon.fa {
+  font-size: 30px;
+  color: #ccc;
+  fill: red; }
 
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome

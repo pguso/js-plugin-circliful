@@ -1,8 +1,9 @@
 import {BaseCircle} from "../base-classes/base-circle";
+import ObjectHelper from "../helpers/object-helper";
+import SvgTagsHelper from "../helpers/svg-tags-helper";
 import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
 import SvgTags from "../svg-tags";
-import SvgTagsHelper from "../svg-tags-helper";
 
 /**
  * Every circle gets dynamically called by the given type in the options object example: { type: 'HalfCircle' }
@@ -13,6 +14,7 @@ class HalfCircle extends BaseCircle {
         y: 0,
     };
     private radius: number;
+    private additionalCssClasses: IAvailableOptions["additionalCssClasses"] = {};
 
     /**
      * @inheritDoc
@@ -26,13 +28,20 @@ class HalfCircle extends BaseCircle {
             y: maxSize / 2,
         };
         this.radius = maxSize / 2.2;
+
+        if (this.options.additionalCssClasses) {
+            this.additionalCssClasses = this.options.additionalCssClasses;
+        }
     }
 
     /**
      * @inheritDoc
      */
     public drawCircle = () => {
-        this.drawContainer();
+        const additionalContainerAttributes = {
+            class: ObjectHelper.extractPropertyFromObject(this.additionalCssClasses, "svgContainer"),
+        };
+        this.drawContainer(additionalContainerAttributes);
         this.drawBackgroundCircle();
         this.drawForegroundCircle();
         this.drawText();
@@ -45,11 +54,14 @@ class HalfCircle extends BaseCircle {
     public drawBackgroundCircle = () => {
         const startAngle = 270;
         const endAngle = 90;
-
+        const customCssClass = ObjectHelper.extractPropertyFromObject(
+            this.additionalCssClasses,
+            "backgroundCircle",
+        );
         const arc = SvgTags.addArc({
             id: `arc-${this.options.id}`,
             d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, startAngle, endAngle),
-            class: "background-circle",
+            class: `background-circle ${customCssClass}`,
         });
 
         this.tags.push({
@@ -63,10 +75,13 @@ class HalfCircle extends BaseCircle {
      */
     public drawForegroundCircle = () => {
         const endAngle = 180 / 100 * this.options.percent;
-
+        const customCssClass = ObjectHelper.extractPropertyFromObject(
+            this.additionalCssClasses,
+            "foregroundCircle",
+        );
         const arc = SvgTags.addArc({
             id: `arc-${this.options.id}`,
-            class: "foreground-circle",
+            class: `foreground-circle ${customCssClass}`,
             d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
             transform: `rotate(-90, ${this.coordinates.x}, ${this.coordinates.y})`,
         });
@@ -103,11 +118,15 @@ class HalfCircle extends BaseCircle {
      * @description Draws the text shown inside of the circle
      */
     public drawText = () => {
+        const customCssClass = ObjectHelper.extractPropertyFromObject(
+            this.additionalCssClasses,
+            "text",
+        );
         const text = SvgTags.addText({
             id: `text-${this.options.id}`,
             x: String(this.coordinates.x),
             y: String(this.coordinates.y),
-            class: "circle-text",
+            class: `circle-text ${customCssClass}`,
         });
         text.textContent = `${this.options.percent}%...`;
 

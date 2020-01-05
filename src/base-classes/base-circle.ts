@@ -38,12 +38,14 @@ export abstract class BaseCircle {
 
     /**
      * @description Draws the svg tag
+     * @param additionalAttributes
      */
-    public drawContainer = () => {
+    public drawContainer = (additionalAttributes?: object) => {
         const container = SvgTags.addSvg({
             width: this.size.width,
             height: this.size.height,
             id: `svg-${this.options.id}`,
+            ...additionalAttributes,
         });
 
         this.tags.push({

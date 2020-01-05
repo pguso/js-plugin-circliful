@@ -1,6 +1,9 @@
 import {IAvailableOptions} from "./interfaces/iavailable-options";
 
 class Options {
+    /**
+     * @description Default options if option is not set on initialisation
+     */
     public defaultOptions: IAvailableOptions = {
         point: false,
         pointSize: 60,
@@ -10,17 +13,12 @@ class Options {
         noPercentageSign: false,
         halfCircle: false,
         animateInView: false,
-        title: "Circle Chart",
         strokeLinecap: "butt",
         type: "SimpleCircle",
-        text: "",
-        replacePercentageByText: "",
-        update: null,
-        onAnimationEnd: null,
     };
 
     /**
-     * @description
+     * @description Merge default options and custom option on initialisation
      * @param options
      * @returns Options['defaultOptions']
      */

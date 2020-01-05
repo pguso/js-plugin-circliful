@@ -1,9 +1,10 @@
 import {BaseCircle} from "../base-classes/base-circle";
+import ObjectHelper from "../helpers/object-helper";
+import SvgTagsHelper from "../helpers/svg-tags-helper";
+import {IAttributes} from "../interfaces/iattributes";
 import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
 import SvgTags from "../svg-tags";
-import SvgTagsHelper from "../svg-tags-helper";
-import {IAttributes} from "../interfaces/iattributes";
 
 /**
  * Every circle gets dynamically called by the given type in the options object example: { type: 'SimpleCircle' }
@@ -14,6 +15,7 @@ class SimpleCircle extends BaseCircle {
         y: 0,
     };
     private radius: number;
+    private additionalCssClasses: IAvailableOptions["additionalCssClasses"] = {};
 
     /**
      * @inheritDoc
@@ -27,13 +29,20 @@ class SimpleCircle extends BaseCircle {
             y: maxSize / 2,
         };
         this.radius = maxSize / 2.2;
+
+        if (this.options.additionalCssClasses) {
+            this.additionalCssClasses = this.options.additionalCssClasses;
+        }
     }
 
     /**
      * @inheritDoc
      */
     public drawCircle = () => {
-        this.drawContainer();
+        const additionalContainerAttributes = {
+            class: ObjectHelper.extractPropertyFromObject(this.additionalCssClasses, "svgContainer"),
+        };
+        this.drawContainer(additionalContainerAttributes);
 
         if (this.options.strokeGradient) {
             this.drawLinearGradient();
@@ -46,7 +55,7 @@ class SimpleCircle extends BaseCircle {
             this.drawPoint();
         }
 
-        if(this.options.icon) {
+        if (this.options.icon) {
             this.drawIcon();
         }
 
@@ -58,9 +67,14 @@ class SimpleCircle extends BaseCircle {
      * @description
      */
     public drawBackgroundCircle = () => {
+        const customCssClass = ObjectHelper.extractPropertyFromObject(
+            this.additionalCssClasses,
+            "backgroundCircle",
+        );
+
         const circle = SvgTags.addCircle({
             id: `circle-${this.options.id}`,
-            class: "background-circle",
+            class: `background-circle ${customCssClass}`,
             cx: String(this.coordinates.x),
             cy: String(this.coordinates.y),
             r: String(this.radius),
@@ -77,10 +91,13 @@ class SimpleCircle extends BaseCircle {
      */
     public drawPoint = () => {
         const pointSize = this.radius / 100 * this.options.pointSize;
-
+        const customCssClass = ObjectHelper.extractPropertyFromObject(
+            this.additionalCssClasses,
+            "point",
+        );
         const circle = SvgTags.addCircle({
             id: `point-${this.options.id}`,
-            class: "point-circle",
+            class: `point-circle ${customCssClass}`,
             cx: String(this.coordinates.x),
             cy: String(this.coordinates.y),
             r: String(pointSize),
@@ -97,13 +114,17 @@ class SimpleCircle extends BaseCircle {
      */
     public drawForegroundCircle = () => {
         const endAngle = 360 / 100 * this.options.percent;
+        const customCssClass = ObjectHelper.extractPropertyFromObject(
+            this.additionalCssClasses,
+            "foregroundCircle",
+        );
         const attributes: IAttributes = {
             id: `arc-${this.options.id}`,
-            class: "foreground-circle",
+            class: `foreground-circle ${customCssClass}`,
             d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
         };
 
-        if(this.options.strokeGradient) {
+        if (this.options.strokeGradient) {
             attributes.stroke = "url(#linearGradient)";
             attributes.class = "foreground-circle-without-stroke-color";
         }
@@ -142,11 +163,15 @@ class SimpleCircle extends BaseCircle {
      */
     public drawIcon = () => {
         const icon = this.options.icon;
+        const customCssClass = ObjectHelper.extractPropertyFromObject(
+            this.additionalCssClasses,
+            "icon",
+        );
         const text = SvgTags.addText({
             id: `text-${this.options.id}`,
             x: String(this.coordinates.x),
             y: String(this.coordinates.y),
-            class: "circle-icon fa",
+            class: `circle-icon fa ${customCssClass}`,
         });
 
         text.innerHTML = `&#x${icon};`;
@@ -161,11 +186,15 @@ class SimpleCircle extends BaseCircle {
      * @description
      */
     public drawText = () => {
+        const customCssClass = ObjectHelper.extractPropertyFromObject(
+            this.additionalCssClasses,
+            "text",
+        );
         const text = SvgTags.addText({
             id: `text-${this.options.id}`,
             x: String(this.coordinates.x),
             y: String(this.coordinates.y),
-            class: "circle-text",
+            class: `circle-text ${customCssClass}`,
         });
 
         text.textContent = `${this.options.percent}%`;

@@ -1,8 +1,9 @@
 import {BaseCircle} from "../base-classes/base-circle";
+import ObjectHelper from "../helpers/object-helper";
+import SvgTagsHelper from "../helpers/svg-tags-helper";
 import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
 import SvgTags from "../svg-tags";
-import SvgTagsHelper from "../svg-tags-helper";
 
 /**
  * Every circle gets dynamically called by the given type in the options object example: { type: 'PlainCircle' }
@@ -13,6 +14,7 @@ class PlainCircle extends BaseCircle {
         y: 0,
     };
     private radius: number;
+    private additionalCssClasses: IAvailableOptions["additionalCssClasses"] = {};
 
     /**
      * @inheritDoc
@@ -26,6 +28,10 @@ class PlainCircle extends BaseCircle {
             y: maxSize / 2,
         };
         this.radius = maxSize / 2.2;
+
+        if (this.options.additionalCssClasses) {
+            this.additionalCssClasses = this.options.additionalCssClasses;
+        }
     }
 
     /**
@@ -42,10 +48,13 @@ class PlainCircle extends BaseCircle {
      */
     public drawPlainCircle = () => {
         const endAngle = 360 / 100 * this.options.percent;
-
+        const customCssClass = ObjectHelper.extractPropertyFromObject(
+            this.additionalCssClasses,
+            "foregroundCircle",
+        );
         const arc = SvgTags.addArc({
             id: `arc-${this.options.id}`,
-            class: "foreground-circle",
+            class: `foreground-circle ${customCssClass}`,
             d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
         });
 

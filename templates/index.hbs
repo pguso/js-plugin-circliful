@@ -33,9 +33,13 @@
             id: 'circle2',
             type: 'SimpleCircle',
             icon: 'f179',
-            onStart: () => {
-                console.log('custom start event2');
-            }
+            additionalCssClasses: {
+                    svgContainer: 'my-svgContainer',
+                    backgroundCircle: 'my-backgroundCircle',
+                    foregroundCircle: 'my-foregroundCircle',
+                    text: 'my-text',
+                    icon: 'my-icon',
+                },
         });
 
         circliful.initCircle({

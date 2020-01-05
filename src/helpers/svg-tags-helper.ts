@@ -1,6 +1,6 @@
-import Events from "./events";
-import {IAttributes} from "./interfaces/iattributes";
-import {ICalculationParams} from "./interfaces/icalculation-params";
+import Events from "../events";
+import {IAttributes} from "../interfaces/iattributes";
+import {ICalculationParams} from "../interfaces/icalculation-params";
 
 class SvgTagsHelper {
     /**
