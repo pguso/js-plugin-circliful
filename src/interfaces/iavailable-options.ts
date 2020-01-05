@@ -1,43 +1,23 @@
 export interface IAvailableOptions {
-    height?: number;
-    width?: number;
     id?: string;
+    additionalCssClasses?: {}, //TODO for foreground, background, icon, text, etc....
     point?: boolean;
-    pointColor?: string;
     pointSize?: number;
-    beforePercent?: number;
     percent: number;
     animation?: number;
     animationStep?: number;
     icon?: string;
-    iconSize?: number;
-    iconColor?: string;
-    iconPosition?: string;
-    iconDecoration?: boolean;
-    target?: number;
-    showPercent?: number;
-    percentageTextSize?: number;
-    percentageX?: number;
-    percentageY?: number;
-    textAdditionalCss?: string;
-    targetPercent?: number;
-    targetTextSize?: number;
-    targetColor?: string;
     text?: string;
-    percentages?: number[];
-    multiPercentageLegend?: number;
     textBelow?: boolean;
     noPercentageSign?: boolean;
     replacePercentageByText?: string;
     halfCircle?: boolean;
     animateInView?: boolean;
-    decimals?: number;
-    alwaysDecimals?: boolean;
     title?: string;
     description?: string;
-    progressColor?: string;
     strokeLinecap?: string;
     update?: () => {};
     onAnimationEnd?: () => {};
     type?: string;
+    strokeGradient?: [string, string];
 }

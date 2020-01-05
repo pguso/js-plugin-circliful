@@ -3,6 +3,7 @@ import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
 import SvgTags from "../svg-tags";
 import SvgTagsHelper from "../svg-tags-helper";
+import {IAttributes} from "../interfaces/iattributes";
 
 /**
  * Every circle gets dynamically called by the given type in the options object example: { type: 'SimpleCircle' }
@@ -33,11 +34,20 @@ class SimpleCircle extends BaseCircle {
      */
     public drawCircle = () => {
         this.drawContainer();
+
+        if (this.options.strokeGradient) {
+            this.drawLinearGradient();
+        }
+
         this.drawBackgroundCircle();
         this.drawForegroundCircle();
 
         if (this.options.point) {
             this.drawPoint();
+        }
+
+        if(this.options.icon) {
+            this.drawIcon();
         }
 
         this.drawText();
@@ -48,7 +58,7 @@ class SimpleCircle extends BaseCircle {
      * @description
      */
     public drawBackgroundCircle = () => {
-        const circle = SvgTags.addCircle(this.options.id, {
+        const circle = SvgTags.addCircle({
             id: `circle-${this.options.id}`,
             class: "background-circle",
             cx: String(this.coordinates.x),
@@ -66,9 +76,9 @@ class SimpleCircle extends BaseCircle {
      * @description Draws a point into the circle, behind the text
      */
     public drawPoint = () => {
-        const pointSize = this.radius / 100 * this.options.pointSize ;
+        const pointSize = this.radius / 100 * this.options.pointSize;
 
-        const circle = SvgTags.addCircle(this.options.id, {
+        const circle = SvgTags.addCircle({
             id: `point-${this.options.id}`,
             class: "point-circle",
             cx: String(this.coordinates.x),
@@ -87,12 +97,18 @@ class SimpleCircle extends BaseCircle {
      */
     public drawForegroundCircle = () => {
         const endAngle = 360 / 100 * this.options.percent;
-
-        const arc = SvgTags.addArc(this.options.id, {
+        const attributes: IAttributes = {
             id: `arc-${this.options.id}`,
             class: "foreground-circle",
             d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
-        });
+        };
+
+        if(this.options.strokeGradient) {
+            attributes.stroke = "url(#linearGradient)";
+            attributes.class = "foreground-circle-without-stroke-color";
+        }
+
+        const arc = SvgTags.addArc(attributes);
 
         if (this.options.animation) {
             this.animate(arc);
@@ -124,25 +140,54 @@ class SimpleCircle extends BaseCircle {
     /**
      * @description
      */
-    public drawText = () => {
+    public drawIcon = () => {
         const icon = this.options.icon;
-        const text = SvgTags.addText(this.options.id, {
+        const text = SvgTags.addText({
+            id: `text-${this.options.id}`,
+            x: String(this.coordinates.x),
+            y: String(this.coordinates.y),
+            class: "circle-icon fa",
+        });
+
+        text.innerHTML = `&#x${icon};`;
+
+        this.tags.push({
+            element: text,
+            parentId: `svg-${this.options.id}`,
+        });
+    }
+
+    /**
+     * @description
+     */
+    public drawText = () => {
+        const text = SvgTags.addText({
             id: `text-${this.options.id}`,
             x: String(this.coordinates.x),
             y: String(this.coordinates.y),
             class: "circle-text",
         });
 
-        if (icon) {
-            text.classList.add("icon");
-            text.classList.add("fa");
-            text.innerHTML = `&#x${icon}; ${this.options.percent}%`;
-        } else {
-            text.textContent = `${this.options.percent}%`;
-        }
+        text.textContent = `${this.options.percent}%`;
 
         this.tags.push({
             element: text,
+            parentId: `svg-${this.options.id}`,
+        });
+    }
+
+    /**
+     * @description Draws a linear gradient into the foreground stroke
+     */
+    private drawLinearGradient = () => {
+        const attributes: IAttributes = {};
+
+        attributes.gradientStart = this.options.strokeGradient[0];
+        attributes.gradientEnd = this.options.strokeGradient[1];
+
+        const defs = SvgTags.addDefs(attributes);
+        this.tags.push({
+            element: defs,
             parentId: `svg-${this.options.id}`,
         });
     }

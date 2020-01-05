@@ -1,3 +1,15 @@
 .circle-container {
   overflow: visible;
 }
+
+
+.circle-container:hover {
+  .background-circle {
+    fill: #ccc;
+  }
+
+  .foreground-circle {
+    stroke: blueviolet;
+    stroke-width: 8;
+  }
+}

@@ -4,6 +4,10 @@
   stroke: #3498DB;
   stroke-width: 5; }
 
+.foreground-circle-without-stroke-color {
+  fill: none;
+  stroke-width: 5; }
+
 .background-circle {
   fill: none;
   stroke-width: 15;
@@ -11,14 +15,24 @@
 
 .circle-text {
   font-family: Arial, sans-serif;
-  color: #aaa; }
+  color: #aaa;
+  font-size: 20px;
+  transform: translate(0, 20px); }
 
 .icon.fa {
   font-size: 30px;
-  color: #ccc; }
+  color: #ccc;
+  fill: red; }
 
 .circle-container {
   overflow: visible; }
+
+.circle-container:hover .background-circle {
+  fill: #ccc; }
+
+.circle-container:hover .foreground-circle {
+  stroke: blueviolet;
+  stroke-width: 8; }
 
 .point-circle {
   fill: aliceblue; }

@@ -40,7 +40,7 @@ export abstract class BaseCircle {
      * @description Draws the svg tag
      */
     public drawContainer = () => {
-        const container = SvgTags.addSvg(this.options.id, {
+        const container = SvgTags.addSvg({
             width: this.size.width,
             height: this.size.height,
             id: `svg-${this.options.id}`,

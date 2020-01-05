@@ -14,4 +14,8 @@ export interface IAttributes {
     y?: string;
     viewBox?: string;
     transform?: string;
+    offset?: string;
+    "stop-color"?: string;
+    gradientStart?: string;
+    gradientEnd?: string;
 }

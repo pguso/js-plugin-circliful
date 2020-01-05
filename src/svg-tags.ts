@@ -6,11 +6,10 @@ class SvgTags {
 
     /**
      * @description Adds a svg tag with attributes
-     * @param parentId
      * @param attributes
      * @returns SVGElement
      */
-    public static addSvg(parentId: string, attributes: IAttributes): Element {
+    public static addSvg(attributes: IAttributes): Element {
         const svg = document.createElementNS(SvgTags.namespaceURI, "svg");
         attributes = {
             ...attributes,
@@ -24,11 +23,10 @@ class SvgTags {
 
     /**
      * @description Adds a circle tag with attributes
-     * @param parentId
      * @param attributes
      * @returns SVGCircleElement
      */
-    public static addCircle(parentId: string, attributes: IAttributes): Element {
+    public static addCircle(attributes: IAttributes): Element {
         const circle = document.createElementNS(SvgTags.namespaceURI, "circle");
         SvgTagsHelper.setAttributes(circle as SVGElement, attributes);
 
@@ -37,11 +35,10 @@ class SvgTags {
 
     /**
      * @description Adds a path tag with attributes
-     * @param parentId
      * @param attributes
      * @returns SVGPathElement
      */
-    public static addArc(parentId: string, attributes: IAttributes): Element {
+    public static addArc(attributes: IAttributes): Element {
         const arc = document.createElementNS(SvgTags.namespaceURI, "path");
         SvgTagsHelper.setAttributes(arc as SVGElement, attributes);
 
@@ -50,16 +47,48 @@ class SvgTags {
 
     /**
      * @description Adds a text tag with attributes
-     * @param parentId
      * @param attributes
      * @returns SVGTextElement
      */
-    public static addText(parentId: string, attributes: IAttributes): Element {
+    public static addText(attributes: IAttributes): Element {
         const text = document.createElementNS(SvgTags.namespaceURI, "text");
         text.setAttributeNS(null, "text-anchor", "middle");
         SvgTagsHelper.setAttributes(text as SVGElement, attributes);
 
         return text;
+    }
+
+    /**
+     * @description Adds defs tag to svg to draw a gradient
+     * @param attributes
+     */
+    public static addDefs(attributes: IAttributes): Element {
+        const defs = document.createElementNS(SvgTags.namespaceURI, "defs");
+        const linearGradient = document.createElementNS(SvgTags.namespaceURI, "linearGradient");
+        const linearGradientAttributes = {
+            id: "linearGradient",
+        };
+        SvgTagsHelper.setAttributes(linearGradient as SVGElement, linearGradientAttributes);
+
+        const firstStop = document.createElementNS(SvgTags.namespaceURI, "stop");
+        const firstStopAttributes = {
+            offset: "0",
+            "stop-color": attributes.gradientStart,
+        };
+        SvgTagsHelper.setAttributes(firstStop as SVGElement, firstStopAttributes);
+
+        const secondStop = document.createElementNS(SvgTags.namespaceURI, "stop");
+        const secondStopAttributes = {
+            offset: "1",
+            "stop-color": attributes.gradientEnd,
+        };
+        SvgTagsHelper.setAttributes(secondStop as SVGElement, secondStopAttributes);
+
+        linearGradient.appendChild(firstStop);
+        linearGradient.appendChild(secondStop);
+        defs.appendChild(linearGradient);
+
+        return defs;
     }
 }
 

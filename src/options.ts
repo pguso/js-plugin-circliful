@@ -7,10 +7,6 @@ class Options {
         percent: 75,
         animation: 1,
         animationStep: 1,
-        icon: "",
-        targetPercent: 0,
-        targetTextSize: 17,
-        targetColor: "#2980B9",
         noPercentageSign: false,
         halfCircle: false,
         animateInView: false,
@@ -19,7 +15,6 @@ class Options {
         type: "SimpleCircle",
         text: "",
         replacePercentageByText: "",
-        progressColor: "",
         update: null,
         onAnimationEnd: null,
     };

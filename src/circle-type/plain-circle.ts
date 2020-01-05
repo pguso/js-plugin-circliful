@@ -43,7 +43,7 @@ class PlainCircle extends BaseCircle {
     public drawPlainCircle = () => {
         const endAngle = 360 / 100 * this.options.percent;
 
-        const arc = SvgTags.addArc(this.options.id, {
+        const arc = SvgTags.addArc({
             id: `arc-${this.options.id}`,
             class: "foreground-circle",
             d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),

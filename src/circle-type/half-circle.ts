@@ -46,7 +46,7 @@ class HalfCircle extends BaseCircle {
         const startAngle = 270;
         const endAngle = 90;
 
-        const arc = SvgTags.addArc(this.options.id, {
+        const arc = SvgTags.addArc({
             id: `arc-${this.options.id}`,
             d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, startAngle, endAngle),
             class: "background-circle",
@@ -64,7 +64,7 @@ class HalfCircle extends BaseCircle {
     public drawForegroundCircle = () => {
         const endAngle = 180 / 100 * this.options.percent;
 
-        const arc = SvgTags.addArc(this.options.id, {
+        const arc = SvgTags.addArc({
             id: `arc-${this.options.id}`,
             class: "foreground-circle",
             d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
@@ -103,7 +103,7 @@ class HalfCircle extends BaseCircle {
      * @description Draws the text shown inside of the circle
      */
     public drawText = () => {
-        const text = SvgTags.addText(this.options.id, {
+        const text = SvgTags.addText({
             id: `text-${this.options.id}`,
             x: String(this.coordinates.x),
             y: String(this.coordinates.y),

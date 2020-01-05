@@ -18,7 +18,8 @@
         circliful.initCircle({
             id: 'circle1',
             type: 'SimpleCircle',
-            animationStep: 5,
+            percent: 60,
+            strokeGradient: ["#05a", "#0a5"],
             onStart: () => {
                 console.log('custom start event1');
             },
@@ -28,7 +29,7 @@
         });
 
         circliful.initCircle({
-            percent: 50,
+            percent: 40,
             id: 'circle2',
             type: 'SimpleCircle',
             icon: 'f179',
