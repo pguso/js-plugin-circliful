@@ -5,6 +5,8 @@ class Options {
         point: false,
         pointSize: 60,
         percent: 75,
+        foregroundCircleWidth: 5,
+        backgroundCircleWidth: 15,
         animation: 1,
         animationStep: 1,
         noPercentageSign: false,

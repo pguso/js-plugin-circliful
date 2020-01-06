@@ -46,8 +46,8 @@ class Circle {
      */
     public static getParentSize(id: string) {
         const box = document.getElementById(id);
-        const width = box.clientWidth;
-        const height = box.clientHeight;
+        const width = box.clientWidth > 0 ? box.clientWidth : 200;
+        const height = box.clientHeight > 0 ? box.clientHeight : 200;
 
         return {
             maxSize: width > height ? height : width,

@@ -20,4 +20,6 @@ export interface IAvailableOptions {
     onAnimationEnd?: () => {};
     type?: string;
     strokeGradient?: [string, string];
+    foregroundCircleWidth?: number;
+    backgroundCircleWidth?: number;
 }

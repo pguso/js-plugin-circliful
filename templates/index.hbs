@@ -5,10 +5,12 @@
     <title>{{htmlWebpackPlugin.options.title}}</title>
     <meta name="description" content="{{htmlWebpackPlugin.options.description}}">
     <link href="../dist/style.css" rel="stylesheet">
+    <link href="../public/custom.css" rel="stylesheet">
 </head>
 <body>
 <div style="width: 40%; height: 40%; min-height: 300px" id="circle1" data-percent="55"></div>
 <div style="width: 20%; height: 20%; min-height: 300px" id="circle2"></div>
+<div id="circle6" class="circle-stat-point"></div>
 <div style="width: 20%; height: 20%; min-height: 300px" id="circle3"></div>
 <div style="width: 20%; height: 20%; min-height: 300px" id="circle4"></div>
 <div style="width: 20%; height: 20%; min-height: 200px" id="circle5"></div>
@@ -36,6 +38,15 @@
             onStart: () => {
                 console.log('custom start event2');
             }
+        });
+
+        circliful.initCircle({
+            percent: 40,
+            id: 'circle6',
+            type: 'SimpleCircle',
+            point: true,
+            pointSize: 100,
+            foregroundCircleWidth: 95
         });
 
         circliful.initCircle({

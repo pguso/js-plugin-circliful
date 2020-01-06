@@ -1,9 +1,9 @@
 import {BaseCircle} from "../base-classes/base-circle";
+import {IAttributes} from "../interfaces/iattributes";
 import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
 import SvgTags from "../svg-tags";
 import SvgTagsHelper from "../svg-tags-helper";
-import {IAttributes} from "../interfaces/iattributes";
 
 /**
  * Every circle gets dynamically called by the given type in the options object example: { type: 'SimpleCircle' }
@@ -46,7 +46,7 @@ class SimpleCircle extends BaseCircle {
             this.drawPoint();
         }
 
-        if(this.options.icon) {
+        if (this.options.icon) {
             this.drawIcon();
         }
 
@@ -59,11 +59,12 @@ class SimpleCircle extends BaseCircle {
      */
     public drawBackgroundCircle = () => {
         const circle = SvgTags.addCircle({
-            id: `circle-${this.options.id}`,
-            class: "background-circle",
-            cx: String(this.coordinates.x),
-            cy: String(this.coordinates.y),
-            r: String(this.radius),
+            "id": `circle-${this.options.id}`,
+            "class": "background-circle",
+            "cx": String(this.coordinates.x),
+            "cy": String(this.coordinates.y),
+            "r": String(this.radius),
+            "stroke-width": this.options.backgroundCircleWidth,
         });
 
         this.tags.push({
@@ -98,12 +99,13 @@ class SimpleCircle extends BaseCircle {
     public drawForegroundCircle = () => {
         const endAngle = 360 / 100 * this.options.percent;
         const attributes: IAttributes = {
-            id: `arc-${this.options.id}`,
-            class: "foreground-circle",
-            d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
+            "id": `arc-${this.options.id}`,
+            "class": "foreground-circle",
+            "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
+            "stroke-width": this.options.foregroundCircleWidth,
         };
 
-        if(this.options.strokeGradient) {
+        if (this.options.strokeGradient) {
             attributes.stroke = "url(#linearGradient)";
             attributes.class = "foreground-circle-without-stroke-color";
         }
