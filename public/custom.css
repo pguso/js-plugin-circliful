@@ -1,0 +1,18 @@
+.circle-stat-point {
+    background: #f3f3f3;
+    width: 300px;
+    height: 300px;
+}
+
+.circle-stat-point .background-circle {
+    stroke: transparent;
+}
+
+.circle-stat-point .point-circle {
+    fill: #ffffff;
+}
+
+.circle-stat-point .circle-text {
+    font-size: 42px;
+    fill: #666;
+}

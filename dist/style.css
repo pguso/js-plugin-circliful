@@ -1,16 +1,13 @@
 @charset "UTF-8";
 .foreground-circle {
   fill: none;
-  stroke: #3498DB;
-  stroke-width: 5; }
+  stroke: #3498DB; }
 
 .foreground-circle-without-stroke-color {
-  fill: none;
-  stroke-width: 5; }
+  fill: none; }
 
 .background-circle {
   fill: none;
-  stroke-width: 15;
   stroke: #ccc; }
 
 .circle-text {
@@ -20,13 +17,6 @@
 
 .circle-container {
   overflow: visible; }
-
-.circle-container:hover .background-circle {
-  fill: #ccc; }
-
-.circle-container:hover .foreground-circle {
-  stroke: blueviolet;
-  stroke-width: 8; }
 
 .point-circle {
   fill: aliceblue; }

@@ -24,4 +24,6 @@ export interface IAvailableOptions {
     strokeLinecap?: string;
     update?: () => {};
     onAnimationEnd?: () => {};
+    foregroundCircleWidth?: number;
+    backgroundCircleWidth?: number;
 }

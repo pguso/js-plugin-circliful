@@ -78,9 +78,12 @@ export abstract class BaseCircle {
      * @param additionalAttributes
      */
     public drawContainer = (additionalAttributes?: object) => {
+        const {minX, minY, width, height} = this.getViewBoxParams();
+
         const container = SvgTags.addSvg({
             width: this.size.width,
             height: this.size.height / this.heightDivider,
+            viewBox: `${minX} ${minY} ${width} ${height}`,
             id: `svg-${this.options.id}`,
             ...additionalAttributes,
         });
@@ -89,6 +92,31 @@ export abstract class BaseCircle {
             element: container,
             parentId: this.options.id,
         });
+    }
+
+    /**
+     * @description Get viewBox parameters, resize the view if the border would overflow
+     */
+    private getViewBoxParams() { // TODO add correct return type
+        const {foregroundCircleWidth, backgroundCircleWidth} = this.options;
+        let circleWidth = backgroundCircleWidth;
+        // Get thicker circle stroke width, foreground or background
+        if (foregroundCircleWidth > backgroundCircleWidth) {
+            circleWidth = foregroundCircleWidth;
+        }
+
+        let minX = 0;
+        let minY = 0;
+        let width = this.size.width;
+        let height = this.size.height;
+        if (foregroundCircleWidth > 5 || backgroundCircleWidth > 5) {
+            minX = -(circleWidth / 1.5);
+            minY = -(circleWidth / 1.5);
+            width = this.size.width + (1.5 * circleWidth);
+            height = this.size.height + (1.5 * circleWidth);
+        }
+
+        return {minX, minY, width, height};
     }
 
     /**
