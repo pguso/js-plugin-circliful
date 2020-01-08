@@ -4,7 +4,6 @@ import SvgTagsHelper from "../helpers/svg-tags-helper";
 import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
 import SvgTags from "../svg-tags";
-import {BaseCircle} from "../base-classes/base-circle";
 
 /**
  * Every circle gets dynamically called by the given type in the options object example: { type: 'PlainCircle' }
@@ -60,9 +59,9 @@ class PlainCircle extends BaseCircle {
             "foregroundCircle",
         );
         const arc = SvgTags.addArc({
-            id: `arc-${this.options.id}`,
-            class: `foreground-circle ${customCssClass}`,
-            d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
+            "id": `arc-${this.options.id}`,
+            "class": `foreground-circle ${customCssClass}`,
+            "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
             "stroke-width": this.options.foregroundCircleWidth,
         });
 

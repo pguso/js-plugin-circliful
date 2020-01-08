@@ -45,9 +45,9 @@ class HalfCircle extends SimpleCircle {
             "backgroundCircle",
         );
         const arc = SvgTags.addArc({
-            id: `arc-${this.options.id}`,
-            d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, startAngle, endAngle),
-            class: `background-circle ${customCssClass}`,
+            "id": `arc-${this.options.id}`,
+            "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, startAngle, endAngle),
+            "class": `background-circle ${customCssClass}`,
             "stroke-width": this.options.backgroundCircleWidth,
         });
 
@@ -67,10 +67,10 @@ class HalfCircle extends SimpleCircle {
             "foregroundCircle",
         );
         const arc = SvgTags.addArc({
-            id: `arc-${this.options.id}`,
-            class: `foreground-circle ${customCssClass}`,
-            d: SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
-            transform: `rotate(-90, ${this.coordinates.x}, ${this.coordinates.y})`,
+            "id": `arc-${this.options.id}`,
+            "class": `foreground-circle ${customCssClass}`,
+            "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
+            "transform": `rotate(-90, ${this.coordinates.x}, ${this.coordinates.y})`,
             "stroke-width": this.options.foregroundCircleWidth,
         });
 
