@@ -9,11 +9,6 @@ Install devDependencies
 npm install
 ~~~~
 
-Prepare styling
-~~~~
-npm run gulp sass
-~~~~
-
 Run webpack dev server
 ~~~~
 npm run dev

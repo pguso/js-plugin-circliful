@@ -12,6 +12,7 @@ module.exports = {
         filename: `${libraryName}.js`,
         library: libraryName,
         path: path.resolve(__dirname, "./dist"),
+        publicPath: '/dist/',
     },
     target: "web",
     devtool: "inline-source-map",
@@ -58,7 +59,8 @@ module.exports = {
         minimizer: [new TerserPlugin()],
     },
     resolve: {
-        extensions: [".ts"],
+        extensions: [".ts", ".js"],
+        modules: ["src", "node_modules"],
     },
     plugins: [
         new ProvidePlugin({
