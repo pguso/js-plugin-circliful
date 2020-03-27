@@ -2,19 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{htmlWebpackPlugin.options.title}}</title>
-    <meta name="description" content="{{htmlWebpackPlugin.options.description}}">
-    <link href="../dist/style.css" rel="stylesheet">
-    <link href="../public/custom.css" rel="stylesheet">
+    <title>Circliful - examples</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="./dist/main.css" rel="stylesheet">
+    <link href="./public/custom.css" rel="stylesheet">
 </head>
 <body>
-<div style="width: 40%; height: 40%; min-height: 300px" id="circle1" data-percent="55"></div>
-<div style="width: 20%; height: 20%; min-height: 300px" id="circle2"></div>
-<div id="circle6" class="circle-stat-point"></div>
-<div style="width: 20%; height: 20%; min-height: 300px" id="circle3"></div>
-<div style="width: 20%; height: 20%; min-height: 300px" id="circle4"></div>
-<div style="width: 20%; height: 20%; min-height: 200px" id="circle5"></div>
-<script type="text/javascript" src="{{htmlWebpackPlugin.files.chunks.main.entry}}"></script>
+<div id="circle1" data-percent="55" class="circle-default-style"></div>
+<div id="circle2" class="circle-default-style"></div>
+<div id="circle6" class="circle-stat-custom circle-default-style"></div>
+<div id="circle3" class="circle-default-style"></div>
+<div id="circle4" class="circle-default-style"></div>
+<div id="circle5" class="circle-default-style"></div>
+
+<div id="circle7" class="circle-default-style"></div>
+<script type="text/javascript" src="./dist/circliful.js"></script>
 <script>
     (function() {
         circliful.initCircle({
@@ -22,12 +24,11 @@
             type: 'SimpleCircle',
             percent: 60,
             strokeGradient: ["#05a", "#0a5"],
-            onStart: () => {
-                console.log('custom start event1');
-            },
             onAnimationEnd: () => {
                 console.log('custom animation end event1');
-            }
+            },
+            animationStep: 3,
+            progressColor: [{percent: 50, color: 'orange'}, {percent: 60, color: 'green'}]
         });
 
         circliful.initCircle({
@@ -45,8 +46,9 @@
             id: 'circle6',
             type: 'SimpleCircle',
             point: true,
-            pointSize: 100,
-            foregroundCircleWidth: 95
+            pointSize: 70,
+            foregroundCircleWidth: 10,
+            animateInView: true
         });
 
         circliful.initCircle({
@@ -59,7 +61,7 @@
             percent: 99,
             id: 'circle4',
             type: 'HalfCircle',
-            noPercentageSign: true
+            noPercentageSign: true,
         });
 
         circliful.initCircle({
@@ -67,6 +69,14 @@
             id: 'circle5',
             type: 'PlainCircle',
             animation: 0,
+            animateInView: true
+        });
+        circliful.initCircle({
+            percent: 75,
+            id: 'circle7',
+            type: 'PlainCircle',
+            animation: 0,
+            animateInView: true
         });
     })();
 

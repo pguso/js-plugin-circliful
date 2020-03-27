@@ -34,6 +34,8 @@ class SimpleCircle extends BaseCircle {
         if (this.options.additionalCssClasses) {
             this.additionalCssClasses = this.options.additionalCssClasses;
         }
+
+        this.animateInView();
     }
 
     /**

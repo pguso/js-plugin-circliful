@@ -33,11 +33,7 @@ class PlainCircle extends BaseCircle {
             this.additionalCssClasses = this.options.additionalCssClasses;
         }
 
-        // TODO: for all circles seperatly possible
-        window.onscroll = () => {
-            const svgParentId = `${this.tags[0].parentId}`;
-            this.checkAnimation(svgParentId);
-        };
+        this.animateInView();
     }
 
     /**

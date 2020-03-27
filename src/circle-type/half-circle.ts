@@ -16,8 +16,6 @@ class HalfCircle extends SimpleCircle {
      */
     constructor(options: IAvailableOptions, size: ISize) {
         super(options, size);
-
-        this.heightDivider = 2;
     }
 
     /**

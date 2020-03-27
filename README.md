@@ -1,12 +1,17 @@
 # README #
 
-New implementation of circliful, without any dependencies.
+New implementation of circliful, without any dependencies - dependencies are only used for development.
 
 ### Run dev environment ###
 
 Install devDependencies
 ~~~~
 npm install
+~~~~
+
+Prepare styling
+~~~~
+npm run gulp sass
 ~~~~
 
 Run webpack dev server

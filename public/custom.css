@@ -1,18 +1,23 @@
-.circle-stat-point {
+#circle6.circle-stat-custom {
     background: #f3f3f3;
     width: 300px;
     height: 300px;
 }
 
-.circle-stat-point .background-circle {
+.circle-stat-custom .background-circle {
     stroke: transparent;
 }
 
-.circle-stat-point .point-circle {
-    fill: #ffffff;
+.circle-stat-custom .point-circle {
+    fill: #999;
 }
 
-.circle-stat-point .circle-text {
+.circle-stat-custom .circle-text {
     font-size: 42px;
     fill: #666;
+}
+
+.circle-default-style {
+    width: 80%;
+    height: 80%;
 }

@@ -4,6 +4,7 @@ import {ITag} from "../interfaces/itag";
 import SvgTags from "../svg-tags";
 
 /**
+ * TODO correct this context, actual is always last circle
  * Base for circle type implementations
  */
 export abstract class BaseCircle {
@@ -21,11 +22,6 @@ export abstract class BaseCircle {
     public tags: ITag[] = [];
 
     /**
-     * @description For half circles, so the svg container only uses the needed height
-     */
-    public heightDivider = 1;
-
-    /**
      * @description Initializes the options object and the size for the svg tag
      * @param options
      * @param size
@@ -33,6 +29,15 @@ export abstract class BaseCircle {
     protected constructor(options: IAvailableOptions, size: ISize) {
         this.options = options;
         this.size = size;
+    }
+
+    protected animateInView = (): void => {
+        // TODO: for all circles seperatly possible
+        if (this.options.animateInView) {
+            window.onscroll = () => {
+                this.checkAnimation(this.options.id);
+            };
+        }
     }
 
     /**
@@ -82,7 +87,7 @@ export abstract class BaseCircle {
 
         const container = SvgTags.addSvg({
             width: this.size.width,
-            height: this.size.height / this.heightDivider,
+            height: this.size.height,
             viewBox: `${minX} ${minY} ${width} ${height}`,
             id: `svg-${this.options.id}`,
             ...additionalAttributes,

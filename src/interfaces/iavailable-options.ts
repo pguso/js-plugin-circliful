@@ -26,4 +26,5 @@ export interface IAvailableOptions {
     onAnimationEnd?: () => {};
     foregroundCircleWidth?: number;
     backgroundCircleWidth?: number;
+    progressColor?: Array<{ percent: number, color: string }>; // TODO: implement
 }

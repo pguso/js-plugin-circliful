@@ -2,8 +2,9 @@ const {ProvidePlugin} = require("webpack");
 
 const path = require("path");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const libraryName = "circliful";
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: "./src/index.ts",
@@ -21,30 +22,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(png|jpg)$/,
-                use: [
-                    "file-loader",
-                ],
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    "style-loader", "css-loader",
-                ],
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    "style-loader", "css-loader", "sass-loader",
-                ],
-            },
-            {
-                test: /\.hbs$/,
-                use: [
-                    "handlebars-loader",
-                ],
-            },
-            {
                 test: /\.ts$/,
                 exclude: "/node_modules",
                 use: "ts-loader",
@@ -61,10 +38,27 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === 'development',
+                        },
+                    },
+                    'css-loader',
+                    'sass-loader',
+                ],
+            }
         ],
     },
+    optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin()],
+    },
     resolve: {
-        extensions: [ ".tsx", ".ts", ".js" ],
+        extensions: [".ts"],
     },
     plugins: [
         new ProvidePlugin({
@@ -72,15 +66,9 @@ module.exports = {
         }),
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: [
-                "**/*",
-                //path.join(process.cwd(), 'build/**/*') //clean other folders also
+                path.join(process.cwd(), 'dist/**/*')
             ],
         }),
-        new HtmlWebpackPlugin({
-            title: "Hello world",
-            template: "templates/index.hbs",
-            description: "Circliful showcase",
-            inject: false,
-        }),
+        new MiniCssExtractPlugin()
     ],
 };

@@ -1,4 +1,3 @@
-import Events from "../events";
 import {IAttributes} from "../interfaces/iattributes";
 import {ICalculationParams} from "../interfaces/icalculation-params";
 
@@ -98,8 +97,6 @@ class SvgTagsHelper {
 
             if (count > percent) {
                 clearInterval(interval);
-                // tslint:disable-next-line:no-unused-expression
-                typeof callback === "function" ? Events.onAnimationEnd(callback) : "";
             }
         }, ms, arc, arcParams.percent);
     }
