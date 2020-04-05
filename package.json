@@ -8,7 +8,7 @@
     "url": "https://github.com/pguso/js-plugin-circliful"
   },
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.dev.config.js ",
+    "start:dev": "webpack-dev-server --config webpack.dev.config.js ",
     "build": "webpack --config webpack.dev.config.js",
     "lint": "tslint -c tslint.json -p tsconfig.json --fix"
   },

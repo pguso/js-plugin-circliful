@@ -4,7 +4,6 @@ import {ITag} from "../interfaces/itag";
 import SvgTags from "../svg-tags";
 
 /**
- * TODO correct this context, actual is always last circle
  * Base for circle type implementations
  */
 export abstract class BaseCircle {
@@ -31,17 +30,19 @@ export abstract class BaseCircle {
         this.size = size;
     }
 
+    /**
+     * @description Fires scroll event if animateInView is set to true and runs checkAnimation
+     */
     protected animateInView = (): void => {
-        // TODO: for all circles seperatly possible
         if (this.options.animateInView) {
-            window.onscroll = () => {
+            window.addEventListener('scroll', () => {
                 this.checkAnimation(this.options.id);
-            };
+            })
         }
     }
 
     /**
-     * @description
+     * @description When circle is in view port it animates the foreground circle
      */
     protected checkAnimation = (svgParentId: string) => {
         const circleContainer = document.getElementById(svgParentId);
