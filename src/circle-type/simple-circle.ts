@@ -135,7 +135,7 @@ class SimpleCircle extends BaseCircle {
 
         if (this.options.strokeGradient) {
             attributes.stroke = "url(#linearGradient)";
-            attributes.class = "foreground-circle-without-stroke-color";
+            attributes.class = `foreground-circle-without-stroke-color ${customCssClass}`;
         }
 
         const arc = SvgTags.addArc(attributes);

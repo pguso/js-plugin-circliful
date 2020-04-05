@@ -13,7 +13,7 @@ class SvgTags {
      */
     public static addSvg(attributes: IAttributes): Element {
         const svg = document.createElementNS(SvgTags.namespaceURI, "svg");
-        attributes.class = "circle-container" + ObjectHelper.extractPropertyFromObject(
+        attributes.class = "circle-container " + ObjectHelper.extractPropertyFromObject(
             attributes as IDictionary,
             "class",
         );

@@ -43,7 +43,7 @@ class HalfCircle extends SimpleCircle {
             "backgroundCircle",
         );
         const arc = SvgTags.addArc({
-            "id": `arc-${this.options.id}`,
+            "id": `bg-arc-${this.options.id}`,
             "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, startAngle, endAngle),
             "class": `background-circle ${customCssClass}`,
             "stroke-width": this.options.backgroundCircleWidth,

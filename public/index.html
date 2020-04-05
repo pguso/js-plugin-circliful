@@ -28,7 +28,18 @@
                 console.log('custom animation end event1');
             },
             animationStep: 3,
-            progressColor: [{percent: 50, color: 'orange'}, {percent: 60, color: 'green'}]
+            progressColor: [{percent: 50, color: 'orange'}, {percent: 60, color: 'green'}],
+            backgroundCircleWidth: 150,
+            additionalCssClasses: {
+                svgContainer: 'circle1-container',
+                foregroundCircle: 'circle1-foreground-circle',
+                text: 'circle1-text',
+                icon: 'circle1-icon',
+                infoText: 'circle1-info-text'
+            },
+            icon: 'f0d0',
+            text: 'Lorem',
+            textBelow: true
         });
 
         circliful.initCircle({
@@ -54,7 +65,8 @@
         circliful.initCircle({
             percent: 50,
             id: 'circle3',
-            type: 'HalfCircle'
+            type: 'HalfCircle',
+            animateInView: true
         });
 
         circliful.initCircle({

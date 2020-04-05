@@ -1,8 +1,8 @@
 import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
 import {ITag} from "../interfaces/itag";
-import SvgTags from "../svg-tags";
 import {IViewBoxAttributes} from "../interfaces/iview-box-attributes";
+import SvgTags from "../svg-tags";
 
 /**
  * Base for circle type implementations
@@ -88,10 +88,11 @@ export abstract class BaseCircle {
         const {minX, minY, width, height} = this.getViewBoxParams();
 
         const container = SvgTags.addSvg({
-            width: this.size.width,
-            height: this.size.height,
+            width: "100%",
+            height: "100%",
             viewBox: `${minX} ${minY} ${width} ${height}`,
             id: `svg-${this.options.id}`,
+            preserveAspectRatio: "xMinYMin meet",
             ...additionalAttributes,
         });
 
@@ -112,13 +113,11 @@ export abstract class BaseCircle {
             circleWidth = foregroundCircleWidth;
         }
 
-        let minX = 0;
-        let minY = 0;
+        const minX = 0;
+        const minY = 0;
         let width = this.size.width;
         let height = this.size.height;
         if (foregroundCircleWidth > 5 || backgroundCircleWidth > 5) {
-            minX = -(circleWidth / 1.5);
-            minY = -(circleWidth / 1.5);
             width = this.size.width + (1.5 * circleWidth);
             height = this.size.height + (1.5 * circleWidth);
         }

@@ -1,6 +1,6 @@
 export interface IAttributes {
-    width?: number;
-    height?: number;
+    width?: string;
+    height?: string;
     id?: string;
     class?: string;
     cx?: string;
@@ -18,4 +18,5 @@ export interface IAttributes {
     "stop-color"?: string;
     gradientStart?: string;
     gradientEnd?: string;
+    preserveAspectRatio?: string;
 }
