@@ -18,7 +18,6 @@ class SimpleCircle extends BaseCircle {
     protected additionalCssClasses: IAvailableOptions["additionalCssClasses"] = {};
 
     /**
-     * TODO remove duplicates between this and PlainCircle class
      * @inheritDoc
      */
     constructor(options: IAvailableOptions, size: ISize) {

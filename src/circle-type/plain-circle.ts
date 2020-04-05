@@ -13,8 +13,8 @@ class PlainCircle extends BaseCircle {
         x: 0,
         y: 0,
     };
-    private radius: number;
-    private additionalCssClasses: IAvailableOptions["additionalCssClasses"] = {};
+    protected radius: number;
+    protected additionalCssClasses: IAvailableOptions["additionalCssClasses"] = {};
 
     /**
      * @inheritDoc

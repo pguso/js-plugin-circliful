@@ -2,6 +2,7 @@ import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
 import {ITag} from "../interfaces/itag";
 import SvgTags from "../svg-tags";
+import {IViewBoxAttributes} from "../interfaces/iview-box-attributes";
 
 /**
  * Base for circle type implementations
@@ -35,9 +36,9 @@ export abstract class BaseCircle {
      */
     protected animateInView = (): void => {
         if (this.options.animateInView) {
-            window.addEventListener('scroll', () => {
+            window.addEventListener("scroll", () => {
                 this.checkAnimation(this.options.id);
-            })
+            });
         }
     }
 
@@ -103,7 +104,7 @@ export abstract class BaseCircle {
     /**
      * @description Get viewBox parameters, resize the view if the border would overflow
      */
-    private getViewBoxParams() { // TODO add correct return type
+    private getViewBoxParams(): IViewBoxAttributes {
         const {foregroundCircleWidth, backgroundCircleWidth} = this.options;
         let circleWidth = backgroundCircleWidth;
         // Get thicker circle stroke width, foreground or background

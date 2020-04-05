@@ -11,17 +11,35 @@ npm install
 
 Run webpack dev server
 ~~~~
-npm run dev
+npm run start:dev
 ~~~~
 
 In the console you should see something like: "Project is running at http://localhost:9090/" call the url in the browser.
 
+### Build javascript files ### 
+
+~~~~
+npm run build
+~~~~
+
 ### Project structure ###
 
-* dist (in production mode the will be the js minified version)
-* src (all code for the library)
-    * circle-type (some default circles, you can add there your own)
-    * interfaces
-* templates (at the moment there is only one, it will be used to generate in dev env the index.html)
-* tests (unit and dom tests, coming soon...)
+| Folder        | Description | 
+| ------------- |-------------| 
+| dist          | minified css and js version for implementing in script tag | 
+| docs          | md documentation files      |  
+| public        | content-base for webpack dev server      |    
+| src           | all code for the library      |    
+| styles        | scss styling files for circles      |    
+| tests         | unit and dom tests, coming soon...      |    
+
+#### src folder ####
+
+| Folder        | Description | 
+| ------------- |-------------| 
+| base-classes  | abstract classes for inheritance to centralize main features | 
+| circle-type   | some default circles, you can add there your own      |  
+| helpers       | svg and object helper       |  
+| interfaces    | typescript interfaces for validation      |  
+
 
