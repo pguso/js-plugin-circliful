@@ -1,5 +1,6 @@
 import {BaseCircle} from "../base-classes/base-circle";
 import ObjectHelper from "../helpers/object-helper";
+import {StyleHelper} from "../helpers/style-helper";
 import SvgTagsHelper from "../helpers/svg-tags-helper";
 import {IAttributes} from "../interfaces/iattributes";
 import {IAvailableOptions} from "../interfaces/iavailable-options";
@@ -7,7 +8,8 @@ import {ISize} from "../interfaces/isize";
 import SvgTags from "../svg-tags";
 
 /**
- * Every circle gets dynamically called by the given type in the options object example: { type: 'SimpleCircle' }
+ * Every circle gets dynamically called by the given type in the options object
+ * example: { type: 'SimpleCircle' }
  */
 class SimpleCircle extends BaseCircle {
     protected coordinates = {
@@ -40,7 +42,7 @@ class SimpleCircle extends BaseCircle {
     /**
      * @inheritDoc
      */
-    public drawCircle = () => {
+    public drawCircle() {
         const additionalContainerAttributes = {
             class: ObjectHelper.extractPropertyFromObject(this.additionalCssClasses, "svgContainer"),
         };
@@ -63,7 +65,7 @@ class SimpleCircle extends BaseCircle {
 
         this.drawText();
 
-        if (this.options.textBelow && this.options.text) {
+        if (!this.options.textReplacesPercentage && this.options.text) {
             this.drawInfoText();
         }
 
@@ -71,9 +73,9 @@ class SimpleCircle extends BaseCircle {
     }
 
     /**
-     * @description
+     * @description Draws background circle
      */
-    public drawBackgroundCircle = () => {
+    public drawBackgroundCircle() {
         const customCssClass = ObjectHelper.extractPropertyFromObject(
             this.additionalCssClasses,
             "backgroundCircle",
@@ -97,7 +99,7 @@ class SimpleCircle extends BaseCircle {
     /**
      * @description Draws a point into the circle, behind the text
      */
-    public drawPoint = () => {
+    public drawPoint() {
         const pointSize = this.radius / 100 * this.options.pointSize;
         const customCssClass = ObjectHelper.extractPropertyFromObject(
             this.additionalCssClasses,
@@ -118,9 +120,9 @@ class SimpleCircle extends BaseCircle {
     }
 
     /**
-     * @description
+     * @description Draws foreground circle
      */
-    public drawForegroundCircle = () => {
+    public drawForegroundCircle() {
         const endAngle = 360 / 100 * this.options.percent;
         const customCssClass = ObjectHelper.extractPropertyFromObject(
             this.additionalCssClasses,
@@ -131,6 +133,7 @@ class SimpleCircle extends BaseCircle {
             "class": `foreground-circle ${customCssClass}`,
             "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
             "stroke-width": this.options.foregroundCircleWidth,
+            "stroke-linecap": this.options.strokeLinecap,
         };
 
         if (this.options.strokeGradient) {
@@ -155,7 +158,7 @@ class SimpleCircle extends BaseCircle {
      * @param arc
      */
     protected animate(arc: Element) {
-        SvgTagsHelper.animateArc({
+        StyleHelper.animateArc({
             arc,
             arcParams: {
                 percent: this.options.percent,
@@ -164,13 +167,14 @@ class SimpleCircle extends BaseCircle {
                 radius: this.radius,
             },
             animationStep: this.options.animationStep,
+            progressColors: this.options.progressColors,
         }, this.options.onAnimationEnd);
     }
 
     /**
-     * @description
+     * @description Draws font awesome icon
      */
-    public drawIcon = () => {
+    public drawIcon() {
         const icon = this.options.icon;
         const customCssClass = ObjectHelper.extractPropertyFromObject(
             this.additionalCssClasses,
@@ -192,9 +196,9 @@ class SimpleCircle extends BaseCircle {
     }
 
     /**
-     * @description
+     * @description Draws percentage
      */
-    public drawText = () => {
+    public drawText() {
         const customCssClass = ObjectHelper.extractPropertyFromObject(
             this.additionalCssClasses,
             "text",
@@ -208,7 +212,7 @@ class SimpleCircle extends BaseCircle {
 
         const percentageSign = this.options.noPercentageSign ? "" : "%";
         let content = `${this.options.percent}${percentageSign}`;
-        if (!this.options.textBelow && this.options.text) {
+        if (this.options.textReplacesPercentage && this.options.text) {
             content = this.options.text;
         }
         text.textContent = content;
@@ -245,7 +249,7 @@ class SimpleCircle extends BaseCircle {
     /**
      * @description Draws a linear gradient into the foreground stroke
      */
-    private drawLinearGradient = () => {
+    private drawLinearGradient() {
         const attributes: IAttributes = {};
 
         attributes.gradientStart = this.options.strokeGradient[0];

@@ -1,3 +1,5 @@
+import {IProgressColor} from "./iprogress-color";
+
 export interface IAvailableOptions {
     id?: string;
     type?: string;
@@ -18,13 +20,13 @@ export interface IAvailableOptions {
     strokeGradient?: [string, string];
     icon?: string;
     text?: string;
-    textBelow?: boolean;
+    textReplacesPercentage?: boolean;
     noPercentageSign?: boolean;
-    animateInView?: boolean; //
+    animateInView?: boolean;
     strokeLinecap?: string;
-    update?: () => {};
+    update?: () => {}; // TODO: implement
     onAnimationEnd?: () => {};
     foregroundCircleWidth?: number;
     backgroundCircleWidth?: number;
-    progressColor?: Array<{ percent: number, color: string }>; // TODO: implement
+    progressColors?: IProgressColor[];
 }

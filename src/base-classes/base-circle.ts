@@ -34,7 +34,7 @@ export abstract class BaseCircle {
     /**
      * @description Fires scroll event if animateInView is set to true and runs checkAnimation
      */
-    protected animateInView = (): void => {
+    protected animateInView(): void {
         if (this.options.animateInView) {
             window.addEventListener("scroll", () => {
                 this.checkAnimation(this.options.id);
@@ -45,7 +45,7 @@ export abstract class BaseCircle {
     /**
      * @description When circle is in view port it animates the foreground circle
      */
-    protected checkAnimation = (svgParentId: string) => {
+    protected checkAnimation(svgParentId: string) {
         const circleContainer = document.getElementById(svgParentId);
         const foregroundCircle = document.getElementById(`arc-${svgParentId}`);
         const inView = this.isElementInViewport(circleContainer);
@@ -60,7 +60,7 @@ export abstract class BaseCircle {
      * @description Calculates if the circle is in viewport
      * @param circleContainer
      */
-    protected isElementInViewport = (circleContainer: HTMLElement) => {
+    protected isElementInViewport(circleContainer: HTMLElement) {
         const offsetTop = circleContainer.offsetTop;
         const scrollPositionTop = window.scrollY;
         const windowHeight = window.innerHeight;
@@ -84,7 +84,7 @@ export abstract class BaseCircle {
      * @description Draws the svg tag
      * @param additionalAttributes
      */
-    public drawContainer = (additionalAttributes?: object) => {
+    public drawContainer(additionalAttributes?: object) {
         const {minX, minY, width, height} = this.getViewBoxParams();
 
         const container = SvgTags.addSvg({
@@ -128,7 +128,7 @@ export abstract class BaseCircle {
     /**
      * @description Appends the tags to the dom
      */
-    public append = () => {
+    public append() {
         this.tags.forEach((tag) => {
             const parent = document.getElementById(tag.parentId);
             parent.appendChild(tag.element as Node);

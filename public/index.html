@@ -18,17 +18,16 @@
 <div id="circle7" class="circle-default-style"></div>
 <script type="text/javascript" src="../dist/circliful.js"></script>
 <script>
-    (function() {
+    (function () {
         circliful.initCircle({
             id: 'circle1',
             type: 'SimpleCircle',
             percent: 60,
             strokeGradient: ["#05a", "#0a5"],
             onAnimationEnd: () => {
-                console.log('custom animation end event1');
+                console.log('custom animation end event');
             },
             animationStep: 3,
-            progressColor: [{percent: 50, color: 'orange'}, {percent: 60, color: 'green'}],
             backgroundCircleWidth: 150,
             additionalCssClasses: {
                 svgContainer: 'circle1-container',
@@ -39,17 +38,24 @@
             },
             icon: 'f0d0',
             text: 'Lorem',
-            textBelow: true
+            noPercentageSign: true,
+            strokeLinecap: "round"
         });
 
         circliful.initCircle({
-            percent: 40,
+            percent: 80,
             id: 'circle2',
             type: 'SimpleCircle',
             icon: 'f179',
             text: 'TP Wins',
-            textBelow: true,
-            noPercentageSign: true
+            noPercentageSign: true,
+            backgroundCircleWidth: 35,
+            foregroundCircleWidth: 20,
+            progressColors: [
+                {percent: 1, color: 'red'},
+                {percent: 30, color: 'orange'},
+                {percent: 60, color: 'green'}
+            ],
         });
 
         circliful.initCircle({

@@ -1,5 +1,6 @@
 import {BaseCircle} from "../base-classes/base-circle";
 import ObjectHelper from "../helpers/object-helper";
+import {StyleHelper} from "../helpers/style-helper";
 import SvgTagsHelper from "../helpers/svg-tags-helper";
 import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
@@ -39,7 +40,7 @@ class PlainCircle extends BaseCircle {
     /**
      * @inheritDoc
      */
-    public drawCircle = () => {
+    public drawCircle() {
         this.drawContainer();
         this.drawPlainCircle();
         this.append();
@@ -48,7 +49,7 @@ class PlainCircle extends BaseCircle {
     /**
      * @description Draws the circle by given percentage with optional animation
      */
-    public drawPlainCircle = () => {
+    public drawPlainCircle() {
         const endAngle = 360 / 100 * this.options.percent;
         const customCssClass = ObjectHelper.extractPropertyFromObject(
             this.additionalCssClasses,
@@ -76,7 +77,7 @@ class PlainCircle extends BaseCircle {
      * @param arc
      */
     protected animate(arc: Element) {
-        SvgTagsHelper.animateArc({
+        StyleHelper.animateArc({
             arc,
             arcParams: {
                 percent: this.options.percent,
@@ -85,6 +86,7 @@ class PlainCircle extends BaseCircle {
                 radius: this.radius,
             },
             animationStep: this.options.animationStep,
+            progressColors: this.options.progressColors,
         }, this.options.onAnimationEnd);
     }
 }

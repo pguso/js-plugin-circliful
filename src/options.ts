@@ -16,7 +16,7 @@ class Options {
         animateInView: false,
         strokeLinecap: "butt",
         type: "SimpleCircle",
-        textBelow: false,
+        textReplacesPercentage: false,
     };
 
     /**

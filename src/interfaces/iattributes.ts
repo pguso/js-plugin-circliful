@@ -8,6 +8,7 @@ export interface IAttributes {
     r?: string;
     fill?: string;
     "stroke-width"?: number;
+    "stroke-linecap"?: string;
     stroke?: string;
     d?: string;
     x?: string;
@@ -19,4 +20,5 @@ export interface IAttributes {
     gradientStart?: string;
     gradientEnd?: string;
     preserveAspectRatio?: string;
+    style?: string;
 }

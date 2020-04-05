@@ -67,49 +67,6 @@ class SvgTagsHelper {
             "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y,
         ].join(" ");
     }
-
-    /**
-     * @description Redraws the arc (circle) border
-     * @param params
-     * @param callback
-     */
-    public static animateArc(
-        params: { arc: Element, arcParams: ICalculationParams, animationStep: number },
-        callback: () => {},
-    ): void {
-        const {arc, arcParams, animationStep} = params;
-        let count = 1;
-        const startAngle = arcParams.startAngle ? arcParams.startAngle : 0;
-        const endAngleGrade = arcParams.endAngleGrade ? arcParams.endAngleGrade : 360;
-        const ms = this.getMilliseconds(arcParams.ms, arcParams.endAngleGrade);
-
-        const interval = setInterval((arc, percent) => {
-            const endAngle = endAngleGrade / 100 * count;
-            SvgTagsHelper.setAttributes(arc, {
-                d: SvgTagsHelper.describeArc(arcParams.x, arcParams.y, arcParams.radius, startAngle, endAngle),
-            });
-
-            if (animationStep > 1) {
-                count += animationStep;
-            } else {
-                count++;
-            }
-
-            if (count > percent) {
-                clearInterval(interval);
-            }
-        }, ms, arc, arcParams.percent);
-    }
-
-    private static getMilliseconds(defaultMs: number, endAngleGrade: number) {
-        let ms = defaultMs ? defaultMs : 50;
-
-        if (endAngleGrade <= 180) {
-            ms = ms / 3;
-        }
-
-        return ms;
-    }
 }
 
 export default SvgTagsHelper;

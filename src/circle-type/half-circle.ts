@@ -1,4 +1,5 @@
 import ObjectHelper from "../helpers/object-helper";
+import {StyleHelper} from "../helpers/style-helper";
 import SvgTagsHelper from "../helpers/svg-tags-helper";
 import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
@@ -21,7 +22,7 @@ class HalfCircle extends SimpleCircle {
     /**
      * @inheritDoc
      */
-    public drawCircle = () => {
+    public drawCircle() {
         const additionalContainerAttributes = {
             class: ObjectHelper.extractPropertyFromObject(this.additionalCssClasses, "svgContainer"),
         };
@@ -35,7 +36,7 @@ class HalfCircle extends SimpleCircle {
     /**
      * @description Draws the background circle
      */
-    public drawBackgroundCircle = () => {
+    public drawBackgroundCircle() {
         const startAngle = 270;
         const endAngle = 90;
         const customCssClass = ObjectHelper.extractPropertyFromObject(
@@ -58,7 +59,7 @@ class HalfCircle extends SimpleCircle {
     /**
      * @description Draws the foreground circle by given percentage with optional animation
      */
-    public drawForegroundCircle = () => {
+    public drawForegroundCircle() {
         const endAngle = 180 / 100 * this.options.percent;
         const customCssClass = ObjectHelper.extractPropertyFromObject(
             this.additionalCssClasses,
@@ -87,7 +88,7 @@ class HalfCircle extends SimpleCircle {
      * @param arc
      */
     protected animate(arc: Element) {
-        SvgTagsHelper.animateArc({
+        StyleHelper.animateArc({
             arc,
             arcParams: {
                 percent: this.options.percent,
@@ -97,6 +98,7 @@ class HalfCircle extends SimpleCircle {
                 endAngleGrade: 180,
             },
             animationStep: this.options.animationStep,
+            progressColors: this.options.progressColors,
         }, this.options.onAnimationEnd);
     }
 }
