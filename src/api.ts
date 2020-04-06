@@ -73,7 +73,6 @@ export class Api {
                 this.options.additionalCssClasses = value as any;
                 break;
             case "progressColors":
-                console.log("value", value);
                 // tslint:disable-next-line
                 this.options.progressColors = value as any;
                 break;
