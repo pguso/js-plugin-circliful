@@ -37,7 +37,7 @@ npm run build
 
 | Folder        | Description | 
 | ------------- |-------------| 
-| base-classes  | abstract classes for inheritance to centralize main features | 
+| base-classes  | basic classes to centralize main features | 
 | circle-type   | some default circles, you can add there your own      |  
 | helpers       | svg and object helper       |  
 | interfaces    | typescript interfaces for validation      |  
