@@ -32,7 +32,7 @@ class Options {
                 const value = circleContainer.dataset[key];
 
                 if (value === "false" || value === "true") {
-                    dataOptions[key] = Boolean(value);
+                    dataOptions[key] = value === "true";
                 } else if (Number(value)) {
                     dataOptions[key] = Number(value);
                 } else {
