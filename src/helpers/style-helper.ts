@@ -18,12 +18,12 @@ export class StyleHelper {
         callback: () => {},
     ): void {
         const {arc, arcParams, animationStep, progressColors} = params;
-        let count = 1;
         const startAngle = arcParams.startAngle ? arcParams.startAngle : 0;
         const endAngleGrade = arcParams.endAngleGrade ? arcParams.endAngleGrade : 360;
         const ms = this.getMilliseconds(arcParams.ms, arcParams.endAngleGrade);
         const hasProgressColor = Array.isArray(progressColors) && progressColors.length > 0;
 
+        let count = 1;
         const interval = setInterval((arc, percent, progressColors) => {
             const endAngle = endAngleGrade / 100 * count;
             SvgTagsHelper.setAttributes(arc, {
@@ -34,11 +34,7 @@ export class StyleHelper {
                 StyleHelper.updateCircleColor(count, arc, progressColors);
             }
 
-            if (animationStep > 1) {
-                count += animationStep;
-            } else {
-                count++;
-            }
+            count += animationStep;
 
             if (count > percent) {
                 clearInterval(interval);

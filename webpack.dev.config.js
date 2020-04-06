@@ -2,9 +2,11 @@ const {ProvidePlugin} = require("webpack");
 
 const path = require("path");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const libraryName = "circliful";
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+const libraryName = "circliful";
 
 module.exports = {
     entry: "./src/index.ts",
@@ -56,7 +58,14 @@ module.exports = {
     },
     optimization: {
         minimize: true,
-        minimizer: [new TerserPlugin()],
+        minimizer: [new TerserPlugin({
+            terserOptions: {
+                output: {
+                    comments: false,
+                },
+            },
+            extractComments: false,
+        }), new OptimizeCSSAssetsPlugin()],
     },
     resolve: {
         extensions: [".ts", ".js"],

@@ -1,7 +1,7 @@
-import ObjectHelper from "./helpers/object-helper";
-import SvgTagsHelper from "./helpers/svg-tags-helper";
-import {IAttributes} from "./interfaces/iattributes";
-import {IDictionary} from "./interfaces/idictionary";
+import ObjectHelper from "../helpers/object-helper";
+import SvgTagsHelper from "../helpers/svg-tags-helper";
+import {IAttributes} from "../interfaces/iattributes";
+import {IDictionary} from "../interfaces/idictionary";
 
 class SvgTags {
     public static namespaceURI = "http://www.w3.org/2000/svg";

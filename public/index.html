@@ -19,9 +19,9 @@
 <script type="text/javascript" src="../dist/circliful.js"></script>
 <script>
     (function () {
-        circliful.initCircle({
+        var circle1 = circliful.newCircle({
             id: 'circle1',
-            type: 'SimpleCircle',
+            type: 'simple',
             percent: 60,
             strokeGradient: ["#05a", "#0a5"],
             onAnimationEnd: () => {
@@ -39,13 +39,21 @@
             icon: 'f0d0',
             text: 'Lorem',
             noPercentageSign: true,
-            strokeLinecap: "round"
+            strokeLinecap: "round",
         });
 
-        circliful.initCircle({
+        setTimeout(() => {
+            circle1.update([
+                {type: 'percent', value: 30},
+                {type: 'animation', value: false}
+            ]);
+            circle1.get('percent')
+        }, 3000);
+
+        var circle2 = circliful.newCircle({
             percent: 80,
             id: 'circle2',
-            type: 'SimpleCircle',
+            type: 'simple',
             icon: 'f179',
             text: 'TP Wins',
             noPercentageSign: true,
@@ -55,47 +63,57 @@
                 {percent: 1, color: 'red'},
                 {percent: 30, color: 'orange'},
                 {percent: 60, color: 'green'}
-            ],
+            ]
         });
 
-        circliful.initCircle({
+        setTimeout(() => {
+            circle2.update([
+                {type: 'percent', value: 95},
+                {type: 'text', value: 'TP has won'},
+            ]);
+        }, 3000);
+
+        circliful.newCircle({
             percent: 40,
             id: 'circle6',
-            type: 'SimpleCircle',
+            type: 'simple',
             point: true,
             pointSize: 70,
             foregroundCircleWidth: 10,
             animateInView: true
         });
 
-        circliful.initCircle({
+        circliful.newCircle({
             percent: 50,
             id: 'circle3',
-            type: 'HalfCircle',
+            type: 'half',
             animateInView: true
         });
 
-        circliful.initCircle({
+        circliful.newCircle({
             percent: 99,
             id: 'circle4',
-            type: 'HalfCircle',
+            type: 'half',
             noPercentageSign: true,
         });
 
-        circliful.initCircle({
+        circliful.newCircle({
             percent: 75,
             id: 'circle5',
-            type: 'PlainCircle',
-            animation: 0,
+            type: 'plain',
+            animation: false,
             animateInView: true
         });
-        circliful.initCircle({
+
+        var circle7 = circliful.newCircle({
             percent: 75,
             id: 'circle7',
-            type: 'PlainCircle',
-            animation: 0,
+            type: 'plain',
+            animation: false,
             animateInView: true
         });
+
+        console.log('get', circle7.get('percent'))
     })();
 </script>
 </body>

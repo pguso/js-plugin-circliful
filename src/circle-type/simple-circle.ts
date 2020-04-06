@@ -1,11 +1,11 @@
 import {BaseCircle} from "../base-classes/base-circle";
+import SvgTags from "../base-classes/svg-tags";
 import ObjectHelper from "../helpers/object-helper";
 import {StyleHelper} from "../helpers/style-helper";
 import SvgTagsHelper from "../helpers/svg-tags-helper";
 import {IAttributes} from "../interfaces/iattributes";
 import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
-import SvgTags from "../svg-tags";
 
 /**
  * Every circle gets dynamically called by the given type in the options object
@@ -22,8 +22,8 @@ class SimpleCircle extends BaseCircle {
     /**
      * @inheritDoc
      */
-    constructor(options: IAvailableOptions, size: ISize) {
-        super(options, size);
+    public initialize(options: IAvailableOptions, size: ISize) {
+        super.initialize(options, size);
 
         const maxSize = this.size.maxSize;
         this.coordinates = {
@@ -142,7 +142,6 @@ class SimpleCircle extends BaseCircle {
         }
 
         const arc = SvgTags.addArc(attributes);
-
         if (this.options.animation) {
             this.animate(arc);
         }
@@ -156,12 +155,13 @@ class SimpleCircle extends BaseCircle {
     /**
      * @description Animates circle counter clock wise
      * @param arc
+     * @param updatedPercent
      */
-    protected animate(arc: Element) {
+    public animate(arc: Element, updatedPercent?: number) {
         StyleHelper.animateArc({
             arc,
             arcParams: {
-                percent: this.options.percent,
+                percent: updatedPercent ? updatedPercent : this.options.percent,
                 x: this.coordinates.x,
                 y: this.coordinates.y,
                 radius: this.radius,

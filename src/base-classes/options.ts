@@ -1,4 +1,4 @@
-import {IAvailableOptions} from "./interfaces/iavailable-options";
+import {IAvailableOptions} from "../interfaces/iavailable-options";
 
 class Options {
     /**
@@ -10,7 +10,7 @@ class Options {
         percent: 75,
         foregroundCircleWidth: 5,
         backgroundCircleWidth: 15,
-        animation: 1,
+        animation: true,
         animationStep: 1,
         noPercentageSign: false,
         animateInView: false,

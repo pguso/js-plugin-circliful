@@ -2,7 +2,7 @@ import {IAvailableOptions} from "../interfaces/iavailable-options";
 import {ISize} from "../interfaces/isize";
 import {ITag} from "../interfaces/itag";
 import {IViewBoxAttributes} from "../interfaces/iview-box-attributes";
-import SvgTags from "../svg-tags";
+import SvgTags from "./svg-tags";
 
 /**
  * Base for circle type implementations
@@ -20,16 +20,6 @@ export abstract class BaseCircle {
      * @description Array of all tags that needs to be appended to the dom
      */
     public tags: ITag[] = [];
-
-    /**
-     * @description Initializes the options object and the size for the svg tag
-     * @param options
-     * @param size
-     */
-    protected constructor(options: IAvailableOptions, size: ISize) {
-        this.options = options;
-        this.size = size;
-    }
 
     /**
      * @description Fires scroll event if animateInView is set to true and runs checkAnimation
@@ -133,5 +123,15 @@ export abstract class BaseCircle {
             const parent = document.getElementById(tag.parentId);
             parent.appendChild(tag.element as Node);
         });
+    }
+
+    /**
+     * @description Initialize basic values for circle
+     * @param options
+     * @param size
+     */
+    public initialize(options: IAvailableOptions, size: ISize): void {
+        this.options = options;
+        this.size = size;
     }
 }

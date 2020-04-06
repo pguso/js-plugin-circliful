@@ -1,24 +1,13 @@
+import SvgTags from "../base-classes/svg-tags";
 import ObjectHelper from "../helpers/object-helper";
 import {StyleHelper} from "../helpers/style-helper";
 import SvgTagsHelper from "../helpers/svg-tags-helper";
-import {IAvailableOptions} from "../interfaces/iavailable-options";
-import {ISize} from "../interfaces/isize";
-import SvgTags from "../svg-tags";
 import SimpleCircle from "./simple-circle";
 
 /**
  * Every circle gets dynamically called by the given type in the options object example: { type: 'HalfCircle' }
  */
 class HalfCircle extends SimpleCircle {
-    /**
-     * @description Extended for cutting svg container height to half
-     * @param options
-     * @param size
-     */
-    constructor(options: IAvailableOptions, size: ISize) {
-        super(options, size);
-    }
-
     /**
      * @inheritDoc
      */
@@ -87,7 +76,7 @@ class HalfCircle extends SimpleCircle {
      * @description Animates circle counter clock wise
      * @param arc
      */
-    protected animate(arc: Element) {
+    public animate(arc: Element) {
         StyleHelper.animateArc({
             arc,
             arcParams: {

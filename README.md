@@ -28,7 +28,7 @@ npm run build
 | ------------- |-------------| 
 | dist          | minified css and js version for implementing in script tag | 
 | docs          | md documentation files      |  
-| public        | content-base for webpack dev server      |    
+| public        | content-base for webpack dev server, contains some circliful examples      |    
 | src           | all code for the library      |    
 | styles        | scss styling files for circles      |    
 | tests         | unit and dom tests, coming soon...      |    

@@ -15,7 +15,7 @@ export interface IAvailableOptions {
     point?: boolean;
     pointSize?: number;
     percent: number;
-    animation?: number;
+    animation?: boolean;
     animationStep?: number;
     strokeGradient?: [string, string];
     icon?: string;
@@ -24,9 +24,10 @@ export interface IAvailableOptions {
     noPercentageSign?: boolean;
     animateInView?: boolean;
     strokeLinecap?: string;
-    update?: () => {}; // TODO: implement
-    onAnimationEnd?: () => {};
     foregroundCircleWidth?: number;
     backgroundCircleWidth?: number;
     progressColors?: IProgressColor[];
+    onAnimationEnd?: () => {};
+    // tslint:disable-next-line
+    [key: string]: any;
 }
