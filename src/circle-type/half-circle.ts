@@ -1,7 +1,7 @@
-import SvgTags from "../base-classes/svg-tags";
-import ObjectHelper from "../helpers/object-helper";
-import {StyleHelper} from "../helpers/style-helper";
-import SvgTagsHelper from "../helpers/svg-tags-helper";
+import SvgTags from "../base-class/svg-tags";
+import ObjectHelper from "../helper/object-helper";
+import {StyleHelper} from "../helper/style-helper";
+import SvgTagsHelper from "../helper/svg-tags-helper";
 import SimpleCircle from "./simple-circle";
 
 /**

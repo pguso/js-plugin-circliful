@@ -1,5 +1,5 @@
-import {ICalculationParams} from "../interfaces/icalculation-params";
-import {IProgressColor} from "../interfaces/iprogress-color";
+import {ICalculationParams} from "../interface/icalculation-params";
+import {IProgressColor} from "../interface/iprogress-color";
 import SvgTagsHelper from "./svg-tags-helper";
 
 export class StyleHelper {

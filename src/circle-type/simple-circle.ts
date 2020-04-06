@@ -1,11 +1,11 @@
-import {BaseCircle} from "../base-classes/base-circle";
-import SvgTags from "../base-classes/svg-tags";
-import ObjectHelper from "../helpers/object-helper";
-import {StyleHelper} from "../helpers/style-helper";
-import SvgTagsHelper from "../helpers/svg-tags-helper";
-import {IAttributes} from "../interfaces/iattributes";
-import {IAvailableOptions} from "../interfaces/iavailable-options";
-import {ISize} from "../interfaces/isize";
+import {BaseCircle} from "../base-class/base-circle";
+import SvgTags from "../base-class/svg-tags";
+import ObjectHelper from "../helper/object-helper";
+import {StyleHelper} from "../helper/style-helper";
+import SvgTagsHelper from "../helper/svg-tags-helper";
+import {IAttributes} from "../interface/iattributes";
+import {IAvailableOptions} from "../interface/iavailable-options";
+import {ISize} from "../interface/isize";
 
 /**
  * Every circle gets dynamically called by the given type in the options object

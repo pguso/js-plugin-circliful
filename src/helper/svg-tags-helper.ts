@@ -1,5 +1,5 @@
-import {IAttributes} from "../interfaces/iattributes";
-import {ICalculationParams} from "../interfaces/icalculation-params";
+import {IAttributes} from "../interface/iattributes";
+import {ICalculationParams} from "../interface/icalculation-params";
 
 class SvgTagsHelper {
     /**
@@ -43,8 +43,8 @@ class SvgTagsHelper {
         const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
 
         return {
-            x: centerX + (radius * Math.cos(angleInRadians)),
-            y: centerY + (radius * Math.sin(angleInRadians)),
+            x: centerX + Math.round(radius * Math.cos(angleInRadians) + Number.EPSILON),
+            y: centerY + Math.round(radius * Math.sin(angleInRadians) + Number.EPSILON),
         };
     }
 

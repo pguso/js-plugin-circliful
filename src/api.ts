@@ -1,6 +1,7 @@
-import Circle from "./base-classes/circle";
-import {IAvailableOptions} from "./interfaces/iavailable-options";
-import {IType} from "./interfaces/itype";
+import Circle from "./base-class/circle";
+import ObjectHelper from "./helper/object-helper";
+import {IAvailableOptions} from "./interface/iavailable-options";
+import {IType} from "./interface/itype";
 
 export class Api {
     public readonly options: IAvailableOptions;
@@ -9,6 +10,10 @@ export class Api {
         this.options = options;
     }
 
+    /**
+     * @description Update options and rerender circle
+     * @param parameter
+     */
     public update(parameter: IType | IType[]) {
         const element = document.getElementById(`svg-${this.options.id}`);
 
@@ -22,6 +27,11 @@ export class Api {
         Circle.initializeCircleType(this.options);
     }
 
+    /**
+     * @description Update options by given type
+     * @param type
+     * @param value
+     */
     private updateType(type: string, value: IType["value"]): void {
         switch (type) {
             case "percent":
@@ -70,9 +80,11 @@ export class Api {
         }
     }
 
-    public get(type: string): void {
-        if (this.options.hasOwnProperty(type)) {
-            return this.options[type];
-        }
+    /**
+     * @description Get property from object
+     * @param type
+     */
+    public get(type: string) {
+        return ObjectHelper.extractPropertyFromObject(this.options, type);
     }
 }

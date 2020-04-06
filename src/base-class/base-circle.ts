@@ -1,7 +1,7 @@
-import {IAvailableOptions} from "../interfaces/iavailable-options";
-import {ISize} from "../interfaces/isize";
-import {ITag} from "../interfaces/itag";
-import {IViewBoxAttributes} from "../interfaces/iview-box-attributes";
+import {IAvailableOptions} from "../interface/iavailable-options";
+import {ISize} from "../interface/isize";
+import {ITag} from "../interface/itag";
+import {IViewBoxAttributes} from "../interface/iview-box-attributes";
 import SvgTags from "./svg-tags";
 
 /**
@@ -74,10 +74,10 @@ export abstract class BaseCircle {
      * @description Draws the svg tag
      * @param additionalAttributes
      */
-    public drawContainer(additionalAttributes?: object) {
-        const {minX, minY, width, height} = this.getViewBoxParams();
+    public drawContainer(additionalAttributes?: object) {console.log(additionalAttributes);
+                                                         const {minX, minY, width, height} = this.getViewBoxParams();
 
-        const container = SvgTags.addSvg({
+                                                         const container = SvgTags.addSvg({
             width: "100%",
             height: "100%",
             viewBox: `${minX} ${minY} ${width} ${height}`,
@@ -86,7 +86,7 @@ export abstract class BaseCircle {
             ...additionalAttributes,
         });
 
-        this.tags.push({
+                                                         this.tags.push({
             element: container,
             parentId: this.options.id,
         });

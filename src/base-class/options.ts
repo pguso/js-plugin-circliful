@@ -1,4 +1,4 @@
-import {IAvailableOptions} from "../interfaces/iavailable-options";
+import {IAvailableOptions} from "../interface/iavailable-options";
 
 class Options {
     /**
@@ -45,23 +45,19 @@ class Options {
     }
 
     /**
-     * @description Transforms option ex no-percentage-sign into noPercentageSign
-     * @param option
-     * @returns {string}
-     */
-    public static dashToCamelCase(option: string) {
-        return option.replace(/([A-Z])/g, (val) => `-${val.toLowerCase()}`);
-    }
-
-    /**
      * @description Merge default options and custom option on initialisation
      * @param options
+     * @param checkDataAttributes
      * @returns Options['defaultOptions']
      */
-    public mergeOptions(options: IAvailableOptions) {
-        const dataOptions = Options.getDataAttributes(options);
+    public mergeOptions(options: IAvailableOptions, checkDataAttributes = false) {
+        let mergedOptions = {...this.defaultOptions, ...options};
+        if (checkDataAttributes) {
+            const dataOptions = Options.getDataAttributes(options);
+            mergedOptions = {...mergedOptions, ...dataOptions};
+        }
 
-        return {...this.defaultOptions, ...options, ...dataOptions};
+        return mergedOptions;
     }
 }
 

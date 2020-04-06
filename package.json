@@ -10,7 +10,9 @@
   "scripts": {
     "start:dev": "webpack-dev-server --config webpack.dev.config.js --content-base public/",
     "build": "webpack --config webpack.dev.config.js",
-    "lint": "tslint -c tslint.json -p tsconfig.json --fix"
+    "lint": "tslint -c tslint.json -p tsconfig.json --fix",
+    "test": "jest --collectCoverage",
+    "test:watch": "jest --watch"
   },
   "keywords": [
     "circliful",
@@ -34,6 +36,7 @@
     "@babel/core": "^7.9.0",
     "@babel/plugin-transform-modules-umd": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
     "@types/node": "^13.9.4",
     "babel-loader": "^8.1.0",
     "babel-plugin-syntax-async-functions": "^6.13.0",
@@ -43,6 +46,7 @@
     "es6-promise-promise": "^1.0.0",
     "events": "^3.1.0",
     "html-webpack-plugin": "^4.0.2",
+    "jest": "^25.2.7",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
@@ -56,5 +60,8 @@
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "@types/jest": "^25.2.1"
   }
 }

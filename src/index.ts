@@ -1,6 +1,6 @@
-import "../styles/main.scss";
-import Circle from "./base-classes/circle";
-import {IAvailableOptions} from "./interfaces/iavailable-options";
+import "../style/main.scss";
+import Circle from "./base-class/circle";
+import {IAvailableOptions} from "./interface/iavailable-options";
 
 /**
  * @description Gets called from html script tag

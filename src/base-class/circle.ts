@@ -1,5 +1,5 @@
 import {Api} from "../api";
-import {IAvailableOptions} from "../interfaces/iavailable-options";
+import {IAvailableOptions} from "../interface/iavailable-options";
 import {CircleFactory} from "./circle-factory";
 import Options from "./options";
 
@@ -24,13 +24,13 @@ class Circle {
     /**
      * @description Initializes the circle by given type
      * @param options
+     * @param checkDataAttributes
      */
-    public static initializeCircleType(options: IAvailableOptions) {
+    public static initializeCircleType(options: IAvailableOptions, checkDataAttributes = false) {
         const size = Circle.getParentSize(options.id);
-        const circleFactory = new CircleFactory();
-        const circle = circleFactory.create(options.type);
+        const circle = CircleFactory.create(options.type);
         const optionsManager = new Options();
-        const mergedOptions = optionsManager.mergeOptions(options);
+        const mergedOptions = optionsManager.mergeOptions(options, checkDataAttributes);
 
         circle.initialize(mergedOptions, size);
         circle.drawCircle();
@@ -60,7 +60,7 @@ class Circle {
             percent: 1,
         };
 
-        Circle.initializeCircleType(options);
+        Circle.initializeCircleType(options, true);
 
         return new Api(options);
     }

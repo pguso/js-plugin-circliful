@@ -26,7 +26,7 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                exclude: "/node_modules",
+                exclude: ["/node_modules", path.resolve(__dirname, "./test")],
                 use: "ts-loader",
             },
             {
@@ -43,6 +43,7 @@ module.exports = {
             },
             {
                 test: /\.(sa|sc|c)ss$/,
+                exclude: path.resolve(__dirname, "./test"),
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,

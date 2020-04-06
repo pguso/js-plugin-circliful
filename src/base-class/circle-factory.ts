@@ -4,23 +4,22 @@ import SimpleCircle from "../circle-type/simple-circle";
 import {BaseCircle} from "./base-circle";
 
 export class CircleFactory {
-    private circleClass: BaseCircle;
-
-    public create(type: string): BaseCircle {
+    public static create(type: string): BaseCircle {
+        let circleClass: BaseCircle;
         switch (type.toLowerCase()) {
             case "half":
-                this.circleClass = new HalfCircle();
+                circleClass = new HalfCircle();
                 break;
             case "plain":
-                this.circleClass = new PlainCircle();
+                circleClass = new PlainCircle();
                 break;
             case "simple":
-                this.circleClass = new SimpleCircle();
+                circleClass = new SimpleCircle();
                 break;
             default:
-                this.circleClass = new SimpleCircle();
+                circleClass = new SimpleCircle();
         }
 
-        return this.circleClass;
+        return circleClass;
     }
 }

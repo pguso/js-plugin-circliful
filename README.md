@@ -30,16 +30,16 @@ npm run build
 | docs          | md documentation files      |  
 | public        | content-base for webpack dev server, contains some circliful examples      |    
 | src           | all code for the library      |    
-| styles        | scss styling files for circles      |    
-| tests         | unit and dom tests, coming soon...      |    
+| style        | scss styling files for circles      |    
+| test        | unit and dom tests, coming soon...      |    
 
 #### src folder ####
 
 | Folder        | Description | 
 | ------------- |-------------| 
-| base-classes  | basic classes to centralize main features | 
+| base-class  | basic classes to centralize main features | 
 | circle-type   | some default circles, you can add there your own      |  
-| helpers       | svg and object helper       |  
-| interfaces    | typescript interfaces for validation      |  
+| helper       | svg and object helper       |  
+| interface    | typescript interfaces for validation      |  
 
 
