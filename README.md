@@ -1,6 +1,6 @@
 # js-plugin-circliful #
 
-New implementation of circliful, without any dependencies - dependencies are only used for development.
+New implementation of circliful, without any dependencies - dependencies are only used for development like webpack, jest, typescript, tslint and babel.
 
 * show Infos as Circle Statistics, no images used
 * based on SVG
