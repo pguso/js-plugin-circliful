@@ -33,7 +33,7 @@ Include circliful to your Site via script tag or install it as npm module.
 * [List of available options](./docs/options.md)
 * [Style your cirles via css](./docs/style-elements.md)
 
-If you feel there is something missing in the documentation or the library feel free to open a issue.
+If you feel there is something missing in the documentation or the library please open a issue.
 
 Donation
 --------
