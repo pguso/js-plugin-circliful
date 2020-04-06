@@ -8,11 +8,16 @@
     <link href="custom.css" rel="stylesheet">
 </head>
 <body>
-<div id="circle1" data-percent="55" class="circle-default-style"></div>
+<div id="circle1" class="circle-default-style"></div>
 <div id="circle2" class="circle-default-style"></div>
 <div id="circle6" class="circle-stat-custom circle-default-style"></div>
 <div id="circle3" class="circle-default-style"></div>
-<div id="circle4" class="circle-default-style"></div>
+<div id="circle4"
+     class="circle-default-style"
+     data-percent="90"
+     data-no-percentage-sign="true"
+     data-stroke-linecap="round">
+</div>
 <div id="circle5" class="circle-default-style"></div>
 
 <div id="circle7" class="circle-default-style"></div>
@@ -83,18 +88,13 @@
             animateInView: true
         });
 
+        circliful.newCircleWithDataSet('circle4', 'simple');
+
         circliful.newCircle({
             percent: 50,
             id: 'circle3',
             type: 'half',
             animateInView: true
-        });
-
-        circliful.newCircle({
-            percent: 99,
-            id: 'circle4',
-            type: 'half',
-            noPercentageSign: true,
         });
 
         circliful.newCircle({

@@ -60,6 +60,7 @@ class PlainCircle extends BaseCircle {
             "class": `foreground-circle ${customCssClass}`,
             "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
             "stroke-width": this.options.foregroundCircleWidth,
+            "stroke-linecap": this.options.strokeLinecap,
         });
 
         if (this.options.animation) {

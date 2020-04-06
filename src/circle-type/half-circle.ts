@@ -60,6 +60,7 @@ class HalfCircle extends SimpleCircle {
             "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
             "transform": `rotate(-90, ${this.coordinates.x}, ${this.coordinates.y})`,
             "stroke-width": this.options.foregroundCircleWidth,
+            "stroke-linecap": this.options.strokeLinecap,
         });
 
         if (this.options.animation) {

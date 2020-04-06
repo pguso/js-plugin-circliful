@@ -47,6 +47,23 @@ class Circle {
 
         return new Api(options);
     }
+
+    /**
+     * @description Creates a new circle with attributes set as data attributes on tag
+     * @param parentId
+     * @param type
+     */
+    public newCircleWithDataSet(parentId: string, type: string): Api {
+        const options: IAvailableOptions = {
+            id: parentId,
+            type,
+            percent: 1,
+        };
+
+        Circle.initializeCircleType(options);
+
+        return new Api(options);
+    }
 }
 
 export default Circle;
