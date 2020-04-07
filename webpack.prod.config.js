@@ -14,14 +14,9 @@ module.exports = {
         filename: `${libraryName}.js`,
         library: libraryName,
         path: path.resolve(__dirname, "./dist"),
-        publicPath: '/dist/',
     },
     target: "web",
-    devtool: "inline-source-map",
-    mode: "development",
-    devServer: {
-        port: 9090,
-    },
+    mode: "production",
     module: {
         rules: [
             {
@@ -58,8 +53,12 @@ module.exports = {
         ],
     },
     optimization: {
-        minimize: false,
+        nodeEnv: 'production',
+        removeAvailableModules: true,
+        minimize: true,
         minimizer: [new TerserPlugin({
+            cache: true,
+            parallel: true,
             terserOptions: {
                 output: {
                     comments: false,
