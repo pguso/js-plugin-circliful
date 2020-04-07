@@ -1,6 +1,6 @@
 {
   "name": "js-plugin-circliful",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "circle statistic plugin without dependencies",
   "main": "index.js",
   "repository": {
@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/pguso/js-plugin-circliful/issues"
   },
-  "_id": "js-plugin-circliful@2.0.0",
+  "_id": "js-plugin-circliful@2.0.1",
   "readmeFilename": "README.md",
   "license": "MIT",
   "devDependencies": {
