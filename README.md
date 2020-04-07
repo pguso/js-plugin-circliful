@@ -9,7 +9,7 @@ New implementation of circliful, without any dependencies - dependencies are onl
 
 ## How to use circliful
 
-Include circliful to your Site via script tag or install it as npm module.
+Include circliful to your Site via script tag or install it as npm module. If you want to use font-awesome icons you need to include the files separately.
 
     //copy from dist folder
     <link href="dist/main.css" rel="stylesheet" type="text/css" />
