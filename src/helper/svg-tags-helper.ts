@@ -61,10 +61,15 @@ class SvgTagsHelper {
         const start = SvgTagsHelper.polarToCartesian(x, y, radius, endAngle);
         const end = SvgTagsHelper.polarToCartesian(x, y, radius, startAngle);
         const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+        let closePath = false;
 
+        if (endAngle === 360 && end.x > start.x) {
+            closePath = true;
+            start.x = start.x - 0.001;
+        }
         return [
             "M", start.x, start.y,
-            "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y,
+            "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y, (closePath ? 'Z' : '')
         ].join(" ");
     }
 }
