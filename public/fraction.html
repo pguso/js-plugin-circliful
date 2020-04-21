@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circliful - examples</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../dist/main.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet">
+</head>
+<body>
+<div id="circle1" class="circle-default-style"></div>
+<div id="circle2" class="circle-default-style"></div>
+<div id="circle5" class="circle-default-style"></div>
+<div id="circle3" class="circle-default-style"></div>
+<div id="circle4" class="circle-default-style"></div>
+
+<script type="text/javascript" src="../dist/circliful.js"></script>
+<script>
+    (function () {
+        circliful.newCircle({
+            id: 'circle1',
+            type: 'fraction',
+            fractionCount: 12,
+            fillColor: 'blue',
+            foregroundCircleWidth: 2,
+            fractionFilledCount: 11,
+            strokeColor: '#000'
+        });
+
+        circliful.newCircle({
+            id: 'circle2',
+            type: 'fraction',
+            fractionCount: 4,
+            fillColor: 'blue',
+            foregroundCircleWidth: 3,
+            fractionFilledCount: 1,
+            fractionColors: ['#A960BF', '#714080'],
+            strokeColor: '#714080'
+        });
+
+        circliful.newCircle({
+            id: 'circle5',
+            type: 'fraction',
+            fractionCount: 12,
+            fillColor: 'blue',
+            foregroundCircleWidth: 3,
+            fractionFilledCount: 8,
+            fractionColors: ['#467f83', '#4e8d92'],
+            strokeColor: '#4e8d92'
+        });
+
+        circliful.newCircle({
+            id: 'circle3',
+            type: 'fraction',
+            fractionCount: 6,
+            fillColor: 'blue',
+            foregroundCircleWidth: 2,
+            fractionFilledCount: 2,
+            strokeColor: '#000'
+        });
+
+        circliful.newCircle({
+            id: 'circle4',
+            type: 'fraction',
+            fractionCount: 8,
+            fillColor: 'blue',
+            foregroundCircleWidth: 2,
+            fractionFilledCount: 3,
+            strokeColor: '#000'
+        });
+    })();
+</script>
+</body>
+</html>
