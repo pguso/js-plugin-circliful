@@ -69,8 +69,19 @@ class SvgTagsHelper {
         }
         return [
             "M", start.x, start.y,
-            "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y, (closePath ? 'Z' : '')
+            "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y, (closePath ? "Z" : ""),
         ].join(" ");
+    }
+
+    /**
+     * @description Returns the end coordinates of the arc
+     * @param x
+     * @param y
+     * @param radius
+     * @param endAngle
+     */
+    public static calculatePathEndCoordinates(x: number, y: number, radius: number, endAngle: number) {
+        return SvgTagsHelper.polarToCartesian(x, y, radius, endAngle);
     }
 }
 

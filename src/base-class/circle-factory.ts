@@ -1,3 +1,4 @@
+import FractionCircle from "../circle-type/fraction-circle";
 import HalfCircle from "../circle-type/half-circle";
 import PlainCircle from "../circle-type/plain-circle";
 import SimpleCircle from "../circle-type/simple-circle";
@@ -15,6 +16,9 @@ export class CircleFactory {
                 break;
             case "simple":
                 circleClass = new SimpleCircle();
+                break;
+            case "fraction":
+                circleClass = new FractionCircle();
                 break;
             default:
                 circleClass = new SimpleCircle();
