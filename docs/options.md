@@ -45,7 +45,7 @@ If you want to set the values via data attributes you need to set the values via
 | name        | default           | type  | description
 | ------------- |------------- | ----- | ----- |
 | id      | / | string | id of the html tag
-| type      | "SimpleCircle" | string | circle type
+| type      | "simple" | string | circle type
 | additionalCssClasses      | / | object | on each element circle, text etc a custom css for styling can be set
 | point      | false | boolean | a point in within the circle 
 | pointSize      | 60 | number | the point size in px
