@@ -36,19 +36,19 @@ npm package
 npm i js-plugin-circliful
 ```
    
-``` 
-<link href="node_modules/js-plugin-circliful/dist/main.css" rel="stylesheet" type="text/css" />
+```javascript
+import 'node_modules/js-plugin-circliful/dist/main.css';
+import {circliful} from 'node_modules/js-plugin-circliful/dist/circliful';
 
+circliful.newCircle({
+  percent: 50,
+  id: 'circle',
+  type: 'simple',
+});
+```
+
+```html
 <div id="circle"></div>
-
-<script src="node_modules/js-plugin-circliful/dist/circliful.js"></script>
-<script>
-    circliful.newCircle({
-        percent: 50,
-        id: 'circle',
-        type: 'simple',
-    });
-</script>
 ```
 
 ## Documentation
