@@ -2,7 +2,7 @@
   "name": "js-plugin-circliful",
   "version": "2.0.3",
   "description": "circle statistic plugin without dependencies",
-  "main": "index.js",
+  "main": "dist/circliful.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/pguso/js-plugin-circliful"
