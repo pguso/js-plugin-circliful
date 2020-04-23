@@ -39,6 +39,7 @@
     "@babel/plugin-transform-modules-umd": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-typescript": "^7.9.0",
+    "@purtuga/esm-webpack-plugin": "^1.2.1",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.9.4",
     "babel-loader": "^8.1.0",

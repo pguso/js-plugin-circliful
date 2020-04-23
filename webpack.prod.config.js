@@ -5,6 +5,7 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const EsmWebpackPlugin = require("@purtuga/esm-webpack-plugin");
 
 const libraryName = "circliful";
 
@@ -14,6 +15,7 @@ module.exports = {
         filename: `${libraryName}.js`,
         library: libraryName,
         path: path.resolve(__dirname, "./dist"),
+        libraryTarget: "var"
     },
     target: "web",
     mode: "production",
@@ -80,6 +82,7 @@ module.exports = {
                 path.join(process.cwd(), 'dist/**/*')
             ],
         }),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
+        new EsmWebpackPlugin()
     ],
 };
