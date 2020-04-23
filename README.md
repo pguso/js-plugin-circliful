@@ -37,14 +37,17 @@ npm i js-plugin-circliful
 ```
    
 ```javascript
-import 'node_modules/js-plugin-circliful/dist/main.css';
-import {circliful} from 'node_modules/js-plugin-circliful/dist/circliful';
+import {circliful} from 'js-plugin-circliful';
 
 circliful.newCircle({
   percent: 50,
   id: 'circle',
   type: 'simple',
 });
+```
+
+```css
+@import 'js-plugin-circliful/dist/main.css';
 ```
 
 ```html
