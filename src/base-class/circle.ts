@@ -10,9 +10,8 @@ class Circle {
      * @returns {{width: number, maxSize: number, height: number}}
      */
     private static getParentSize(id: string) {
-        const box = document.getElementById(id);
-        const width = box.clientWidth > 0 ? box.clientWidth : 200;
-        const height = box.clientHeight > 0 ? box.clientHeight : 200;
+        const width = 100;
+        const height = 100;
 
         return {
             maxSize: width > height ? height : width,

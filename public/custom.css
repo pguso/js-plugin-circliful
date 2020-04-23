@@ -2,51 +2,31 @@ body {
     font-family: Arial, sans-serif;
 }
 
-#circle6.circle-stat-custom {
-    background: #f3f3f3;
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
-.circle-stat-custom .background-circle {
-    stroke: transparent;
-}
-
-.circle-stat-custom .point-circle {
-    fill: #999;
-}
-
-.circle-stat-custom .circle-text {
-    font-size: 42px;
-    fill: #666;
-}
-
-.circle-default-style {
-    width: 100vw;
-    height: 50vh;
-}
-
-/* change position of circle with css */
-.circle1-container {
-    transform: translate(10%,10%);
-}
-
-/* change stroke width of foreground circle with css */
-.circle1-foreground-circle {
-    stroke-width: 50px;
-}
-
-.circle1-text {
-    font-size: 76px;
-    color: darkblue;
-    transform: translate(45%, 0); /* position text outside of circle */
-}
-
-.circle1-container .circle1-icon.fa {
-    font-size: 8rem;
+.circle-icon.fa {
+    font-size: .8rem;
     fill: #3498DB;
     transform: translate(0, 5%); /* change position of circle */
 }
 
-.circle1-info-text {
-    transform: translate(45%, 8%); /* position text outside of circle */
-    font-size: 6rem;
+.circle-text {
+    font-size: .9rem;
+}
+
+.circle-info-text {
+    transform: translate(0, -6%); /* position text outside of circle */
+    font-size: .5rem;
+}
+
+#svg-circle2 {
+    transform: translate(16%, 15%);
+}
+
+.circle-container {
+    transform: translate(9%, 8%);
 }

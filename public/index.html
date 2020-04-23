@@ -8,20 +8,22 @@
     <link href="custom.css" rel="stylesheet">
 </head>
 <body>
-<div id="circle1" class="circle-default-style"></div>
-<div id="circle2" class="circle-default-style"></div>
-<div id="circle6" class="circle-stat-custom circle-default-style"></div>
-<div id="circle3" class="circle-default-style"></div>
-<div id="circle4"
-     class="circle-default-style"
-     data-percent="100"
-     data-no-percentage-sign="true"
-     data-animation="false"
-     data-stroke-linecap="round">
-</div>
-<div id="circle5" class="circle-default-style"></div>
+<div class="container">
+    <div id="circle1" class="circle-default-style"></div>
+    <div id="circle2" class="circle-default-style"></div>
+    <div id="circle6" class="circle-stat-custom circle-default-style"></div>
+    <div id="circle3" class="circle-default-style"></div>
+    <div id="circle4"
+         class="circle-default-style"
+         data-percent="100"
+         data-no-percentage-sign="true"
+         data-animation="false"
+         data-stroke-linecap="round">
+    </div>
+    <div id="circle5" class="circle-default-style"></div>
 
-<div id="circle7" class="circle-default-style"></div>
+    <div id="circle7" class="circle-default-style"></div>
+</div>
 <script type="text/javascript" src="../dist/circliful.js"></script>
 <script>
     (function () {
@@ -34,7 +36,7 @@
                 console.log('custom animation end event');
             },
             animationStep: 3,
-            backgroundCircleWidth: 150,
+            backgroundCircleWidth: 15,
             additionalCssClasses: {
                 svgContainer: 'circle1-container',
                 foregroundCircle: 'circle1-foreground-circle',
@@ -63,7 +65,7 @@
             icon: 'f179',
             text: 'TP Wins',
             noPercentageSign: true,
-            backgroundCircleWidth: 35,
+            backgroundCircleWidth: 12,
             foregroundCircleWidth: 20,
             progressColors: [
                 {percent: 1, color: 'red'},

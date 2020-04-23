@@ -7,7 +7,7 @@ src
 style
 test
 babel.config.js
-README.md
+*.md
 tsconfig.json
 tslint.json
 webpack.dev.config.js

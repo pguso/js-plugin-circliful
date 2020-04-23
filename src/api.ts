@@ -16,6 +16,7 @@ export class Api {
      */
     public update(parameter: IType | IType[]) {
         const element = document.getElementById(`svg-${this.options.id}`);
+        element.remove();
 
         if (Array.isArray(parameter)) {
             parameter.forEach((p) => this.updateType(p.type, p.value));
@@ -23,7 +24,6 @@ export class Api {
             this.updateType(parameter.type, parameter.value);
         }
 
-        element.innerHTML = "";
         Circle.initializeCircleType(this.options);
     }
 
