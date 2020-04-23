@@ -1,6 +1,6 @@
 {
   "name": "js-plugin-circliful",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "circle statistic plugin without dependencies",
   "main": "index.js",
   "repository": {
@@ -21,15 +21,17 @@
     "statistic",
     "stats",
     "presentation",
-    "svg"
+    "svg",
+    "fraction"
   ],
   "author": {
-    "name": "Patric Gutersohn"
+    "name": "Patric Gutersohn",
+    "email": "patric@gutersohn.com"
   },
   "bugs": {
     "url": "https://github.com/pguso/js-plugin-circliful/issues"
   },
-  "_id": "js-plugin-circliful@2.0.2",
+  "_id": "js-plugin-circliful@2.0.3",
   "readmeFilename": "README.md",
   "license": "MIT",
   "devDependencies": {

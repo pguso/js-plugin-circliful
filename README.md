@@ -1,4 +1,6 @@
-# js-plugin-circliful #
+# Circle Statistics #
+
+Test it https://stackblitz.com/edit/js-2m2bs7
 
 New implementation of circliful, without any dependencies - dependencies are only used for development like webpack, jest, typescript, tslint and babel.
 
@@ -9,21 +11,45 @@ New implementation of circliful, without any dependencies - dependencies are onl
 
 ## How to use circliful
 
-Include circliful to your Site via script tag or install it as npm module. If you want to use font-awesome icons you need to include the files separately.
+Include circliful to your Site via script tag. If you want to use font-awesome icons you need to include the files separately.
 
-    //copy from dist folder
-    <link href="dist/main.css" rel="stylesheet" type="text/css" />
-    
-    <div id="circle"></div>
+Github clone / download
 
-    <script src="dist/circliful.js"></script>
-    <script>
-        circliful.newCircle({
-            percent: 50,
-            id: 'circle',
-            type: 'simple',
-        });
-    </script>
+```
+<link href="dist/main.css" rel="stylesheet" type="text/css" />
+
+<div id="circle"></div>
+
+<script src="dist/circliful.js"></script>
+<script>
+    circliful.newCircle({
+        percent: 50,
+        id: 'circle',
+        type: 'simple',
+    });
+</script>
+```
+
+npm package
+
+```
+npm i js-plugin-circliful
+```
+   
+``` 
+<link href="node_modules/js-plugin-circliful/dist/main.css" rel="stylesheet" type="text/css" />
+
+<div id="circle"></div>
+
+<script src="node_modules/js-plugin-circliful/dist/circliful.js"></script>
+<script>
+    circliful.newCircle({
+        percent: 50,
+        id: 'circle',
+        type: 'simple',
+    });
+</script>
+```
 
 ## Documentation
 
