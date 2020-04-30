@@ -36,7 +36,7 @@ export class StyleHelper {
 
             count += animationStep;
 
-            if (count > percent) {
+            if (count > percent || count > 100) {
                 clearInterval(interval);
 
                 if (typeof callback === "function") {
