@@ -23,6 +23,7 @@
     <div id="circle5" class="circle-default-style"></div>
 
     <div id="circle7" class="circle-default-style"></div>
+    <div id="circle8" class="circle-default-style"></div>
 </div>
 <script type="text/javascript" src="../dist/circliful.js"></script>
 <script>
@@ -117,6 +118,15 @@
         });
 
         console.log('get', circle7.get('percent'));
+
+        circliful.newCircle({
+            percent: 80,
+            id: 'circle8',
+            type: 'simple',
+            foregroundCircleWidth: 10,
+            startAngle: -145,
+            backgroundCircleWidth: 0
+        });
     })();
 </script>
 </body>

@@ -55,9 +55,17 @@ class SvgTagsHelper {
      * @param radius
      * @param startAngle
      * @param endAngle
+     * @param sweepFlag
      * @returns string
      */
-    public static describeArc(x: number, y: number, radius: number, startAngle: number, endAngle: number): string {
+    public static describeArc(
+        x: number,
+        y: number,
+        radius: number,
+        startAngle: number,
+        endAngle: number,
+        sweepFlag = "0",
+    ): string {
         const start = SvgTagsHelper.polarToCartesian(x, y, radius, endAngle);
         const end = SvgTagsHelper.polarToCartesian(x, y, radius, startAngle);
         const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
@@ -67,9 +75,10 @@ class SvgTagsHelper {
             closePath = true;
             start.x = start.x - 0.001;
         }
+
         return [
             "M", start.x, start.y,
-            "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y, (closePath ? "Z" : ""),
+            "A", radius, radius, 0, largeArcFlag, sweepFlag, end.x, end.y, (closePath ? "Z" : ""),
         ].join(" ");
     }
 

@@ -28,6 +28,7 @@ export interface IAvailableOptions {
     backgroundCircleWidth?: number;
     progressColors?: IProgressColor[];
     onAnimationEnd?: () => {};
+    startAngle?: number;
     // tslint:disable-next-line
     [key: string]: any;
 }

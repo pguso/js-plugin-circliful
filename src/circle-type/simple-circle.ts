@@ -123,7 +123,8 @@ class SimpleCircle extends BaseCircle {
      * @description Draws foreground circle
      */
     public drawForegroundCircle() {
-        const endAngle = 360 / 100 * this.options.percent;
+        const endAngle = (360 / 100 * this.options.percent) + Number(this.options.startAngle);
+        const startAngle = this.options.startAngle ? this.options.startAngle : 0;
         const customCssClass = ObjectHelper.extractPropertyFromObject(
             this.additionalCssClasses,
             "foregroundCircle",
@@ -131,7 +132,7 @@ class SimpleCircle extends BaseCircle {
         const attributes: IAttributes = {
             "id": `arc-${this.options.id}`,
             "class": `foreground-circle ${customCssClass}`,
-            "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, 0, endAngle),
+            "d": SvgTagsHelper.describeArc(this.coordinates.x, this.coordinates.y, this.radius, startAngle, endAngle),
             "stroke-width": this.options.foregroundCircleWidth,
             "stroke-linecap": this.options.strokeLinecap,
         };
@@ -142,7 +143,7 @@ class SimpleCircle extends BaseCircle {
         }
 
         const arc = SvgTags.addArc(attributes);
-        if (this.options.animation) {
+        if (this.options.animation && !this.options.startAngle) {
             this.animate(arc);
         }
 

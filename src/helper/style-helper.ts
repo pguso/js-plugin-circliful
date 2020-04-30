@@ -26,8 +26,16 @@ export class StyleHelper {
         let count = 1;
         const interval = setInterval((arc, percent, progressColors) => {
             const endAngle = endAngleGrade / 100 * count;
+            const sweepFlag = startAngle < 0 && endAngle > 286 ? "1" : "0";
             SvgTagsHelper.setAttributes(arc, {
-                d: SvgTagsHelper.describeArc(arcParams.x, arcParams.y, arcParams.radius, startAngle, endAngle),
+                d: SvgTagsHelper.describeArc(
+                    arcParams.x,
+                    arcParams.y,
+                    arcParams.radius,
+                    startAngle,
+                    endAngle,
+                    sweepFlag,
+                ),
             });
 
             if (hasProgressColor) {

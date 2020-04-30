@@ -1,6 +1,6 @@
 {
   "name": "js-plugin-circliful",
-  "version": "2.0.12",
+  "version": "2.0.15",
   "description": "circle statistic plugin without dependencies",
   "main": "dist/circliful.js",
   "repository": {
