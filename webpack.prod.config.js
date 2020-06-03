@@ -1,7 +1,7 @@
-const {ProvidePlugin} = require("webpack");
+const { ProvidePlugin } = require("webpack");
 
 const path = require("path");
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -20,8 +20,7 @@ module.exports = {
     target: "web",
     mode: "production",
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.ts$/,
                 exclude: ["/node_modules", path.resolve(__dirname, "./test")],
                 use: "ts-loader",
@@ -29,20 +28,17 @@ module.exports = {
             {
                 test: /\.ts$/,
                 enforce: "pre",
-                use: [
-                    {
-                        loader: "tslint-loader",
-                        options: {
-                            configFile: "tslint.json",
-                        },
+                use: [{
+                    loader: "tslint-loader",
+                    options: {
+                        configFile: "tslint.json",
                     },
-                ],
+                }, ],
             },
             {
                 test: /\.(sa|sc|c)ss$/,
                 exclude: path.resolve(__dirname, "./test"),
-                use: [
-                    {
+                use: [{
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             hmr: process.env.NODE_ENV === 'development',
@@ -82,7 +78,6 @@ module.exports = {
                 path.join(process.cwd(), 'dist/**/*')
             ],
         }),
-        new MiniCssExtractPlugin(),
-        new EsmWebpackPlugin()
+        new MiniCssExtractPlugin()
     ],
 };
