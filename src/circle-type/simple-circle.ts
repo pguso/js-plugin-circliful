@@ -145,11 +145,33 @@ class SimpleCircle extends BaseCircle {
         const arc = SvgTags.addArc(attributes);
         if (this.options.animation && !this.options.startAngle) {
             this.animate(arc);
+        } else {
+            this.drawArc(arc);
         }
 
         this.tags.push({
             element: arc,
             parentId: `svg-${this.options.id}`,
+        });
+    }
+
+    private drawArc(arc: Element) {
+        const arcParams = {
+            percent: this.options.percent,
+            x: this.coordinates.x,
+            y: this.coordinates.y,
+            radius: this.radius,
+        };
+        const endAngle = 360 / 100 * this.options.percent;
+        SvgTagsHelper.setAttributes(arc, {
+            d: SvgTagsHelper.describeArc(
+                arcParams.x,
+                arcParams.y,
+                arcParams.radius,
+                0,
+                endAngle,
+                "0",
+            ),
         });
     }
 
