@@ -108,8 +108,8 @@ export abstract class BaseCircle {
         let width = this.size.width;
         let height = this.size.height;
         if (foregroundCircleWidth > 5 || backgroundCircleWidth > 5) {
-            width = this.size.width + (1.5 * circleWidth);
-            height = this.size.height + (1.5 * circleWidth);
+            width = this.size.width;
+            height = this.size.height;
         }
 
         return {minX, minY, width, height};
